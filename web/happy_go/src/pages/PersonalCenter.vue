@@ -1,4 +1,6 @@
 <template>
+    <h1>个人中心</h1>
+
     <el-tabs type="card" @tab-click="handleClick" tab-position="left">
         <el-tab-pane label="收藏课程" id="FavoriteClass">收藏课程</el-tab-pane>
         <el-tab-pane label="我的出售" id="Selling"></el-tab-pane>
