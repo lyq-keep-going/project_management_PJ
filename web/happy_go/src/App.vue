@@ -4,8 +4,14 @@
 </script>
 
 <template>
-  <router-link to="/login">Login</router-link>
-  <router-link to="/register">Register</router-link>
+  <el-menu default-active="/" mode="horizontal" router="true">
+    <el-menu-item index="/">主页</el-menu-item>
+    <el-menu-item index="/login">登录</el-menu-item>
+    <el-menu-item index="/register">注册</el-menu-item>
+    <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+  </el-menu>
+
+  <router-view></router-view>
 </template>
 
 <style>
@@ -15,6 +21,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
