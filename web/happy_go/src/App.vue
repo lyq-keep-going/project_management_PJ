@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <el-menu default-active="/" mode="horizontal" router="true">
+  <el-menu default-active="/" mode="horizontal" :router="true">
     <el-menu-item index="/">主页</el-menu-item>
     <el-menu-item index="/login">登录</el-menu-item>
     <el-menu-item index="/register">注册</el-menu-item>

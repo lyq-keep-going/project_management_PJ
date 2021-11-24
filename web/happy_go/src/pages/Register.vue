@@ -15,9 +15,7 @@
                 <el-input v-model="form.checkPwd" type="password" autocomplete="off"></el-input>
             </el-form-item>
 
-            <el-form-item>
-                <el-button type="primary" @click="onSubmit">注册</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="onSubmit">注册</el-button>
         </el-form>
     </div>
 </template>

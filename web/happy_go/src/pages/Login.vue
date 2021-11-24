@@ -9,13 +9,7 @@
                 <el-input v-model="form.pwd" type="password" autocomplete="off"></el-input>
             </el-form-item>
 
-            <el-form-item>
-                <el-link>忘记密码？</el-link>
-            </el-form-item>
-
-            <el-form-item>
-                <el-button type="primary" @click="onSubmit">登录</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="onSubmit">登录</el-button>
         </el-form>
     </div>
 </template>
