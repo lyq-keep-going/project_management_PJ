@@ -1,0 +1,10 @@
+<!--components/post_reply/post_reply.wxml-->
+<view class="outer">
+<view class="user_portrait">
+<image src="{{reply_info.pic}}" class="portrait"></image>
+<view class="usename">{{reply_info.username}}</view>
+<view class="date">{{reply_info.date}}</view>
+</view>
+<view class="content">{{reply_info.content}}</view>
+<view class="reply">回复</view>
+</view>

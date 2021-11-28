@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "post_reply":"../../components/post_reply/post_reply"
+  },
+  "navigationBarTitleText": "帖子详情"
+}
