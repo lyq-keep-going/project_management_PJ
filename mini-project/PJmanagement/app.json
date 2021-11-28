@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/discussion/discussion",
+    "pages/add_post/add_post",
     "pages/test/test",
+    "pages/discussion/discussion",
     "pages/home/home",
     "pages/index/index",
     "pages/front_page/front_page",

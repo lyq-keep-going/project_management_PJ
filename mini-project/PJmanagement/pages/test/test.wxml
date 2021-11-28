@@ -1,11 +1,2 @@
 <!--pages/test/test.wxml-->
 <text>pages/test/test.wxml</text>
-<Tab_1></Tab_1>
-<tag tagname="好耶"></tag>
-<plain_tag></plain_tag>
-<entry></entry>
-<view>
-    <entry wx:for="{{entryList}}" content="{{item.content}}" date="{{item.date}}"></entry>
-</view>
-
-<detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>

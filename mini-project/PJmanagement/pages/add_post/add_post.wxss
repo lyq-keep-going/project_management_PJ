@@ -1,0 +1,26 @@
+/* pages/add_post/add_post.wxss */
+@import'../../colorui/main.wxss';
+.publish{
+    background-color: rgba(255,160,122, 40%);
+}
+
+.title{
+    width: 90%;
+    height: 100rpx;
+    background-color: whitesmoke;
+    font-size: 40rpx;
+    padding-left: 20rpx;
+    box-shadow: 0rpx 0rpx 10rpx #cccccc inset;
+    border-radius: 20rpx;
+    margin: 20rpx 0rpx 20rpx 20rpx;
+}
+
+.content{
+    width: 90%;
+    background-color: whitesmoke;
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+    box-shadow: 0rpx 0rpx 10rpx #cccccc inset;
+    border-radius: 20rpx;
+    margin: 20rpx 0rpx 20rpx 20rpx;
+}
