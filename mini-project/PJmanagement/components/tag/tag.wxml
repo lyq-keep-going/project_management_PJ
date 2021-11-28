@@ -1,0 +1,11 @@
+<!--components/tag/tag.wxml-->
+<view class="tag" bindtap="handle_tap" bin>
+{{tagname}}
+</view>
+<view class="tag_clicked" hidden="{{isHidden}}">
+    <image src="https://z3.ax1x.com/2021/11/27/om2yC9.png" class="close" bindtap="handle_close"></image>
+    <image src="{{thumb_up_fill ?'https://z3.ax1x.com/2021/11/27/omc2GR.png':'https://z3.ax1x.com/2021/11/27/oma4A0.png'}}" class="thumb_up" bindtap="handle_thumb_up_tap"></image>
+    <image src="{{thumb_down_fill ? 'https://z3.ax1x.com/2021/11/27/omcRR1.png':'https://z3.ax1x.com/2021/11/27/oma5NV.png'}}" class="thumb_down" bindtap="handle_thumb_down_tap"></image>
+<view class="thumb_up_text">{{thumb_up_num}}</view>
+<view class="thumb_down_text">{{thumb_down_num}}</view>
+</view>

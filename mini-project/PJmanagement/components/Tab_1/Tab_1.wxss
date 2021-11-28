@@ -1,0 +1,35 @@
+/* components/Tab_1/Tab_1.wxss */
+.outer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    line-height: 60rpx;
+}
+
+.inner_l{
+    border: #FFA07A 2rpx solid;
+    color: #FFA07A;
+    border-right: 2rpx;
+    font-size: large;
+    height: 65rpx;
+    width: 180rpx;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10rpx 0rpx 0rpx 10rpx;
+}
+
+.inner_r{
+    border: #FFA07A 2rpx solid;
+    color: #FFA07A;
+    font-size: large;
+    height: 65rpx;
+    width: 180rpx;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0rpx 10rpx 10rpx 0rpx;
+}
+
+.isActive{
+    color: white;
+    background-color: #FFA07A
+}

@@ -1,0 +1,9 @@
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
+<Tab_1></Tab_1>
+<tag tagname="好耶"></tag>
+<plain_tag></plain_tag>
+<entry></entry>
+<view>
+    <entry wx:for="{{entryList}}" content="{{item.content}}" date="{{item.date}}"></entry>
+</view>
