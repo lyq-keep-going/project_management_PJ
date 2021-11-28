@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/discussion/discussion",
     "pages/test/test",
     "pages/home/home",
     "pages/index/index",

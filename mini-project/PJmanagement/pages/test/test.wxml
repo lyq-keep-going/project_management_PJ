@@ -7,3 +7,5 @@
 <view>
     <entry wx:for="{{entryList}}" content="{{item.content}}" date="{{item.date}}"></entry>
 </view>
+
+<detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>

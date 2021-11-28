@@ -1,0 +1,49 @@
+/* pages/discussion/discussion.wxss */
+.outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 70rpx;
+    padding-top:50rpx;
+}   
+
+.tab{
+    margin: 20rpx 0rpx 20rpx -30rpx;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tag{
+    margin: 20rpx;
+}
+
+image{
+    height: 50rpx;
+    width: 50rpx;
+}
+
+.bottom_add{
+    margin-top: 20rpx;
+}
+
+button{
+    background-color: rgba(255,160,122, 20%);
+    color: black;
+}
+
+
+
+.collect{
+    display: inline;
+    vertical-align: middle;
+}
+
+.star{
+    margin-right: 20rpx;
+    vertical-align: middle;
+}
