@@ -2,7 +2,7 @@
 .tag{
     background-color: #FFA07A;
     height: 50rpx;
-    width: 100rpx;
+    min-width: 100rpx;
     border-radius: 25rpx;
     text-align: center;
     line-height: 50rpx;

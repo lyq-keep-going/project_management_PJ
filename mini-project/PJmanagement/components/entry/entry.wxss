@@ -2,7 +2,7 @@
 .outer{
     border-bottom: #DCDCDC solid 1rpx;
     padding: 20rpx;
-    width: 90%;
+    width: 720rpx;
 }
 
 .content{

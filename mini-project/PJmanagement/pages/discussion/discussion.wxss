@@ -2,8 +2,7 @@
 .outer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: 70rpx;
+    align-items: center;
     padding-top:50rpx;
 }   
 
@@ -29,6 +28,8 @@ image{
 
 .bottom_add{
     margin-top: 20rpx;
+    margin-left: 20rpx;
+    align-self: flex-start;
 }
 
 button{

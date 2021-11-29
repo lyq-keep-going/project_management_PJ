@@ -3,7 +3,7 @@
 <detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>
 <Tab_1 class="tab"></Tab_1>
 <view class="tags">
-    <tag wx:for="{{tagnames}}" class="tag"></tag>
+    <tag wx:for="{{tagnames}}" class="tag" tagname="{{item}}"></tag>
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png"></image>
 </view>
 <view>

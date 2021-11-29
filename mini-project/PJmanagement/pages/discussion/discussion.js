@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        tagnames:["可爱","啦啦", "好耶"],
+        tagnames:["可可爱爱","啦啦", "好耶"],
         entryList:[{
             content:"标题",
             date:"0000-00-00"

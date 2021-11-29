@@ -1,0 +1,6 @@
+<!--components/three_types/three_types.wxml-->
+<view class="outer">
+<view class="book isActive ">二手书</view>
+<view class="ppt">ppt</view>
+<view class="notes">笔记</view>
+</view>

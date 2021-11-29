@@ -1,0 +1,23 @@
+/* components/commodity/commodity.wxss */
+.outer{
+    padding: 20rpx;
+    box-shadow: 0rpx 0rpx 10rpx #cccccc;
+    width: 330rpx;
+    border-radius: 30rpx;
+    display: inline-block;
+    margin: 20rpx;
+}
+
+image{
+    width: 300rpx;
+    height: 250rpx;
+    border-radius: 30rpx;
+}
+
+.color{
+    background-color: rgba(255,160,122,40%);
+}
+
+.text{
+    margin-top: 10rpx;
+}

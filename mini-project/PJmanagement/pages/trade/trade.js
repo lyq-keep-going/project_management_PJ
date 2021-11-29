@@ -5,7 +5,49 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        commodity_list:[
+            {
+                id:0,
+                seller:"ahaah",
+                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
+                bookname:"《西游记》",
+                author:"施耐庵",
+                publisher:"商务印刷馆",
+                new_degree:"全新",
+                price:58
+            } ,
+            {
+                id:1,
+                seller:"ahaah",
+                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
+                bookname:"《西游记》",
+                author:"施耐庵",
+                publisher:"商务印刷馆",
+                new_degree:"全新",
+                price:58
+            } ,
+            {
+                id:2,
+                seller:"ahaah",
+                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
+                bookname:"《西游记》",
+                author:"施耐庵",
+                publisher:"商务印刷馆",
+                new_degree:"全新",
+                price:58
+            } ,
+            {
+                id:3,
+                seller:"ahaah",
+                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
+                bookname:"《西游记》",
+                author:"施耐庵",
+                publisher:"商务印刷馆",
+                new_degree:"全新",
+                price:58
+            } 
+        ],
+        collected:true
     },
 
     /**
