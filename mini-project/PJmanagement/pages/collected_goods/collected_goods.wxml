@@ -1,2 +1,16 @@
-<!--pages/collected_goods/collected_goods.wxml-->
-<text>pages/collected_goods/collected_goods.wxml</text>
+<view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+        <text class="cuIcon-titles text-orange"></text>收藏物品
+    </view>
+</view>
+<view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+			<view class="cu-item shadow">
+				<view class="image">
+					<image src="{{item.img}}"mode="widthFix"></image>
+				</view>
+				<view class="cu-list menu-avatar" class="text">
+					<view class="description">商品名称：{{item.title}}</view>
+                    <view class="description">价格：{{item.price}}</view>
+				</view>
+			</view>
+</view>

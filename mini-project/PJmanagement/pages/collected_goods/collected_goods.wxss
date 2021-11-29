@@ -1,1 +1,16 @@
 /* pages/collected_goods/collected_goods.wxss */
+#card {
+    width: 50%;
+    float: left;
+}
+
+.text {
+    margin-top: 15rpx;
+}
+
+.description {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

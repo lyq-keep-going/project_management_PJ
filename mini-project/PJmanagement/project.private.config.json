@@ -83,6 +83,12 @@
                     "pathName": "pages/my_sell/my_sell",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/collected_goods/collected_goods",
+                    "pathName": "pages/collected_goods/collected_goods",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }
