@@ -1,0 +1,15 @@
+/* components/entry/entry.wxss */
+.outer{
+    border-bottom: #DCDCDC solid 1rpx;
+    padding: 20rpx;
+    width: 720rpx;
+}
+
+.content{
+    margin-top: 10rpx;
+}
+
+.date{
+    margin-top: 10rpx;
+    color: #A9A9A9;
+}

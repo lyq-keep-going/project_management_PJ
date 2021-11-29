@@ -1,0 +1,8 @@
+<!--components/detailed_info/detailed_info.wxml-->
+<view class="outer">
+<view>课程名称：{{lessonName}}</view>
+<view>课程代码：{{lessonId}}</view>
+<view>授课老师：{{teacherName}}</view>
+<view>开课学期：{{semester}}</view>
+<view>学分：{{credit}}</view>
+</view>

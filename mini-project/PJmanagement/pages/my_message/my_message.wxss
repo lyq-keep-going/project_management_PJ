@@ -1,0 +1,5 @@
+/* pages/my_message/my_message.wxss */
+
+.cuIcon-title text-orange {
+    font-weight: bold;
+}

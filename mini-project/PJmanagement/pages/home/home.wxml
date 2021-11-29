@@ -1,0 +1,72 @@
+<view class="container">
+    <view class="userinfo">
+        <view class='head-wrap' bindtap='goAuth'>
+            <view class="login-avatar">
+                <view class='avatar'>
+                    <image class='avatar' src="{{userInfo.avatar}}"></image>                
+                </view>
+                <view class='name'>{{userInfo.nickname}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="menu">
+        <view class="li-wrap">
+            <view class="list" bindtap="toAddressList">
+                <view class="list-l">
+                    <view class="icon">
+                        <image class="img" src="{{icon.course}}"></image>
+                        <text class="text">收藏课程</text>
+                    </view>
+                </view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="li-wrap">
+            <view class="list" bindtap="toAddressList">
+                <view class="list-l">
+                    <view class="icon">
+                        <image class="img" src="{{icon.sell}}"></image>
+                        <text class="text">我的出售</text>
+                    </view>
+                </view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="li-wrap">
+            <view class="list" bindtap="toAddressList">
+                <view class="list-l">
+                    <view class="icon">
+                        <image class="img" src="{{icon.post}}"></image>
+                        <text class="text">我的帖子</text>
+                    </view>
+                </view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="li-wrap">
+            <view class="list" bindtap="toAddressList">
+                <view class="list-l">
+                    <view class="icon">
+                        <image class="img" src="{{icon.goods}}"></image>
+                        <text class="text">收藏物品</text>
+                    </view>
+                </view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="li-wrap">
+            <view class="list" bindtap="toAddressList">
+                <view class="list-l">
+                    <view class="icon">
+                        <image class="img" src="{{icon.message}}"></image>
+                        <text class="text">我的消息</text>
+                    </view>
+                </view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+    <view class="logout">
+        <button class="cu-btn line-black">登出</button>
+    </view>
+</view>

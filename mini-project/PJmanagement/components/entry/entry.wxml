@@ -1,0 +1,11 @@
+<!--components/entry/entry.wxml-->
+<view class="outer">
+    <view class="content">
+        {{content}}
+    </view>
+    <view class="date">
+        {{date}}
+    </view>
+      
+</view>
+  

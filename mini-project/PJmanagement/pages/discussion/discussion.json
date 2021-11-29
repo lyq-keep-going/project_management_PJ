@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "Tab_1":"../../components/Tab_1/Tab_1",
+    "tag" : "../../components/tag/tag",
+    "plain_tag":"../../components/plain_tag/plain_tag",
+    "entry":"../../components/entry/entry",
+    "detailed_info":"../../components/detailed_info/detailed_info",
+    "add_new_tag":"../../components/add_new_tag/add_new_tag"
+  },
+  "navigationBarTitleText": "课程页面"
+}

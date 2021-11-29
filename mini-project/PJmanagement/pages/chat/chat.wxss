@@ -1,0 +1,9 @@
+/* pages/chat/chat.wxss */
+
+.solid-bottom {
+    padding-left: 30rpx;
+}
+
+#chat {
+    width: 30%;
+}

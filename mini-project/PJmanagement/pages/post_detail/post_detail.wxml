@@ -1,0 +1,8 @@
+<!--pages/post_detail/post_detail.wxml-->
+<view class="outer">
+<view class="title">标题</view>
+<view class="description">描述文字</view>
+</view>
+
+<post_reply reply_info="{{reply}}"></post_reply>
+<post_reply reply_info="{{reply}}"></post_reply>

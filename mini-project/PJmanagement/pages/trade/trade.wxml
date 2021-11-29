@@ -1,0 +1,11 @@
+<!--pages/trade/trade.wxml-->
+<view class="outer">
+    <detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>
+    <Tab_1 class="tab"></Tab_1>
+    <three_types></three_types>
+    <view class="display">
+        <commodity wx:for="{{commodity_list}}" single_commodity="{{item}}"></commodity>
+    </view>
+    <button><image src="{{collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{collected ? '取消收藏' : '收藏'}}</text></button>
+</view>
+

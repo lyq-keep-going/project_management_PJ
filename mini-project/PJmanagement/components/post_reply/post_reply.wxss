@@ -1,0 +1,43 @@
+/* components/post_reply/post_reply.wxss */
+.portrait{
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin: 0rpx 20rpx 30rpx 20rpx;
+}
+
+.user_portrait{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.content{
+    margin-left: 140rpx;
+    margin-bottom: 20rpx;
+}
+
+.reply{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50rpx;
+    width: 100rpx;
+    height: 50rpx;
+    margin-left: 560rpx;
+    background-color: rgba(255,160,122,40%);
+    border-radius: 20rpx;
+    box-shadow: 3rpx 3rpx 6rpx #CCCCCC;
+}
+
+.outer{
+    padding: 20rpx 30rpx;
+    box-shadow: 5rpx 0rpx 10rpx #CCCCCC;
+    margin-bottom: 10rpx;
+}
+
+.date{
+    margin-left: 300rpx;
+    color: #CCCCCC;
+}

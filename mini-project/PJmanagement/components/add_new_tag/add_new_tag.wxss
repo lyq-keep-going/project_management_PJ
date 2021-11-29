@@ -1,0 +1,41 @@
+/* components/add_new_tag/add_new_tag.wxss */
+.outer{
+    z-index: 1;
+    position: fixed;
+    bottom: 0rpx;
+    background-color: white;
+    width: 750rpx;
+    min-height: 300rpx;
+    padding: 30rpx;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+}
+
+.tag{
+    margin: 10rpx;
+}
+
+input{
+    background-color: rgba(220,220,220, 40%);
+    height: 70rpx;
+    width: 700rpx;
+    border-radius: 20rpx;
+    padding-left: 20rpx;
+    margin: 20rpx 0rpx;
+}
+
+button{
+    background-color: rgba(255,160,122, 40%);
+    margin-top: 20rpx;
+}
+
+.delete{
+    height: 30rpx;
+    width: 30rpx;
+    position: absolute;
+    right: 10rpx;
+    margin-top: -20rpx;
+}

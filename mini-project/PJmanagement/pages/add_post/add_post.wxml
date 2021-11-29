@@ -1,0 +1,4 @@
+<!--pages/add_post/add_post.wxml-->
+<input placeholder="标题" class="title"></input>
+<textarea placeholder="说点什么吧..." class="content"></textarea>
+<button class="publish">发表</button>
