@@ -15,7 +15,10 @@
     "pages/search/search",
     "pages/chat/chat",
     "pages/my_message/my_message",
-    "pages/my_post/my_post"
+    "pages/my_post/my_post",
+    "pages/collected_course/collected_course",
+    "pages/my_sell/my_sell",
+    "pages/collected_goods/collected_goods"
   ],
   "window":{
     "backgroundTextStyle":"light",

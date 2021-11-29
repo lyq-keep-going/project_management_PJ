@@ -77,6 +77,12 @@
                     "pathName": "pages/my_post/my_post",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/collected_course/collected_course",
+                    "pathName": "pages/collected_course/collected_course",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }
