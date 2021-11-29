@@ -1,0 +1,38 @@
+page {
+    min-height: 100%;
+    background-image: url("https://z3.ax1x.com/2021/11/30/olVnx0.jpg");
+    background-size: cover;
+
+}
+
+.container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cuIcon-profile {
+    height: 200rpx;
+    font-size: 150rpx;
+    color: dimgrey;
+    margin-bottom: 30rpx;
+}
+
+form {
+    opacity: 0.3;
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+#login {
+    margin-top: 95rpx;
+    background-color: #FFA07A;
+    opacity: 0.7;
+    margin-bottom: 40rpx;
+}
+
+.info {
+    color:rgba(211, 211, 211, 0.884);
+    text-decoration: underline;
+}
