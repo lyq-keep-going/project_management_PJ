@@ -1,12 +1,7 @@
 {
     "description": "项目配置文件",
     "packOptions": {
-        "ignore": [
-            {
-                "type": "file",
-                "value": ".eslintrc.js"
-            }
-        ]
+        "ignore": []
     },
     "setting": {
         "bundle": false,
@@ -39,9 +34,9 @@
         "minifyWXML": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.4",
+    "libVersion": "2.17.0",
     "appid": "wxa338748af669c502",
-    "projectname": "PJmanagement",
+    "projectname": "miniprogram-1",
     "debugOptions": {
         "hidedInDevtools": []
     },
@@ -51,6 +46,8 @@
         "servePath": ""
     },
     "isGameTourist": false,
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
     "condition": {
         "search": {
             "list": []
