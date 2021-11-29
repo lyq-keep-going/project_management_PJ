@@ -1,22 +1,11 @@
-// pages/home/home.js
+// pages/login/login.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        userInfo : {
-            avatar: "https://z3.ax1x.com/2021/11/29/oMmKx0.png",
-            nickname: "Username"
-        },
-        icon : {
-            course: "https://z3.ax1x.com/2021/11/29/oMKci4.png",
-            sell: "https://z3.ax1x.com/2021/11/29/oMM861.png",
-            post: "https://z3.ax1x.com/2021/11/29/oMMt0K.png",
-            goods:"https://z3.ax1x.com/2021/11/29/oMMD1A.png",
-            message: "https://z3.ax1x.com/2021/11/29/oMMRAS.png",
 
-        }
     },
 
     /**
