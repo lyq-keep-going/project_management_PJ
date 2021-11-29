@@ -47,6 +47,18 @@
                     "pathName": "pages/search/search",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/chat/chat",
+                    "pathName": "pages/chat/chat",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my_message/my_message",
+                    "pathName": "pages/my_message/my_message",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }
