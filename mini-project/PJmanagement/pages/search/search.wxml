@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="search">
+        <view class="searchItem">
+            <image class="icon" src="{{search_img}}" display="inline"></image>
+            <input display="inline" type="text" placeholder="搜索更多课程相关信息" confirm-type="search" value="{{inputValue}}" bindinput="inputBind" bindconfirm="query"></input>
+        </view>
+    </view>
+    
+    <view class="course">
+        <view class="parent">
+            <block class="parent" wx:for-items="{{courses}}" wx:for-item="course">
+            <view class="child">
+                <image src="{{font_img}}"></image>
+                <view class="course_title">{{course.title}}</view>
+            </view>
+            </block>
+        </view>
+
+
+    </view>
+</view>

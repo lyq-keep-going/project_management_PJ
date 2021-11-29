@@ -10,7 +10,8 @@
     "pages/index/index",
     "pages/front_page/front_page",
     "pages/logs/logs",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light",

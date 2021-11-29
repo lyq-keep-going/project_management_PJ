@@ -1,0 +1,79 @@
+/* pages/search/search.wxss */
+page {
+    min-height: 100%;
+}
+
+.container {
+    min-height: 100%;
+    overflow-x: hidden;
+    padding: 30rpx 0;
+}
+
+.search .icon{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.searchItem{
+    display: flex;
+    width: 100%;
+}
+
+.search image {
+    align-self: center;
+}
+
+.search input{
+    flex: 1;
+    margin-left: 20rpx;
+}
+
+
+.course {
+    display: flex;
+    width: 100%;
+    margin-top: 10rpx;
+    margin-left: 80rpx;
+    box-sizing: border-box;
+    position: relative;
+    flex-direction: column;
+}
+
+.parent {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    padding-right: 5%;
+  }
+  
+  .child {
+    box-sizing: border-box;
+    flex: 0 0 44%;
+    height: 400rpx;
+    margin-top: 4%;
+    margin-right: 5%;
+    width: 45%;
+  }
+
+  .child image{
+    height: 80%;
+  }
+
+  .child .course_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 32rpx;
+    padding-top: 10rpx;
+  }
