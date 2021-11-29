@@ -4,7 +4,7 @@
 <Tab_1 class="tab"></Tab_1>
 <view class="tags">
     <tag wx:for="{{tagnames}}" class="tag" tagname="{{item}}"></tag>
-    <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png"></image>
+    <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
     <entry wx:for="{{entryList}}" content="{{item.content}}" date="{{item.date}}"></entry>
@@ -12,5 +12,5 @@
 <image src="https://z3.ax1x.com/2021/11/27/om5E4S.png" class="bottom_add"></image>
 </view>
 <button><image src="{{collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{collected ? '取消收藏' : '收藏'}}</text></button>
-
+<add_new_tag bind:hideScreen="hideScreenHandler" wx:if="{{!hide_add_tag}}"></add_new_tag>
 

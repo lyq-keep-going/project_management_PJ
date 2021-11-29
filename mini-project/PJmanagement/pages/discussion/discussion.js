@@ -15,9 +15,21 @@ Page({
         },{
             content:"标题",
             date:"0000-00-00"
-        }]
+        }],
+        hide_add_tag : true
     },
 
+    hideScreenHandler(e){
+        this.setData({
+            hide_add_tag: true
+        })
+    },
+
+    openAddTagHandler(e){
+        this.setData({
+            hide_add_tag: false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
