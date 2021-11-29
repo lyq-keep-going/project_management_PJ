@@ -29,6 +29,18 @@
                     "pathName": "pages/login/login",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/discussion/discussion",
+                    "pathName": "pages/discussion/discussion",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/trade/trade",
+                    "pathName": "pages/trade/trade",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

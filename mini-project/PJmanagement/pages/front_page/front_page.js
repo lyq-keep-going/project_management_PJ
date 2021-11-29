@@ -5,6 +5,10 @@ Page({
      * 页面的初始数据
      */
     data: {
+        inputValue: "",
+        search_img: "https://z3.ax1x.com/2021/11/29/oMUzm4.png",
+        font_img: "https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
+        courses :[{title:"1"},{title:"2"},{title:"3"}],
 
     },
 
