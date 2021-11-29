@@ -11,6 +11,7 @@
     "pages/front_page/front_page",
     "pages/logs/logs",
     "pages/login/login",
+    "pages/register/register",
     "pages/search/search",
     "pages/chat/chat",
     "pages/my_message/my_message"

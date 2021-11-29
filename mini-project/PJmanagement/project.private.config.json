@@ -59,6 +59,12 @@
                     "pathName": "pages/my_message/my_message",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/register/register",
+                    "pathName": "pages/register/register",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

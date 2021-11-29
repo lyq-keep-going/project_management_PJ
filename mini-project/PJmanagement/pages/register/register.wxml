@@ -1,0 +1,20 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+    <text class="cuIcon-profile"></text>
+    <form>
+			<view class="cu-form-group margin-top">
+				<view class="title">学号</view>
+				<input name="input"></input>
+			</view>
+            <view class="cu-form-group margin-top">
+				<view class="title">密码</view>
+				<input type="password" name="input"></input>
+			</view>
+            <view class="cu-form-group margin-top">
+				<view class="title">确认密码</view>
+				<input type="password" name="input"></input>
+			</view>
+    </form>
+    <button class="cu-btn round lg shadow" id="login">注册</button>
+    <text class="info">已有账号？点此登录</text>
+</view>
