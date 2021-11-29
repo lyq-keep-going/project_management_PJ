@@ -1,1 +1,40 @@
 /* pages/commodity_detail/commodity_detail.wxss */
+swiper{
+    width:750rpx;
+    height: calc(100vw * 900 / 1280);
+}
+
+image{
+    width: 100%;
+}
+
+.info{
+    padding: 40rpx;
+    width: 90%;
+    box-shadow: 0rpx 0rpx 20rpx #cccccc;
+    margin-top: 30rpx;
+    margin-bottom: 50rpx;
+}
+
+.info view{
+    margin-bottom:20rpx;
+    font-size: 30rpx;
+    border-bottom: solid 1rpx #cccccc;
+    padding-bottom: 10rpx;
+}
+
+button{
+    background-color: rgba(255,160,122,40%);
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+}
+
+.outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+swiper{
+    margin-top: 50rpx;
+}
