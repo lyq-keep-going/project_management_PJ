@@ -73,14 +73,14 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/my_post/my_post",
-                    "pathName": "pages/my_post/my_post",
+                    "name": "pages/collected_course/collected_course",
+                    "pathName": "pages/collected_course/collected_course",
                     "query": "",
                     "scene": null
                 },
                 {
-                    "name": "pages/collected_course/collected_course",
-                    "pathName": "pages/collected_course/collected_course",
+                    "name": "pages/my_sell/my_sell",
+                    "pathName": "pages/my_sell/my_sell",
                     "query": "",
                     "scene": null
                 }
