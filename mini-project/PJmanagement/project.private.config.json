@@ -65,6 +65,18 @@
                     "pathName": "pages/register/register",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/my_post/my_post",
+                    "pathName": "pages/my_post/my_post",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my_post/my_post",
+                    "pathName": "pages/my_post/my_post",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

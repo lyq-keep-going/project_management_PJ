@@ -14,7 +14,8 @@
     "pages/register/register",
     "pages/search/search",
     "pages/chat/chat",
-    "pages/my_message/my_message"
+    "pages/my_message/my_message",
+    "pages/my_post/my_post"
   ],
   "window":{
     "backgroundTextStyle":"light",
