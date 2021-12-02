@@ -10,6 +10,7 @@
           :prefix-icon="Search"
           @keyup.enter.native="onSubmit"
         />
+        <button @click="onSubmit">aaaa</button>
       </el-form>
     </div>
     <el-header class="sub-title">正在团购</el-header>
@@ -70,18 +71,28 @@ export default {
   },
   methods: {
     onSubmit() {
-      var url =
-        "http://xx.com/api/lms/lessonList?pageNum=1&pageSize=8&filter=query&keys=" +
-        this.form.input;
+      var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=query";
 
-      axios
-        .get(url)
+      axios({
+        method: "get",
+        url: url,
+        params: {
+          pageNum: 1,
+          pageSize: 3,
+          keys: this.form.input,
+        },
+        headers: {
+          Authorization: "BearerJhbG",
+        },
+      })
         .then((response) => {
-          if (response.data.operate == "failed")
-            return this.$message.error("提交失败");
+          this.$message.success(response);
         })
-        .catch((error) => alert(error));
+        .catch((error) => console.log(error));
     },
+    onload(){
+      
+    }
   },
 };
 </script>
@@ -101,12 +112,11 @@ export default {
   text-align: left;
   padding-top: 10px;
   padding-left: 50px;
-
 }
-.el-main{
+.el-main {
   margin: 10px;
 }
-.el-form{
+.el-form {
   padding-left: 50px;
   padding-right: 50px;
 }
