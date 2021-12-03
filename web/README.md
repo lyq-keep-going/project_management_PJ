@@ -2,11 +2,26 @@
 
 ## 使用方法
 
-```cmd
-cd happy_go
-npm install
-npm run dev
-```
+1. 启动项目
+
+   ```cmd
+   cd happy_go
+   npm install
+   npm run dev
+   ```
+
+2. 使用 axios
+
+   ```js
+   let url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+
+   this.$axios
+     .get(url)
+     .then((response) => {
+       console.log(response);
+     })
+     .catch((error) => console.log(error));
+   ```
 
 ## 参考网址
 
@@ -15,8 +30,8 @@ npm run dev
 3. [vitejs](https://cn.vitejs.dev/)
 4. [Vue Router](https://next.router.vuejs.org/zh/)
 
-### network error：chrome浏览器关闭cors：
+### network error：chrome 浏览器关闭 cors
 
-```
+```sh
 open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir=/Users/用户名/MyChromeDevUserData/
 ```
