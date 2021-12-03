@@ -8,7 +8,21 @@ Page({
         inputValue: "",
         search_img: "https://z3.ax1x.com/2021/11/29/oMUzm4.png",
         font_img: "https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-        courses :[{title:"1"},{title:"2"},{title:"3"}],
+        items: [
+            {
+                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
+                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
+                price:"58"
+            },{
+                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
+                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
+                price:"58"
+            },{
+                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
+                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
+                price:"58"
+            },
+        ]
     },
 
     /**
