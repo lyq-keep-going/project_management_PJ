@@ -25,6 +25,19 @@
      .catch((error) => console.log(error));
    ```
 
+3. 跨域使用
+
+   ```js
+   let url = "/api/login"; // https://bbs.fitymistudio.cn/api/ums/login
+
+   this.axios
+     .post(url, this.form)
+     .then((response) => {
+       console.log(response);
+     })
+     .catch((error) => console.log(error));
+   ```
+
 ## 参考网址
 
 1. [element](https://element-plus.gitee.io/zh-CN/)
