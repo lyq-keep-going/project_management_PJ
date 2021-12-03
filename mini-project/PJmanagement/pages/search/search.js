@@ -22,7 +22,9 @@ Page({
                 title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
                 price:"58"
             },
-        ]
+        ],
+        array: ['水课', '干货满满', '老师nice', '有小组作业'],
+        index: -1,
     },
 
     /**
@@ -79,5 +81,13 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+
+    bindPickerChange: function (e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+          index: e.detail.value
+        })
+    },
+
 })
