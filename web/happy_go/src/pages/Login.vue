@@ -33,8 +33,13 @@ export default {
     },
     methods: {
         onSubmit() {
-            console.log('submit!')
-        },
+            let url = "https://api.coindesk.com/v1/bpi/currentprice.json"
+
+            this.$axios
+                .get(url)
+                .then(response => { console.log(response); })
+                .catch((error) => console.log(error));
+        }
     },
 }
 </script>
