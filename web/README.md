@@ -12,10 +12,12 @@
 
 2. 使用 axios
 
+   示例
+
    ```js
    let url = "https://api.coindesk.com/v1/bpi/currentprice.json";
 
-   this.$axios
+   this.axios
      .get(url)
      .then((response) => {
        console.log(response);

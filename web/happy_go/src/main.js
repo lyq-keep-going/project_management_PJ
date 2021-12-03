@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router/router'
 
 import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 const app = createApp(App)
 
@@ -19,7 +20,9 @@ for (const iconName in ElIconModules) {
         app.component(iconName, item)
     }
 }
-app.config.globalProperties.$axios = axios;
+app.use(VueAxios, axios)
+
+// app.config.globalProperties.$axios = axios;
 
 // 最后再 mount
 app.mount('#app')
