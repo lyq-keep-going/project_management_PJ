@@ -7,13 +7,26 @@
     </view>
     
     <view class="course">
-        <view class="parent">
-            <block class="parent" wx:for-items="{{courses}}" wx:for-item="course">
-            <view class="child">
-                <image src="{{font_img}}"></image>
-                <view class="course_title">{{course.title}}</view>
+        <view class="cu-bar bg-white solid-bottom">
+            <view class="action">
+                <text class="cuIcon-titles text-orange"></text>课程信息
             </view>
-            </block>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" id="picker">
+                <view class="picker">
+                    {{index>-1?array[index]:'筛选'}}
+                    <text class="cuIcon-unfold"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+                    <view class="cu-item shadow">
+                        <view class="image">
+                            <image src="{{item.img}}"mode="widthFix"></image>
+                        </view>
+                        <view class="cu-list menu-avatar" class="text">
+                            <view class="description">{{item.title}}</view>
+                        </view>
+                    </view>
         </view>
 
 
