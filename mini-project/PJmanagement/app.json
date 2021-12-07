@@ -1,8 +1,8 @@
 {
 
   "pages":[
-    "pages/discussion/discussion",
     "pages/trade/trade",
+    "pages/discussion/discussion", 
     "pages/commodity_detail/commodity_detail",
     "pages/post_detail/post_detail",
     "pages/add_post/add_post",
