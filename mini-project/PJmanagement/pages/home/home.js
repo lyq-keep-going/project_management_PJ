@@ -5,10 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo : {
+        userInfo_noLoign : {
             avatar: "https://z3.ax1x.com/2021/11/29/oMmKx0.png",
-            nickname: "Username"
+            nickname: "前往登录"
         },
+        userInfo: '',
         icon : {
             course: "https://z3.ax1x.com/2021/11/29/oMKci4.png",
             sell: "https://z3.ax1x.com/2021/11/29/oMM861.png",
@@ -23,7 +24,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        //wx.setStorageSync('userInfo', this.data.userInfo_noLoign)
+        this.setData({
+            userInfo: wx.getStorageSync('userInfo')
+        })
     },
 
     /**

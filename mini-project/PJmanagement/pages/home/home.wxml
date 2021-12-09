@@ -2,10 +2,10 @@
     <view class="userinfo">
         <view class='head-wrap' bindtap='goAuth'>
             <view class="login-avatar">
-                <view class='avatar'>
-                    <image class='avatar' src="{{userInfo.avatar}}"></image>                
+                <view class='avatar' wx:if="!userInfo">
+                    <image class='avatar' src="{{userInfo_noLoign.avatar}}"></image>                
                 </view>
-                <view class='name'>{{userInfo.nickname}}</view>
+                <view class='name'>{{userInfo_noLoign.nickname}}</view>
             </view>
         </view>
     </view>
