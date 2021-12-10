@@ -8,7 +8,7 @@
         @keyup.enter.native="onSubmit"
       >
         <template #append>
-          <el-button type="primary" @click="onSubmit">Query</el-button>
+          <el-button type="primary" @click="onSubmit">查找</el-button>
         </template>
       </el-input>
     </el-form>
