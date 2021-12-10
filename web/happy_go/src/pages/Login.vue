@@ -31,8 +31,16 @@ export default {
             this.axios
                 .post(url, this.form)
                 .then(response => {
-                    this.$message.success(response.data.message);
-                    console.log(response);
+                    let res = response.data
+                    console.log(res);
+
+                    this.$message.success(res.message);
+                    localStorage.setItem("tokenHead", res.data.tokenHead);
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("flag", "isLogin");
+
+                    this.$store.commit('userLogin')
+                    this.$router.push("/");
                 })
                 .catch((error) => {
                     console.log(error)
