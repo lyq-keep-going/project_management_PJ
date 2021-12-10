@@ -10,17 +10,20 @@
         <shopping-cart-full />
       </el-icon>主页
     </el-menu-item>
-    <el-menu-item index="/login">
+
+    <el-menu-item index="/login" v-if="!isLogin">
       <el-icon>
         <user-filled />
       </el-icon>登录
     </el-menu-item>
-    <el-menu-item index="/register">
+
+    <el-menu-item index="/register" v-if="!isLogin">
       <el-icon>
         <user />
       </el-icon>注册
     </el-menu-item>
-    <el-menu-item index="/personalCenter">
+
+    <el-menu-item index="/personalCenter" v-if="isLogin">
       <el-icon>
         <avatar />
       </el-icon>
@@ -30,6 +33,23 @@
 
   <router-view></router-view>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isLogin: false
+    }
+  },
+  computed: {
+    isLogin: {
+      get() {
+        return this.$store.state.isLogin
+      },
+    }
+  },
+};
+</script>
 
 <style>
 #app {

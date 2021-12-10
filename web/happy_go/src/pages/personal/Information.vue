@@ -17,6 +17,7 @@ export default {
             localStorage.removeItem("token")
             localStorage.removeItem("tokenHead")
             this.$store.commit("userLogout")
+            this.$router.push("/")
         },
     }
 }

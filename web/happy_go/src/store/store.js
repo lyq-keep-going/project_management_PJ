@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 
 const store = createStore({
-    state: { isLogin: false, },
+    state: { isLogin: false },
     mutations: {
         userLogin(state) { state.isLogin = true },
         userLogout(state) { state.isLogin = false },
