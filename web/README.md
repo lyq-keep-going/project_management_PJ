@@ -45,6 +45,12 @@
    this.$router.push("/");
    ```
 
+5. 获得 token
+
+   ```js
+   localStorage.getItem"token");
+   ```
+
 ## 参考网址
 
 1. [element](https://element-plus.gitee.io/zh-CN/)
