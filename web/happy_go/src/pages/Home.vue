@@ -7,7 +7,7 @@
         <el-input
           v-model="form.input"
           placeholder="搜索课程"
-          :prefix-icon="Search"
+          prefix-icon="Search"
           @keyup.enter.native="onSubmit"
         />
         <button @click="onSubmit">aaaa</button>
@@ -20,7 +20,7 @@
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
             <div class="bottom">
-              <time class="time">{{ currentDate }}</time>
+              <!-- <time class="time">{{ currentDate }}</time> -->
               <el-button type="text" class="button">Operating</el-button>
             </div>
           </div>
@@ -36,7 +36,7 @@
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
             <div class="bottom">
-              <time class="time">{{ currentDate }}</time>
+              <!-- <time class="time">{{ currentDate }}</time> -->
               <el-button type="text" class="button">Operating</el-button>
             </div>
           </div>
@@ -54,6 +54,7 @@ export default {
     return {
       form: {
         input: "",
+        currentDate: null
       },
     };
   },
