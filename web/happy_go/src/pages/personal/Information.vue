@@ -43,7 +43,7 @@ export default {
                 .get(url)
                 .then((response) => {
                     let res = response.data
-                    console.log(response);
+                    // console.log(response);
                     this.avatar = res.data.avatar
                     this.description = res.data.description
                     this.studentId = res.data.studentId

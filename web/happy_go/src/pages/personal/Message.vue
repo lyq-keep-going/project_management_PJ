@@ -34,5 +34,21 @@ export default {
             ],
         }
     },
+    mounted() {
+        this.getInform()
+    },
+    methods: {
+        getInform() {
+            let url = "/api/mms/msgList"; // https://bbs.fitymistudio.cn/api/mms/msgList
+
+            this.axios
+                .get(url)
+                .then((response) => {
+                    console.log(response);
+                    let res = response.data
+                })
+                .catch((error) => console.log(error));
+        }
+    }
 }
 </script>
