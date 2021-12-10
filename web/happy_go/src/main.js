@@ -21,19 +21,14 @@ for (const iconName in ElIconModules) {
         app.component(iconName, item)
     }
 }
+
 // http request拦截器 添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
     let token = window.localStorage.getItem("tokenHead") + window.localStorage.getItem("token")
     if (token) {
-        //将token放到请求头发送给服务器,将tokenkey放在请求头中
-        config.headers.Authorization = token;
-        //也可以这种写法
-        // config.headers['accessToken'] = Token;
-        return config;
+        config.headers.Authorization = token
     }
-}, function (error) {
-    // Do something with request error
-    return Promise.reject(error);
+    return config
 });
 
 app.use(VueAxios, axios)
