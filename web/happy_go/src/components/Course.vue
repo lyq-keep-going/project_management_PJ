@@ -25,6 +25,6 @@ export default {
     margin-top: 20px;
 }
 .courseCard img {
-    width: 80%;
+    max-width: 80%;
 }
 </style>
