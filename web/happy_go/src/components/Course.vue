@@ -1,6 +1,12 @@
 <template>
     <el-card class="courseCard" shadow="hover">
-        <img src="../assets/logo.png" />
+        <div class="block">
+            <el-carousel>
+                <el-carousel-item v-for="item in 4" :key="item">
+                    <img src="../assets/logo.png" />
+                </el-carousel-item>
+            </el-carousel>
+        </div>
         <div>
             <h3>课程</h3>
             <p>课程简介</p>
@@ -19,12 +25,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .courseCard {
     width: 100%;
     margin-top: 20px;
-}
-.courseCard img {
-    max-width: 80%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <el-row :gutter="20">
-            <el-col :span="4" v-for="num in 10">
+            <el-col :span="6" v-for="num in 10">
                 <Goods />
             </el-col>
         </el-row>
