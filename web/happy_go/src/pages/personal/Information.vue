@@ -1,13 +1,23 @@
 <template>
     <div class="content">
-        <el-avatar shape="square" :size="80" :src="avatar"></el-avatar>
-        <div class="info">
-            <p>用户名：{{ username }}</p>
-            <p>学号：{{ studentId }}</p>
-            <p>联系方式：{{ phone }}</p>
-            <p>个人描述：{{ description }}</p>
-        </div>
-        <el-button type="primary" @click="quit()">退出</el-button>
+        <el-row>
+            <el-col :span="6">
+                <el-avatar shape="square" :size="70" :src="avatar"></el-avatar>
+                <br />
+            </el-col>
+            <el-col :span="8">
+                <div class="info">
+                    <p>用户名：{{ username }}</p>
+                    <p>学号：{{ studentId }}</p>
+                </div>
+            </el-col>
+            <el-col :span="10">
+                <div class="info">
+                    <p>联系方式：{{ phone }}</p>
+                    <p>个人描述：{{ description }}</p>
+                </div>
+            </el-col>
+        </el-row>
     </div>
 </template>
 <script>
@@ -40,14 +50,7 @@ export default {
                     this.username = res.data.username
                 })
                 .catch((error) => console.log(error));
-        },
-        quit() {
-            localStorage.removeItem("flag")
-            localStorage.removeItem("token")
-            localStorage.removeItem("tokenHead")
-            this.$store.commit("userLogout")
-            this.$router.push("/")
-        },
+        }
     }
 }
 </script>
@@ -56,11 +59,11 @@ export default {
 .content {
     width: 90%;
     margin: auto;
-    padding-top: 80px;
+    padding: 20px;
 }
 
 .info {
     text-align: left;
-    margin: 60px 30%;
+    /* margin: 60px 30%; */
 }
 </style>

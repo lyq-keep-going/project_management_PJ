@@ -29,6 +29,10 @@
       </el-icon>
       <span>个人中心</span>
     </el-menu-item>
+
+    <el-menu-item index="/" v-if="isLogin">
+      <el-button type="primary" @click="logOut()">退出</el-button>
+    </el-menu-item>
   </el-menu>
 
   <router-view></router-view>
@@ -38,7 +42,16 @@
 export default {
   data() {
     return {
-      isLogin: false
+      // isLogin: false
+    }
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem("flag")
+      localStorage.removeItem("token")
+      localStorage.removeItem("tokenHead")
+      this.$store.commit("userLogout")
+      this.$router.push("/")
     }
   },
   computed: {
@@ -46,6 +59,9 @@ export default {
       get() {
         return this.$store.state.isLogin
       },
+      set: function () {
+
+      }
     }
   },
 };

@@ -1,8 +1,10 @@
 <template>
-    <el-tabs type="card" @tab-click="handleClick" tab-position="left">
-        <el-tab-pane label="个人信息" id="Information">
+    <Information />
+
+    <el-tabs @tab-click="handleClick" tab-position="left">
+        <!-- <el-tab-pane label="个人信息" id="Information">
             <Information />
-        </el-tab-pane>
+        </el-tab-pane>-->
         <el-tab-pane label="我的帖子" id="Post">
             <Post />
         </el-tab-pane>
