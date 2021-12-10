@@ -28,7 +28,7 @@
 3. 跨域使用
 
    ```js
-   let url = "/api/login"; // https://bbs.fitymistudio.cn/api/ums/login
+   let url = "/api/ums/login"; // https://bbs.fitymistudio.cn/api/ums/login
 
    this.axios
      .post(url, this.form)

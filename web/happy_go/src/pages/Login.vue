@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         onSubmit() {
-            let url = "/api/login"
+            let url = "/api/ums/login"
 
             this.axios
                 .post(url, this.form)

@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         getInformation() {
-            let url = "/api/info"; // https://bbs.fitymistudio.cn/api/ums/login
+            let url = "/api/ums/info"; // https://bbs.fitymistudio.cn/api/ums/login
 
             this.axios
                 .get(url)
