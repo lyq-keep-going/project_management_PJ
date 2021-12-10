@@ -38,12 +38,20 @@
      .catch((error) => console.log(error));
    ```
 
+4. 使用 router 和 store
+
+   ```js
+   this.$store.commit("userLogin");
+   this.$router.push("/");
+   ```
+
 ## 参考网址
 
 1. [element](https://element-plus.gitee.io/zh-CN/)
 2. [vuejs](https://v3.cn.vuejs.org/)
 3. [vitejs](https://cn.vitejs.dev/)
 4. [Vue Router](https://next.router.vuejs.org/zh/)
+5. [vuex](https://vuex.vuejs.org/zh/)
 
 ### network error：chrome 浏览器关闭 cors
 
