@@ -5,14 +5,14 @@
         <!-- <el-tab-pane label="个人信息" id="Information">
             <Information />
         </el-tab-pane>-->
-        <el-tab-pane label="我的帖子" id="Post">
-            <Post />
+        <el-tab-pane label="我的帖子" id="MyPost">
+            <MyPost />
         </el-tab-pane>
-        <el-tab-pane label="我的出售" id="Selling">
-            <Selling />
+        <el-tab-pane label="我的出售" id="MySale">
+            <MySale />
         </el-tab-pane>
-        <el-tab-pane label="我的消息" id="Message">
-            <Message />
+        <el-tab-pane label="我的消息" id="MyMessage">
+            <MyMessage />
         </el-tab-pane>
 
         <el-tab-pane label="收藏课程" id="FavoriteCourse">
@@ -34,9 +34,9 @@ import FavoriteCourse from "./personal/FavoriteCourse.vue"
 import FavoriteGoods from "./personal/FavoriteGoods.vue"
 // import GroupPurchase from "./personal/GroupPurchase.vue"
 
-import Selling from "./personal/Selling.vue"
-import Post from "./personal/Post.vue"
-import Message from "./personal/Message.vue"
+import MySale from "./personal/MySale.vue"
+import MyPost from "./personal/MyPost.vue"
+import MyMessage from "./personal/MyMessage.vue"
 
 export default {
     data() {
@@ -49,9 +49,9 @@ export default {
         FavoriteCourse,
         FavoriteGoods,
         // GroupPurchase,
-        Selling,
-        Post,
-        Message,
+        MySale,
+        MyPost,
+        MyMessage,
     },
     methods: {
         handleClick(tab, event) {

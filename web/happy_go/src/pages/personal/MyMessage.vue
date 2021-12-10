@@ -37,9 +37,9 @@
             </ul>
         </div>
 
-        <el-input v-model="content" @keyup.enter.native="sendMessage">
+        <el-input v-model="content" @keyup.enter.native="sendMyMessage">
             <template #append>
-                <el-button type="primary" @click="sendMessage">发送</el-button>
+                <el-button type="primary" @click="sendMyMessage">发送</el-button>
             </template>
         </el-input>
     </el-dialog>
@@ -79,7 +79,7 @@ export default {
         }
     },
     mounted() {
-        this.getMessageList(this.pageNum, this.pageSize)
+        this.getMyMessageList(this.pageNum, this.pageSize)
     },
     computed: {
         myName: {
@@ -91,7 +91,7 @@ export default {
         }
     },
     methods: {
-        getMessageList(pageNum, pageSize) {
+        getMyMessageList(pageNum, pageSize) {
             let url = `/api/mms/msgList?pageNum=${pageNum}&pageSize=${pageSize}`; // https://bbs.fitymistudio.cn/api/mms/msgList
 
             this.axios
@@ -127,7 +127,7 @@ export default {
                 .catch((error) => console.log(error));
         },
         handlePageClick(nextPage) {
-            this.getMessageList(nextPage, this.pageSize)
+            this.getMyMessageList(nextPage, this.pageSize)
 
         },
         clearM(done) {
@@ -145,7 +145,7 @@ export default {
             console.log(this.MuserName, this.receiverId, this.MpageNum, this.MpageSize);
             this.getDialogue(this.MuserName, this.receiverId, this.MpageNum, this.MpageSize)
         },
-        sendMessage() {
+        sendMyMessage() {
             let url = `/api/mms/msg`; // https://bbs.fitymistudio.cn/api/mms/msg
 
             let msg = {

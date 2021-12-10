@@ -76,7 +76,7 @@ export default {
         Goods
     },
     methods: {
-        getSellings() {
+        getMySale() {
             let url = `/api/cms/commodities?pageNum=${this.pageNum}&pageSize=${this.pageSize}`;
 
             this.axios
@@ -92,7 +92,7 @@ export default {
         }
     },
     mounted() {
-        this.getSellings()
+        this.getMySale()
     },
 }
 </script>
