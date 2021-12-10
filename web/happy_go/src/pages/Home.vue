@@ -1,18 +1,18 @@
 <template>
   <el-main>
-    <h1>商城首页</h1>
+    <el-form ref="form" :model="form" :inline="true">
+      <el-input
+        v-model="form.input"
+        placeholder="搜索课程"
+        prefix-icon="Search"
+        @keyup.enter.native="onSubmit"
+      >
+        <template #append>
+          <el-button type="primary" @click="onSubmit">Query</el-button>
+        </template>
+      </el-input>
+    </el-form>
 
-    <div class="demo-input-suffix">
-      <el-form ref="form" :model="form" label-width="120px">
-        <el-input
-          v-model="form.input"
-          placeholder="搜索课程"
-          prefix-icon="Search"
-          @keyup.enter.native="onSubmit"
-        />
-        <button @click="onSubmit">aaaa</button>
-      </el-form>
-    </div>
     <el-header class="sub-title">正在团购</el-header>
     <el-row>
       <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">

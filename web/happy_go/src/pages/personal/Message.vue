@@ -1,54 +1,76 @@
 <template>
-    <el-table :data="tableData" stripe style="width: 100%">
-        <el-table-column prop="course" label="课程" width="180" />
-        <el-table-column prop="data" label="时间" width="180" />
-        <el-table-column prop="command" label="评价" />
-    </el-table>
+    <div v-for="item in list">
+        <el-card shadow="hover" class="imessage">
+            <el-row>
+                <el-col :span="4">
+                    <el-avatar shape="square" :size="70" :src="item.sender.avatar"></el-avatar>
+                    <br />
+                    <el-badge
+                        :is-dot="!item.last_message.read"
+                        class="item"
+                    >{{ item.sender.username }}</el-badge>
+                </el-col>
+                <el-col :span="16">
+                    <p style="text-align: left;">{{ item.last_message.content }}</p>
+                </el-col>
+                <el-col :span="4">
+                    <el-tag>{{ item.last_message.issueTime }}</el-tag>
+                </el-col>
+            </el-row>
+        </el-card>
+    </div>
+    <div class="block">
+        <el-pagination
+            :page-size="pageSize"
+            layout="prev, pager, next"
+            :currentPage="pageNum"
+            :total="total"
+            @current-change="handleCurrentChange"
+            background
+        ></el-pagination>
+    </div>
 </template>
 
 <script lang="ts">
 export default {
     data() {
         return {
-            tableData: [
-                {
-                    course: '2016-05-03',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-02',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-04',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-01',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-            ],
+            total: 0,
+            totalPage: 1,
+            pageNum: 1,
+            pageSize: 8,
+            list: [],
         }
     },
     mounted() {
-        this.getInform()
+        this.getInform(this.pageNum, this.pageSize)
     },
     methods: {
-        getInform() {
-            let url = "/api/mms/msgList"; // https://bbs.fitymistudio.cn/api/mms/msgList
+        getInform(pageNum, pageSize) {
+            let url = `/api/mms/msgList?pageNum=${pageNum}&pageSize=${pageSize}`; // https://bbs.fitymistudio.cn/api/mms/msgList
 
             this.axios
                 .get(url)
                 .then((response) => {
-                    console.log(response);
-                    let res = response.data
+                    console.log(response.data.data);
+                    let res = response.data.data
+
+                    this.list = res.list
+                    this.total = res.total
+                    this.totalPage = parseInt(res.totalPage)
+                    this.pageNum = parseInt(res.pageNum)
                 })
                 .catch((error) => console.log(error));
+        },
+        handleCurrentChange(nextPage) {
+            this.getInform(nextPage, this.pageSize)
         }
     }
 }
 </script>
+
+<style>
+.imessage {
+    margin: 20px;
+}
+</style>

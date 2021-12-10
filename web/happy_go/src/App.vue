@@ -23,16 +23,15 @@
       </el-icon>注册
     </el-menu-item>
 
-    <el-menu-item index="/personalCenter" v-if="isLogin">
-      <el-icon>
-        <avatar />
-      </el-icon>
-      <span>个人中心</span>
-    </el-menu-item>
-
-    <el-menu-item index="/" v-if="isLogin">
-      <el-button type="primary" @click="logOut()">退出</el-button>
-    </el-menu-item>
+    <el-sub-menu index="2" v-if="isLogin">
+      <template #title>
+        <el-icon>
+          <avatar />
+        </el-icon>我的
+      </template>
+      <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+      <el-menu-item index @click="logOut()">退出</el-menu-item>
+    </el-sub-menu>
   </el-menu>
 
   <router-view></router-view>
