@@ -59,7 +59,6 @@ export default {
         return this.$store.state.isLogin
       },
       set: function () {
-
       }
     }
   },

@@ -1,16 +1,19 @@
 import { createStore } from 'vuex'
 
 const store = createStore({
-    state: { isLogin: false },
+    state: {
+        isLogin: false,
+        username: ""
+    },
     mutations: {
         userLogin(state) { state.isLogin = true },
         userLogout(state) { state.isLogin = false },
+        setUsername(state, username) {
+            state.username = username
+        }
     },
-
-    // 应用mutations
     actions: {
-        //获取登录状态
-        setUser({ commit }, flag) { commit("userStatus", flag) },
+
     }
 })
 

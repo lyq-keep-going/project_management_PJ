@@ -44,6 +44,7 @@ export default {
                 .then((response) => {
                     let res = response.data
                     // console.log(response);
+                    this.$store.commit('setUsername', res.data.username)
                     this.avatar = res.data.avatar
                     this.description = res.data.description
                     this.studentId = res.data.studentId
