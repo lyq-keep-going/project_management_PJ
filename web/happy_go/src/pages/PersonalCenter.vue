@@ -1,6 +1,9 @@
 <template>
     <el-tabs type="card" @tab-click="handleClick" tab-position="left">
-        <el-tab-pane label="我的帖子" id="Post" icon="chat-square">
+        <el-tab-pane label="个人信息" id="Information">
+            <Information />
+        </el-tab-pane>
+        <el-tab-pane label="我的帖子" id="Post">
             <Post />
         </el-tab-pane>
         <el-tab-pane label="我的出售" id="Selling">
@@ -23,6 +26,8 @@
 </template>
 
 <script lang="ts">
+import Information from "./personal/Information.vue"
+
 import FavoriteCourse from "./personal/FavoriteCourse.vue"
 import FavoriteGoods from "./personal/FavoriteGoods.vue"
 // import GroupPurchase from "./personal/GroupPurchase.vue"
@@ -38,9 +43,13 @@ export default {
         }
     },
     components: {
-        FavoriteCourse, FavoriteGoods,
+        Information,
+        FavoriteCourse,
+        FavoriteGoods,
         // GroupPurchase,
-        Selling, Post, Message
+        Selling,
+        Post,
+        Message,
     },
     methods: {
         handleClick(tab, event) {
