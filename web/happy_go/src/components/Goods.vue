@@ -1,23 +1,70 @@
 <template>
     <el-card class="courseCard" shadow="hover">
-        <div class="block">
+        <div>
             <el-carousel>
                 <el-carousel-item v-for="item in 4" :key="item">
                     <img src="../assets/logo.png" />
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div>
-            <h3>物品名</h3>
-            <p>物品描述</p>
-        </div>
+        <h3>课程：{{ info.lesson.lessonName }}</h3>
+        <h4>书籍：{{ info.bookName }}</h4>
+
+        <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
+        <el-dialog v-model="dialogVisible" title="详细信息" width="80%">
+            <div style="text-align: left;">
+                <el-form label-width="120px" :model="info" label-position="left">
+                    <el-form-item label="卖家">{{ info.seller.username }}</el-form-item>
+
+                    <el-row>
+                        <el-col :span="12">
+                            <el-form-item label="课程名称">{{ info.lesson.lessonName }}</el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                            <el-form-item label="书籍名称">{{ info.bookName }}</el-form-item>
+                        </el-col>
+                    </el-row>
+
+                    <el-row>
+                        <el-col :span="12">
+                            <el-form-item label="作者">{{ info.author }}</el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                            <el-form-item label="出版社">{{ info.publisher }}</el-form-item>
+                        </el-col>
+                    </el-row>
+
+                    <el-row>
+                        <el-col :span="12">
+                            <el-form-item label="新旧程度">{{ info.newDegree }}</el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                            <el-form-item label="价格">
+                                <el-tag type="success">{{ info.unit + info.price }}</el-tag>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+
+                    <el-form-item label="书籍内容">{{ info.content }}</el-form-item>
+                </el-form>
+            </div>
+        </el-dialog>
     </el-card>
 </template>
 
 <script lang="ts">
+
 export default {
     data() {
-        return {}
+        return {
+            dialogVisible: false
+        }
+    },
+    props: {
+        info: {
+            type: Object,
+            default: () => { }
+        }
     },
     methods: {
 
@@ -29,5 +76,9 @@ export default {
 .courseCard {
     width: 100%;
     margin-top: 20px;
+}
+
+.courseCard img {
+    width: 100%;
 }
 </style>
