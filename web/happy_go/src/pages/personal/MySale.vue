@@ -5,6 +5,17 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
+        <br />
+        <div>
+            <el-pagination
+                :page-size="pageSize"
+                layout="prev, pager, next"
+                :currentPage="pageNum"
+                :total="total"
+                @current-change="handlePageClick"
+                background
+            ></el-pagination>
+        </div>
     </div>
 </template>
 <script>
@@ -13,6 +24,10 @@ import Goods from "../../components/Goods.vue";
 export default {
     data() {
         return {
+            pageNum: 1,
+            pageSize: 8,
+            totalPage: 5,
+            total: 35,
             list: [
                 {
                     id: 540691,
@@ -61,7 +76,23 @@ export default {
         Goods
     },
     methods: {
+        getMySale() {
+            let url = `/api/cms/commodities?pageNum=${this.pageNum}&pageSize=${this.pageSize}`;
 
+            this.axios
+                .get(url)
+                .then((response) => {
+                    let res = response.data.data
+                    console.log(res);
+                })
+                .catch((error) => console.log(error));
+        },
+        handlePageClick() {
+
+        }
+    },
+    mounted() {
+        this.getMySale()
     },
 }
 </script>

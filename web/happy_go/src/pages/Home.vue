@@ -1,6 +1,17 @@
 <template>
   <el-main>
-    <h1>商城首页</h1>
+    <el-form ref="form" :model="form" :inline="true">
+      <el-input
+        v-model="form.input"
+        placeholder="搜索课程"
+        prefix-icon="Search"
+        @keyup.enter.native="onSubmit"
+      >
+        <template #append>
+          <el-button type="primary" @click="onSubmit">查找</el-button>
+        </template>
+      </el-input>
+    </el-form>
 
     <router-view></router-view>
 
@@ -16,7 +27,7 @@
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
             <div class="bottom">
-              <time class="time">{{ currentDate }}</time>
+              <!-- <time class="time">{{ currentDate }}</time> -->
               <el-button type="text" class="button">Operating</el-button>
             </div>
           </div>
@@ -72,6 +83,7 @@ export default {
     return {
       form: {
         input: "",
+        currentDate: null
       },
       list: "",
     };
