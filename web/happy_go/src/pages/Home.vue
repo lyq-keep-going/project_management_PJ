@@ -2,21 +2,17 @@
   <el-main>
     <h1>商城首页</h1>
 
-    <div class="demo-input-suffix">
-      <el-form ref="form" :model="form" label-width="120px">
-        <el-input
-          v-model="form.input"
-          placeholder="搜索课程"
-          :prefix-icon="Search"
-          @keyup.enter.native="onSubmit"
-        />
-        <button @click="onSubmit">aaaa</button>
-      </el-form>
-    </div>
+    <router-view></router-view>
+
     <el-header class="sub-title">正在团购</el-header>
     <el-row>
-      <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">
-        <el-card :body-style="{ padding: '0px' }">
+      <el-col
+        v-for="(o, index) in 4"
+        :key="o"
+        :span="4"
+        :offset="index > 0 ? 2 : 1"
+      >
+        <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
             <div class="bottom">
@@ -30,14 +26,36 @@
 
     <el-header class="sub-title">热门课程</el-header>
     <el-row>
-      <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">
-        <el-card :body-style="{ padding: '0px' }">
+      <el-col
+        v-for="(obj, index) in list"
+        :key="obj"
+        :span="4"
+        :offset="index > 0 ? 2 : 1"
+      >
+        <el-card
+          :body-style="{ padding: '0px' }"
+          class="card"
+          shadow="hover"
+          @click.native="seeDetail(obj.id)"
+        >
           <img src="../assets/logo.png" class="image" />
-          <div style="padding: 14px">
-            <span>Yummy hamburger</span>
+
+          <div style="padding: 14px" class="info">
+            <p>
+              <span></span><span>{{ obj.name }}</span>
+            </p>
+            <p>
+              {{ obj.lessonNumber }} <span>{{ obj.semester }}</span>
+            </p>
+
+            <p>
+              <span style="color: rgb(117, 117, 117)">授课教师：</span
+              ><span>{{ obj.teacherName }}</span>
+            </p>
             <div class="bottom">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">Operating</el-button>
+              <el-button type="text" class="button" @click="seeDetail(obj.id)"
+                >查看详情</el-button
+              >
             </div>
           </div>
         </el-card>
@@ -55,37 +73,51 @@ export default {
       form: {
         input: "",
       },
+      list: "",
     };
   },
   methods: {
-    onSubmit() {
-      var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=query";
+    getHotCourses(_pageNum) {
+      var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?";
 
       axios({
         method: "get",
         url: url,
         params: {
-          pageNum: 1,
-          pageSize: 3,
-          keys: this.form.input,
+          pageNum: _pageNum,
+          pageSize: 4,
+          filter: "hot",
         },
         headers: {
           Authorization: "BearerJhbG",
         },
       })
         .then((response) => {
-          this.$message.success(response);
+          this.list = response.data.data.list.slice(0, 4);
         })
         .catch((error) => console.log(error));
     },
-    onload() {
 
-    }
+    seeDetail(_id) {
+      this.$router.push({
+        name: "CourseDetail",
+        params: {
+          id: _id,
+        },
+      });
+    },
+  },
+
+  mounted() {
+    this.getHotCourses(1);
   },
 };
 </script>
 
 <style>
+.card {
+}
+
 .demo-input-label {
   display: inline-block;
   width: 130px;
@@ -107,6 +139,21 @@ export default {
 .el-form {
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.span {
+  display: block;
+}
+.info {
+  margin-top: 13px;
+  line-height: 12px;
+  display: inline;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pre {
+  color: rgb(117, 117, 117);
 }
 </style>
 

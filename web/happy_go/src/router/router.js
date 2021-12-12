@@ -8,19 +8,31 @@ import Register from '../pages/Register.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Home from '../pages/Home.vue'
 
-import Course from '../pages/Courses.vue'
+import CourseDetail from '../pages/CourseDetail.vue'
+import SearchResult from '../pages/SearchResult.vue'
+import SearchBar from '../components/SearchBar.vue'
 
 
 // 路由
 const routes = [
-    { path: '/', component: Home },
+    {
+        path: '/', component: Home,
+        children: [
+            { path: '', component: SearchBar },
+        ]
+    },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/personalCenter', component: PersonalCenter }
 
 
-    ,{ path: '/course', component: Course }
-
+    , { name: 'CourseDetail', path: '/CourseDetail', component: CourseDetail }
+    , {
+        name: 'SearchResult', path: '/SearchResult', component: SearchResult,
+        children: [
+            { name: 'SearchBar',path: '', component: SearchBar },
+        ]
+    }
 ]
 
 const router = createRouter({
