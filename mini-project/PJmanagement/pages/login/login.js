@@ -62,5 +62,48 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+     
+    login: function() {
+        wx.getUserProfile({
+            desc: '展示用户昵称。头像等基本信息', 
+            success: (file) => {
+                wx.login({
+                    success: res => {
+                        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                        console.log(res)
+                        if (res.code) {
+                            //发起网络请求
+                            wx.request({
+                                url: "https://bbs.fitymistudio.cn/api/ums/login",
+                                method: 'POST',
+                                data: {
+                                    miniCode: res.code, //将code发给后台拿token
+                                },
+                                header: {
+                                    'content-type': 'application/json' // 默认值
+                                },
+                                success: function(res) {
+                                    // 存token
+                                    console.log(res.data);
+                                    console.log('token=' + res.data.data.token)
+                                    console.log(res.data.data.openId)
+                                    wx.setStorageSync('openId',res.data.data.openId )
+                                    wx.setStorageSync('userInfo', file.userInfo)
+                                    that.globalData.token = res.data.data.tokenHead + res.data.data.token; //拿到后将token存入全局变量  以便其他页面使用
+                                    wx.switchTab({
+                                        url: '/pages/home/home',
+                                    })
+                                }
+                            })
+                        } else {
+                            console.log('获取用户登录态失败！' + res.errMsg)
+                        }
+
+                    }
+        
+                })
+            }
+        })
     }
 })

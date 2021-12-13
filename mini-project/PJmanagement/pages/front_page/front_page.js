@@ -30,7 +30,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this
+        wx.request({
+            url: "https://bbs.fitymistudio.cn/api/lms/lessonList?pageNum=1&pageSize=3&filter=hot",
+            method: 'GET',
+            data: {
+            },
+            header: {
+                'content-type': 'application/json', // 默认值
+                'Authorization': 'Bearec9M[ln9s$^6NlDP*I3bd5*OZB9gKSgHP.SzNET*Ypuw64bhxZ]91zWkX@52AXmMiK'
+            },
+            success: function(res) {
+                that.setData({
+                    items: res.data.data.list
+                })
+            }
+        })
     },
 
     /**
@@ -80,5 +95,11 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    toSearch: function () {
+        wx.navigateTo({
+          url: '/pages/search/search',
+        })
     }
 })

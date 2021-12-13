@@ -24,7 +24,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        //wx.setStorageSync('userInfo', this.data.userInfo_noLoign)
         this.setData({
             userInfo: wx.getStorageSync('userInfo')
         })
@@ -77,5 +76,11 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+
+    logout: function() {
+        wx.setStorageSync('userInfo', '')
+        wx.setStorageSync('openId', '')
+        this.onLoad();
+    } 
 })
