@@ -3,13 +3,17 @@
         <text class="cuIcon-titles text-orange"></text>收藏课程
     </view>
 </view>
-<view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{courses}}" wx:for-item="course">
+<view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
 			<view class="cu-item shadow">
+				<navigator url="/pages/discussion/discussion?id={{item.id}}"></navigator>
 				<view class="image">
-					<image src="{{course.img}}"mode="widthFix"></image>
+					<image src="{{item.pictures[0]}}"mode="widthFix"></image>
 				</view>
 				<view class="cu-list menu-avatar">
-					<view class="description">{{course.title}}</view>
+					<view class="description">{{item.lessonName}}  {{item.lessonNumber}}</view>
+					<view class="description">授课教师：{{item.teacherName}}</view>
+					<view class="description">授课学期：{{item.semester}}</view>
+					<view class="description">学分：{{item.credit}}</view>
 				</view>
 			</view>
 </view>

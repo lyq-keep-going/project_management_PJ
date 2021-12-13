@@ -51,7 +51,7 @@ export default {
       if (this.form.password != this.form.checkPwd)
         this.$message.warning("确认密码和密码不一致！");
 
-      let url = "/api/register"
+      let url = "/api/ums/register"
 
       console.log(this.form);
 

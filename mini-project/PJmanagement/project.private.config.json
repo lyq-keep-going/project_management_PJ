@@ -89,6 +89,12 @@
                     "pathName": "pages/collected_goods/collected_goods",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/commodity_detail/commodity_detail",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

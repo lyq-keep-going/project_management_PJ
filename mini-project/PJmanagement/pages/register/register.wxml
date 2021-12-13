@@ -4,17 +4,17 @@
     <form>
 			<view class="cu-form-group margin-top">
 				<view class="title">学号</view>
-				<input name="input"></input>
+				<input name="input" value="{{studentId}}" bindinput="studentIdInput"></input>
 			</view>
-            <view class="cu-form-group margin-top">
+            <!-- <view class="cu-form-group margin-top">
 				<view class="title">密码</view>
 				<input type="password" name="input"></input>
 			</view>
             <view class="cu-form-group margin-top">
 				<view class="title">确认密码</view>
 				<input type="password" name="input"></input>
-			</view>
+			</view> -->
     </form>
-    <button class="cu-btn round lg shadow" id="login">注册</button>
+    <button class="cu-btn round lg shadow" id="login" bindtap="register">注册</button>
     <text class="info">已有账号？点此登录</text>
 </view>

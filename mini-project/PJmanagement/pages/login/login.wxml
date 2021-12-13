@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 <view class="container">
     <text class="cuIcon-profile"></text>
-    <form>
+    <!-- <form>
 			<view class="cu-form-group margin-top">
 				<view class="title">学号</view>
 				<input name="input"></input>
@@ -10,8 +10,8 @@
 				<view class="title">密码</view>
 				<input type="password" name="input"></input>
 			</view>
-    </form>
-    <button class="cu-btn round lg shadow" id="login">登录</button>
-    <text class="info">还不是用户？点此注册</text>
+    </form> -->
+    <button class="cu-btn round lg shadow" id="login" bindtap="login">登录</button>
+    <!-- <text class="info">还不是用户？点此注册</text> -->
 </view>
 

@@ -8,6 +8,7 @@ Page({
         inputValue: "",
         search_img: "https://z3.ax1x.com/2021/11/29/oMUzm4.png",
         font_img: "https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
+        filter: "",
         items: [
             {
                 img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
@@ -31,7 +32,24 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this
+        wx.request({
+            url: "https://bbs.fitymistudio.cn/api/lms/lessonList",
+            method: 'GET',
+            data: {
+                filter: that.data.filter,
+                keys: that.data.inputValue
+            },
+            header: {
+                'content-type': 'application/json', // 默认值
+                'Authorization': wx.getStorageSync('token')
+            },
+            success: function(res) {
+                that.setData({
+                    items: res.data.data.list
+                })
+            }
+        })
     },
 
     /**
@@ -88,6 +106,15 @@ Page({
         this.setData({
           index: e.detail.value
         })
+        this.onLoad();
     },
+
+    search: function (e) {
+        this.setData({
+            inputValue: e.detail.value,
+            filter: "query"
+        })
+        this.onLoad()
+    }
 
 })

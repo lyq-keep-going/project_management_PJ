@@ -2,6 +2,10 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
+page{
+  /* background-color: white; */
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -10,4 +14,9 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  /* background-color: white; */
 } 
+
+.description{
+  padding-left: 20rpx;
+}

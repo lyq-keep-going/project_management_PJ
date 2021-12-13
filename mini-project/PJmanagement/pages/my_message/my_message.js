@@ -26,7 +26,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this
+        wx.request({
+            url: "https://bbs.fitymistudio.cn/api/mms/msgList",
+            method: 'GET',
+            data: {
+            },
+            header: {
+                'content-type': 'application/json', // 默认值
+                'Authorization': wx.getStorageSync('token')
+            },
+            success: function(res) {
+                console.log(res.data.data.list)
+                that.setData({
+                    messages: res.data.data.list
+                })
+            }
+        })
     },
 
     /**
@@ -76,5 +92,11 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    toChat: function (event) {
+        wx.navigateTo({
+          url: '/pages/chat/chat?id=' + event.currentTarget.dataset.id,
+        })
     }
 })
