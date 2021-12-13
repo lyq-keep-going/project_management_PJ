@@ -10,26 +10,60 @@
         <shopping-cart-full />
       </el-icon>主页
     </el-menu-item>
-    <el-menu-item index="/login">
+
+    <el-menu-item index="/login" v-if="!isLogin">
       <el-icon>
         <user-filled />
       </el-icon>登录
     </el-menu-item>
-    <el-menu-item index="/register">
+
+    <el-menu-item index="/register" v-if="!isLogin">
       <el-icon>
         <user />
       </el-icon>注册
     </el-menu-item>
-    <el-menu-item index="/personalCenter">
-      <el-icon>
-        <avatar />
-      </el-icon>
-      <span>个人中心</span>
-    </el-menu-item>
+
+    <el-sub-menu index="2" v-if="isLogin">
+      <template #title>
+        <el-icon>
+          <avatar />
+        </el-icon>我的
+      </template>
+      <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+      <el-menu-item index @click="logOut()">退出</el-menu-item>
+    </el-sub-menu>
   </el-menu>
 
   <router-view></router-view>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      // isLogin: false
+    }
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem("flag")
+      localStorage.removeItem("token")
+      localStorage.removeItem("tokenHead")
+      this.$store.commit("userLogout")
+      this.$router.push("/")
+    }
+  },
+  computed: {
+    isLogin: {
+      get() {
+        return this.$store.state.isLogin
+      },
+      set: function () {
+      }
+    }
+  },
+};
+</script>
 
 <style>
 #app {
