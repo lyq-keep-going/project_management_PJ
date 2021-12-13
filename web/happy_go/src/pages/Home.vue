@@ -1,17 +1,10 @@
 <template>
   <el-main>
-
-
     <router-view></router-view>
 
     <el-header class="sub-title">正在团购</el-header>
     <el-row>
-      <el-col
-        v-for="(o, index) in 4"
-        :key="o"
-        :span="4"
-        :offset="index > 0 ? 2 : 1"
-      >
+      <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">
         <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
@@ -26,12 +19,7 @@
 
     <el-header class="sub-title">热门课程</el-header>
     <el-row>
-      <el-col
-        v-for="(obj, index) in list"
-        :key="obj"
-        :span="4"
-        :offset="index > 0 ? 2 : 1"
-      >
+      <el-col v-for="(obj, index) in list" :key="obj" :span="4" :offset="index > 0 ? 2 : 1">
         <el-card
           :body-style="{ padding: '0px' }"
           class="card"
@@ -42,20 +30,20 @@
 
           <div style="padding: 14px" class="info">
             <p>
-              <span></span><span>{{ obj.name }}</span>
+              <span></span>
+              <span>{{ obj.name }}</span>
             </p>
             <p>
-              {{ obj.lessonNumber }} <span>{{ obj.semester }}</span>
+              {{ obj.lessonNumber }}
+              <span>{{ obj.semester }}</span>
             </p>
 
             <p>
-              <span style="color: rgb(117, 117, 117)">授课教师：</span
-              ><span>{{ obj.teacherName }}</span>
+              <span style="color: rgb(117, 117, 117)">授课教师：</span>
+              <span>{{ obj.teacherName }}</span>
             </p>
             <div class="bottom">
-              <el-button type="text" class="button" @click="seeDetail(obj.id)"
-                >查看详情</el-button
-              >
+              <el-button type="text" class="button" @click="seeDetail(obj.id)">查看详情</el-button>
             </div>
           </div>
         </el-card>
