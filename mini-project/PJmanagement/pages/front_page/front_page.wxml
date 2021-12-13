@@ -22,6 +22,9 @@
                         </view>
                         <view class="cu-list menu-avatar" class="text">
                             <view class="description">{{item.lessonName}}  {{item.lessonNumber}}</view>
+                            <view class="description">授课教师：{{item.teacherName}}</view>
+                            <view class="description">授课学期：{{item.semester}}</view>
+                            <view class="description">学分：{{item.credit}}</view>
                         </view>
                     </navigator>
                     </view>

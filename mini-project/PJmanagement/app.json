@@ -24,7 +24,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#FFA07A",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [{

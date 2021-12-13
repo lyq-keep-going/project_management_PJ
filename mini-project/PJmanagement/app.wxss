@@ -16,3 +16,7 @@ page{
   box-sizing: border-box;
   /* background-color: white; */
 } 
+
+.description{
+  padding-left: 20rpx;
+}

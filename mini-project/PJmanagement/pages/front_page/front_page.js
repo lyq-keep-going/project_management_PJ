@@ -32,7 +32,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/lms/lessonList?pageNum=1&pageSize=3&filter=hot",
+            url: "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=hot",
             method: 'GET',
             data: {
             },

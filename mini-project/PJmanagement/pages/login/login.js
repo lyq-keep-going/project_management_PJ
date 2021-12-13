@@ -86,13 +86,44 @@ Page({
                                 success: function(res) {
                                     // 存token
                                     console.log(res.data);
-                                    console.log('token=' + res.data.data.token)
-                                    console.log(res.data.data.openId)
-                                    wx.setStorageSync('openId',res.data.data.openId )
+                                    //console.log('token=' + res.data.data.token)
+                                    //console.log(res.data.data.openId)
                                     wx.setStorageSync('userInfo', file.userInfo)
                                     var token = res.data.data.tokenHead + res.data.data.token;
-                                    //拿到后将token存入全局变量  以便其他页面使用
                                     wx.setStorageSync('token', token)
+                                    wx.request({
+                                      url: 'https://bbs.fitymistudio.cn/api/ums/info',
+                                      method: 'GET',
+                                      data: {
+                                      },
+                                      header: {
+                                          'content-type': 'application/json', // 默认值
+                                          'Authorization': wx.getStorageSync('token')
+                                      },
+                                      success: function(res) {
+                                          console.log(res.data.data)
+                                          wx.setStorageSync('userId', res.data.data.id)
+                                          wx.setStorageSync('openId',res.data.data.openId )
+                                          if(res.data.data.username==null){
+                                            wx.request({
+                                                url: 'https://bbs.fitymistudio.cn/api/ums/info',
+                                                method: 'PUT',
+                                                data: {
+                                                    userId: wx.getStorageSync('userId'),
+                                                    nickname: wx.getStorageSync('userInfo').nickname,
+                                                    avatar: wx.getStorageSync('userInfo').avatarUrl
+                                                },
+                                                header: {
+                                                    'content-type': 'application/json', // 默认值
+                                                    'Authorization': wx.getStorageSync('token')
+                                                },
+                                                success: function(res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                          }
+                                      }
+                                    })
                                     wx.switchTab({
                                         url: '/pages/home/home',
                                     })
