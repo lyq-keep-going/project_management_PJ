@@ -87,7 +87,8 @@ export default {
       alert(_num);
     },
     search(_key, _pageNum) {
-      var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=query";
+      //var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=query";
+      var url = "/api/lms/lessonList?filter=query";
 
       axios({
         method: "get",

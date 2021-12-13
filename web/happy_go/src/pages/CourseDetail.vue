@@ -45,7 +45,8 @@ export default {
   },
   methods: {
     loadDetail(_id) {
-      var url = "https://bbs.fitymistudio.cn/api/lms/info?";
+     // var url = "https://bbs.fitymistudio.cn/api/lms/info?";
+      var url = "/api/lms/info?";
 
       axios({
         method: "get",

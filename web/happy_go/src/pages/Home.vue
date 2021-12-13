@@ -1,17 +1,6 @@
 <template>
   <el-main>
-    <el-form ref="form" :model="form" :inline="true">
-      <el-input
-        v-model="form.input"
-        placeholder="搜索课程"
-        prefix-icon="Search"
-        @keyup.enter.native="onSubmit"
-      >
-        <template #append>
-          <el-button type="primary" @click="onSubmit">查找</el-button>
-        </template>
-      </el-input>
-    </el-form>
+
 
     <router-view></router-view>
 
@@ -90,7 +79,7 @@ export default {
   },
   methods: {
     getHotCourses(_pageNum) {
-      var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?";
+      var url = "/api/lms/lessonList?";
 
       axios({
         method: "get",

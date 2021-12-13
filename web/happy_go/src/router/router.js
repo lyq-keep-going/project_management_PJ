@@ -7,6 +7,7 @@ import Login from '../pages/Login.vue'
 import Register from '../pages/Register.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Home from '../pages/Home.vue'
+//import Course from '../components/Course.vue'
 
 import CourseDetail from '../pages/CourseDetail.vue'
 import SearchResult from '../pages/SearchResult.vue'
@@ -23,7 +24,7 @@ const routes = [
     { path: '/login', component: Login, meta: { isLogin: false } },
     { path: '/register', component: Register, meta: { isLogin: false } },
     { path: '/personalCenter', component: PersonalCenter, meta: { isLogin: true } },
-    { path: '/course', component: Course }
+   // { path: '/Course', component: Course }
 
 
     , { name: 'CourseDetail', path: '/CourseDetail', component: CourseDetail }
