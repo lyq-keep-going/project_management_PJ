@@ -5,16 +5,38 @@
 
 .title{
     background-color: rgba(255,160,122,40%);
-    font-size: 40rpx;
+    font-size: 30rpx;
     padding: 20rpx;
     box-shadow: 5rpx 5rpx 10rpx #cccccc;
+    border-radius: 10rpx;
 }
 
 .description{
     background-color: rgba(255,160,122,40%);
-    font-size: 35rpx;
+    font-size: 28rpx;
     margin-top: 20rpx;
     padding: 20rpx;
     min-height: 200rpx;
     box-shadow: 5rpx 5rpx 10rpx #cccccc;
+    border-radius: 10rpx;
+}
+
+.main_outer image{
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin: 0rpx 20rpx 30rpx 10rpx;
+}
+
+.date{
+    color: #CCCCCC;
+    width: 640rpx;
+    padding-left: 10rpx;
+    margin-top: 20rpx;
+}
+
+.main_outer{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
 }

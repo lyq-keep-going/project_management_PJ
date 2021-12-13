@@ -1,4 +1,4 @@
 <!--components/plain_tag/plain_tag.wxml-->
-<view class="tag" bindtap="handle_tap" bin>
+<view class="tag" bindtap="handle_tap">
 {{tagname}}
 </view>

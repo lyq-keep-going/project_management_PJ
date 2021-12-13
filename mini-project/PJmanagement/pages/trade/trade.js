@@ -1,4 +1,5 @@
 // pages/trade/trade.js
+const app = getApp();
 Page({
 
     /**
@@ -50,11 +51,29 @@ Page({
         collected:true
     },
 
+    getLessonInfo(){
+        wx.request({ 
+            url: 'https://bbs.fitymistudio.cn/api/lms/info?id=' + this.data.lessonId,
+            header:{
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+            },
+            success:(result)=>{
+                console.log(result);
+                this.setData({
+                    lessonInfo: result.data.data
+                })
+            }
+        });
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            lessonId: options.lessonId
+        })
+        this.getLessonInfo();
     },
 
     /**

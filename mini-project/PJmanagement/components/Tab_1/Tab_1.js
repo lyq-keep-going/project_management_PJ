@@ -7,24 +7,41 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+        active_item: {
+            type: Number,
+            value:0
+        },
+        lessonId:{
+            type: Number,
+            value:0
+        }
     },
 
     /**
      * 组件的初始数据
      */
     data: {
-        active_item: 0
+
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
-        handle_chose(e){
-            this.setData({
-                active_item: e.currentTarget.dataset.operation
-            })
+        goToTrade(e){
+            if(this.properties.active_item == 0){
+                wx.navigateTo({
+                  url: '../../pages/trade/trade?lessonId=' + this.properties.lessonId ,
+                })
+            }
+        },
+
+        goToDiscussion(e){
+            if(this.properties.active_item == 1){
+                wx.navigateTo({
+                  url: '../../pages/discussion/discussion?lessonId=' + this.properties.lessonId ,
+                })
+            }
         }
     }
 
