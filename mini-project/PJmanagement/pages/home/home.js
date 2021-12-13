@@ -81,6 +81,9 @@ Page({
     logout: function() {
         wx.setStorageSync('userInfo', '')
         wx.setStorageSync('openId', '')
-        this.onLoad();
+        wx.setStorageSync('token', '')
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
     } 
 })

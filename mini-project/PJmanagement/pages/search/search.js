@@ -42,7 +42,7 @@ Page({
             },
             header: {
                 'content-type': 'application/json', // 默认值
-                'Authorization': 'Bearec9M[ln9s$^6NlDP*I3bd5*OZB9gKSgHP.SzNET*Ypuw64bhxZ]91zWkX@52AXmMiK'
+                'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
                 that.setData({
