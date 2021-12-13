@@ -3,12 +3,17 @@
         <el-card shadow="hover" class="imessage">
             <el-row>
                 <el-col :span="4">
-                    <el-avatar shape="square" :size="70" :src="item.sender.avatar"></el-avatar>
-                    <br />
-                    <el-badge
-                        :is-dot="!item.last_message.read"
-                        class="item"
-                    >{{ item.sender.username }}</el-badge>
+                    <el-row>
+                        <el-col :span="24">
+                            <el-avatar shape="square" :size="70" :src="item.sender.avatar"></el-avatar>
+                        </el-col>
+                        <el-col :span="24">
+                            <el-badge
+                                :is-dot="!item.last_message.read"
+                                class="item"
+                            >{{ item.sender.username }}</el-badge>
+                        </el-col>
+                    </el-row>
                 </el-col>
                 <el-col :span="16">
                     <p style="text-align: left;">
