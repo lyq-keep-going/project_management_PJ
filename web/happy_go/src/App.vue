@@ -51,6 +51,15 @@ export default {
       localStorage.removeItem("tokenHead")
       this.$store.commit("userLogout")
       this.$router.push("/")
+
+      let url = "/api/ums/logout"; // https://bbs.fitymistudio.cn/api/ums/login
+
+      this.axios
+        .post(url)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
     }
   },
   computed: {
