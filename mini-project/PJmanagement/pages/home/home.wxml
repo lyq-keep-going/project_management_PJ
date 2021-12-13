@@ -1,11 +1,13 @@
 <view class="container">
     <view class="userinfo">
         <view class='head-wrap' bindtap='goAuth'>
-            <view class="login-avatar" wx:if="{{!userInfo}}">
+            
+            <view class="login-avatar" wx:if="{{!userInfo}}">                
                 <view class='avatar'>
                     <image class='avatar' src="{{userInfo_noLoign.avatar}}"></image>                
                 </view>
-                <view class='name'>{{userInfo_noLoign.nickname}}</view>
+                <navigator url="/pages/login/login"><view class='name'>{{userInfo_noLoign.nickname}}</view></navigator>
+            
             </view>
             <view class="login-avatar" wx:if="{{userInfo}}">
                 <view class='avatar'>
