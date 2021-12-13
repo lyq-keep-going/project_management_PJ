@@ -26,7 +26,9 @@ Page({
     onLoad: function (options) {
         this.setData({
             userInfo: wx.getStorageSync('userInfo')
+            
         })
+        console.log(this.userInfo)
     },
 
     /**

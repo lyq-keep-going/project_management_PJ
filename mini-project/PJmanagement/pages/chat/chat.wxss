@@ -7,3 +7,9 @@
 #chat {
     width: 30%;
 }
+
+.container{
+    padding-top: 20rpx;
+    padding-bottom: 120rpx;
+}
+

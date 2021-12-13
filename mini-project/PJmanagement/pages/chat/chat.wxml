@@ -1,27 +1,40 @@
 
 <view class="cu-chat">
-    <view class="cu-info round">开始聊天吧!</view>
-	<view class="cu-item self">
-		<view class="main">
-			<view class="content bg-green shadow">
-				<text>喵喵喵！喵喵喵！喵喵喵！喵喵！喵喵！！喵！喵喵喵！</text>
+	<scroll-view scroll-into-view="{{toView}}" scroll-y="true">
+	<view class="container">
+		<view class="cu-info round"><text id="starter">开始聊天吧!</text></view>
+		<!-- <view class="cu-item self">
+			<view class="main">
+				<view class="content bg-green shadow">
+					<text>喵喵喵！喵喵喵！喵喵喵！喵喵！喵喵！！喵！喵喵喵！</text>
+				</view>
 			</view>
+			<view class="date">2018年3月23日 13:23</view>
 		</view>
-		<view class="date">2018年3月23日 13:23</view>
-	</view>
-	<view class="cu-info round">对方撤回一条消息!</view>
-	<view class="cu-item">
-		<view class="main">
-			<view class="content shadow">
-				<text>喵喵喵！喵喵喵！</text>
+
+		<view class="cu-item">
+			<view class="main">
+				<view class="content shadow">
+					<text>喵喵喵！喵喵喵！</text>
+				</view>
 			</view>
+			<view class="date "> 13:23</view>
+		</view> -->
+
+		<view wx:for-items="{{items}}" wx:for-index="index" wx:for-item="item" class="{{item.receiverId == myId ? 'cu-item self':'cu-item'}}" id="msg-{{index}}">
+			<view class="main">
+				<view class="{{item.receiverId == myId ? 'content bg-green shadow':'content shadow'}}">
+					<text>{{item.content}}</text>
+				</view>
+			</view>
+			<view class="date ">{{item.issueTime}}</view>
 		</view>
-		<view class="date "> 13:23</view>
 	</view>
+</scroll-view>
 
     <view class="cu-bar foot input" >
-			<input class="solid-bottom" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"
-			 ></input>
-			<button class="cu-btn bg-green shadow" id="chat">发送</button>
+			<input class="solid-bottom" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10" value="{{inputValue}}" bindconfirm="deliver" confirm-type="send" bindinput="inputText"
+			></input>
+			<button class="cu-btn bg-green shadow" id="chat" bindtap="deliver">发送</button>
 	</view>
 </view>
