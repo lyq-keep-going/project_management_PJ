@@ -1,6 +1,6 @@
 <!--components/Tab_1/Tab_1.wxml-->
 <view class="outer">
-<view class="inner_l {{active_item == 0 ? 'isActive' : ''}}" bindtap="handle_chose" data-operation="{{0}}">讨论区</view>
-<view class="inner_r {{active_item == 1 ? 'isActive' : ''}}" bindtap="handle_chose" data-operation="{{1}}">交易区</view>
+<view class="inner_l {{active_item == 0 ? 'isActive' : ''}}" bindtap="goToDiscussion">讨论区</view>
+<view class="inner_r {{active_item == 1 ? 'isActive' : ''}}" bindtap="goToTrade">交易区</view>
 </view>
 

@@ -1,10 +1,19 @@
 <!--components/post_reply/post_reply.wxml-->
 <view class="outer">
 <view class="user_portrait">
-<image src="{{reply_info.pic}}" class="portrait"></image>
-<view class="usename">{{reply_info.username}}</view>
-<view class="date">{{reply_info.date}}</view>
+<image src="{{reply_info.user.avatar}}" class="portrait"></image>
+<view class="usename">{{reply_info.user.username}}</view>
 </view>
 <view class="content">{{reply_info.content}}</view>
-<view class="reply">回复</view>
+<view class="user_reply" wx:if="{{children}}">
+    <view wx:for="{{children}}" wx:key="id">
+        <view><text class="reply_name">{{item.user.username}} </text><text>: {{item.content}}</text></view>
+        <view class="date">{{item.issueTime}}</view>
+    </view>
+</view>
+<view class="bottom">
+    <view class="date">{{reply_info.issueTime}}</view>
+    <view class="reply">回复</view>
+</view>
+
 </view>

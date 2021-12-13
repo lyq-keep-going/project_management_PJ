@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "Tab_1":"../../components/Tab_1/Tab_1",
+    "tab_1":"../../components/tab_1/tab_1",
     "commodity":"../../components/commodity/commodity",
     "detailed_info":"../../components/detailed_info/detailed_info",
     "three_types":"../../components/three_types/three_types"

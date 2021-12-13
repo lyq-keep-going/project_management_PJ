@@ -1,8 +1,12 @@
 <!--pages/post_detail/post_detail.wxml-->
 <view class="outer">
-<view class="title">标题</view>
-<view class="description">描述文字</view>
+<view class="main_outer">
+    <image src="{{main_topic.user.avatar}}"></image>
+    <text>{{main_topic.user.username}}</text>
+</view>
+    <view class="title">{{main_topic.title}}</view>
+    <view class="description">{{main_topic.content}}</view>
+    <view class="date">{{main_topic.issueTime}}</view>
 </view>
 
-<post_reply reply_info="{{reply}}"></post_reply>
-<post_reply reply_info="{{reply}}"></post_reply>
+<post_reply wx:for="{{reply}}" reply_info="{{item}}" wx:if="{{item.state != -1}}"></post_reply>

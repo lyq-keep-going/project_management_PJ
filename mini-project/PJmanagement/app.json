@@ -1,11 +1,11 @@
 {
 
   "pages":[
+    "pages/post_detail/post_detail",
     "pages/discussion/discussion", 
     "pages/home/home",
     "pages/trade/trade",
     "pages/commodity_detail/commodity_detail",
-    "pages/post_detail/post_detail",
     "pages/add_post/add_post",
     "pages/index/index",
     "pages/front_page/front_page",

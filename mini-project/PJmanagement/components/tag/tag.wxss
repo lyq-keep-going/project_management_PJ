@@ -14,38 +14,48 @@
 
 .tag_clicked{
     border-radius: 50rpx;
-    height: 180rpx;
-    width: 280rpx;
-    box-shadow: 5rpx 5rpx 10rpx #cccccc;
+    height: 150rpx;
+    width: 200rpx;
+    box-shadow: 0rpx 0rpx 10rpx #cccccc;
+    margin-top: 10rpx;
+}
 
+.outer1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .thumb_up{
-    height: 60rpx;
-    width: 60rpx;
-    margin: 0rpx 20rpx 20rpx 50rpx;
+    height: 50rpx;
+    width: 50rpx;
+    margin-right: 30rpx;
 }
 
 .thumb_down{
-    height: 60rpx;
-    width: 60rpx;
-    margin: 0rpx 20rpx 20rpx 40rpx;
+    height: 50rpx;
+    width: 50rpx;
+    margin-left: 30rpx;
+}
+
+.outer2{
+    display: flex;
+    display: flex;
+    justify-content: center;
 }
 
 .thumb_up_text{
-    width: 60rpx;
     display: inline-block;
-    margin: 0rpx 20rpx 20rpx 60rpx;
+    margin-right: 40rpx;
 }
 
 .thumb_down_text{
-    width: 60rpx;
     display: inline-block;
-    margin: 0rpx 20rpx 20rpx 50rpx;
+    margin-left: 40rpx;
 }
 
 .close{
     height: 30rpx;
     width: 30rpx;
-    margin-left: 270rpx;
+    margin-left: 180rpx;
 }
