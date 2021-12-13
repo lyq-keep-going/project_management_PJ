@@ -1,1 +1,69 @@
 /* pages/front_page/front_page.wxss */
+page {
+    min-height: 100%;
+}
+
+.container {
+    min-height: 100%;
+    overflow-x: hidden;
+    padding: 30rpx 0;
+}
+
+.search .icon{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.searchItem{
+    display: flex;
+    width: 100%;
+}
+
+.search image {
+    align-self: center;
+}
+
+.search input{
+    flex: 1;
+    margin-left: 20rpx;
+}
+
+.font_img {
+    margin: 10px;
+    height: 150px;
+}
+
+.course {
+    width: 100%;
+}
+
+#card {
+    width: 50%;
+    float: left;
+}
+
+#headline {
+    font-size: 38rpx;
+    font-weight: bold;
+}
+
+.text {
+    margin-top: 15rpx;
+}
+
+.description {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

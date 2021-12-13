@@ -1,0 +1,15 @@
+<view class="cu-bar bg-white solid-bottom margin-top">
+				<view class="action">
+					<text class="cuIcon-title text-orange "></text> 我的帖子
+				</view>
+			</view>
+			<view class="cu-list menu-avatar">
+				<view class="cu-item" wx:for-items="{{posts}}" wx:for-item="post">
+					<view class="content">
+						<view class="text-grey">{{post.title}}</view>
+					</view>
+                    <view class="action">
+						<view class="text-grey text-xs">{{post.date}}</view>
+					</view>
+				</view>
+			</view>

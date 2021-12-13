@@ -5,10 +5,27 @@
 
 <template>
   <el-menu default-active="/" mode="horizontal" :router="true">
-    <el-menu-item index="/">主页</el-menu-item>
-    <el-menu-item index="/login">登录</el-menu-item>
-    <el-menu-item index="/register">注册</el-menu-item>
-    <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+    <el-menu-item index="/">
+      <el-icon>
+        <shopping-cart-full />
+      </el-icon>主页
+    </el-menu-item>
+    <el-menu-item index="/login">
+      <el-icon>
+        <user-filled />
+      </el-icon>登录
+    </el-menu-item>
+    <el-menu-item index="/register">
+      <el-icon>
+        <user />
+      </el-icon>注册
+    </el-menu-item>
+    <el-menu-item index="/personalCenter">
+      <el-icon>
+        <avatar />
+      </el-icon>
+      <span>个人中心</span>
+    </el-menu-item>
   </el-menu>
 
   <router-view></router-view>

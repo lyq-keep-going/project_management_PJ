@@ -3,11 +3,11 @@
 <detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>
 <Tab_1 class="tab"></Tab_1>
 <view class="tags">
-    <tag wx:for="{{tagnames}}" class="tag" tagname="{{item}}"></tag>
+    <tag wx:for="{{tagnames}}" class="tag" tagname="{{item}}" wx:key="id"></tag>
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
-    <entry wx:for="{{entryList}}" content="{{item.content}}" date="{{item.date}}"></entry>
+    <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id"></entry>
 </view>
 <image src="https://z3.ax1x.com/2021/11/27/om5E4S.png" class="bottom_add"></image>
 </view>

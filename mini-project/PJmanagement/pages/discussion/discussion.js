@@ -1,4 +1,5 @@
 // pages/discussion/discussion.js
+const app  = getApp();
 Page({
 
     /**
@@ -6,16 +7,7 @@ Page({
      */
     data: {
         tagnames:["可可爱爱","啦啦", "好耶"],
-        entryList:[{
-            content:"标题",
-            date:"0000-00-00"
-        },{
-            content:"标题",
-            date:"0000-00-00"
-        },{
-            content:"标题",
-            date:"0000-00-00"
-        }],
+        entryList:[],
         hide_add_tag : true
     },
 
@@ -25,8 +17,8 @@ Page({
         })
     },
 
-    openAddTagHandler(e){
-        this.setData({
+    openAddTagHandler(e){ 
+        this.setData({ 
             hide_add_tag: false
         })
     },
@@ -34,7 +26,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.request({ 
+          url: 'https://bbs.fitymistudio.cn/api/ums/topicList?lessonId=SOFTXXXX&pageNum=2&pageSize=5',
+          header:{
+              "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+          },
+          success:(result)=>{
+              console.log(result)
+              this.setData({
+                  entryList: result.data.data.list
+              })
+          }
+        });
     },
 
     /**
@@ -85,4 +88,5 @@ Page({
     onShareAppMessage: function () {
 
     }
-})
+});
+

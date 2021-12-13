@@ -1,0 +1,34 @@
+<view class="container">
+    <view class="search">
+        <view class="searchItem">
+            <image class="icon" src="{{search_img}}" display="inline"></image>
+            <input display="inline" type="text" placeholder="搜索更多课程相关信息" confirm-type="search" value="{{inputValue}}" bindinput="inputBind" bindconfirm="query"></input>
+        </view>
+    </view>
+    
+    <view class="course">
+        <view class="cu-bar bg-white solid-bottom">
+            <view class="action">
+                <text class="cuIcon-titles text-orange"></text>课程信息
+            </view>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" id="picker">
+                <view class="picker">
+                    {{index>-1?array[index]:'筛选'}}
+                    <text class="cuIcon-unfold"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+                    <view class="cu-item shadow">
+                        <view class="image">
+                            <image src="{{item.img}}"mode="widthFix"></image>
+                        </view>
+                        <view class="cu-list menu-avatar" class="text">
+                            <view class="description">{{item.title}}</view>
+                        </view>
+                    </view>
+        </view>
+
+
+    </view>
+</view>

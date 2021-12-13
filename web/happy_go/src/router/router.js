@@ -8,12 +8,19 @@ import Register from '../pages/Register.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Home from '../pages/Home.vue'
 
+import Course from '../pages/Courses.vue'
+
+
 // 路由
 const routes = [
     { path: '/', component: Home },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/personalCenter', component: PersonalCenter }
+
+
+    ,{ path: '/course', component: Course }
+
 ]
 
 const router = createRouter({

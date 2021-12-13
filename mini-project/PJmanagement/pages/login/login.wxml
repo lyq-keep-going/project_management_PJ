@@ -1,2 +1,17 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="container">
+    <text class="cuIcon-profile"></text>
+    <form>
+			<view class="cu-form-group margin-top">
+				<view class="title">学号</view>
+				<input name="input"></input>
+			</view>
+            <view class="cu-form-group margin-top">
+				<view class="title">密码</view>
+				<input type="password" name="input"></input>
+			</view>
+    </form>
+    <button class="cu-btn round lg shadow" id="login">登录</button>
+    <text class="info">还不是用户？点此注册</text>
+</view>
+
