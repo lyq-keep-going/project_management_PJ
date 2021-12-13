@@ -27,7 +27,7 @@
         </el-card>
     </div>
 
-    <div>
+    <div class="pagination">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"
@@ -76,8 +76,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box-card {
+    margin: 20px;
+}
+.pagination {
     margin: 20px;
 }
 </style>

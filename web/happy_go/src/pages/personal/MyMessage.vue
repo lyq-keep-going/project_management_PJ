@@ -49,7 +49,7 @@
         </el-input>
     </el-dialog>
 
-    <div>
+    <div class="pagination">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"
@@ -167,7 +167,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
 .imessage {
     margin: 20px;
 }
@@ -184,5 +184,8 @@ export default {
     margin: 0;
     list-style: none;
     text-align: left;
+}
+.pagination {
+    margin: 20px;
 }
 </style>

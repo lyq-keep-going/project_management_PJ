@@ -4,35 +4,37 @@
 </script>
 
 <template>
-  <el-menu default-active="/" mode="horizontal" :router="true">
-    <el-menu-item index="/">
-      <el-icon>
-        <shopping-cart-full />
-      </el-icon>主页
-    </el-menu-item>
-
-    <el-menu-item index="/login" v-if="!isLogin">
-      <el-icon>
-        <user-filled />
-      </el-icon>登录
-    </el-menu-item>
-
-    <el-menu-item index="/register" v-if="!isLogin">
-      <el-icon>
-        <user />
-      </el-icon>注册
-    </el-menu-item>
-
-    <el-sub-menu index="2" v-if="isLogin">
-      <template #title>
+  <el-affix :offset="0">
+    <el-menu default-active="/" mode="horizontal" :router="true">
+      <el-menu-item index="/">
         <el-icon>
-          <avatar />
-        </el-icon>我的
-      </template>
-      <el-menu-item index="/personalCenter">个人中心</el-menu-item>
-      <el-menu-item index @click="logOut()">退出</el-menu-item>
-    </el-sub-menu>
-  </el-menu>
+          <shopping-cart-full />
+        </el-icon>主页
+      </el-menu-item>
+
+      <el-menu-item index="/login" v-if="!isLogin">
+        <el-icon>
+          <user-filled />
+        </el-icon>登录
+      </el-menu-item>
+
+      <el-menu-item index="/register" v-if="!isLogin">
+        <el-icon>
+          <user />
+        </el-icon>注册
+      </el-menu-item>
+
+      <el-sub-menu index="2" v-if="isLogin">
+        <template #title>
+          <el-icon>
+            <avatar />
+          </el-icon>我的
+        </template>
+        <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+        <el-menu-item index @click="logOut()">退出</el-menu-item>
+      </el-sub-menu>
+    </el-menu>
+  </el-affix>
 
   <router-view></router-view>
 </template>

@@ -5,8 +5,7 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
-        <br />
-        <div>
+        <div class="pagination">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -102,9 +101,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .content {
     width: 90%;
     margin: auto;
+}
+
+.pagination {
+    margin: 20px;
 }
 </style>
