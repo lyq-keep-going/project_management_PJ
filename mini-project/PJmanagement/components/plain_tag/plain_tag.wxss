@@ -1,12 +1,9 @@
 /* components/plain_tag/plain_tag.wxss */
 .tag{
     background-color: #FFA07A;
-    height: 50rpx;
     min-width: 100rpx;
     border-radius: 25rpx;
-    text-align: center;
-    line-height: 50rpx;
-    vertical-align: middle;
     box-shadow: 3rpx 3rpx 6rpx #cccccc;
     color: white;
+    padding: 5rpx 10rpx;
 }

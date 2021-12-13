@@ -1,7 +1,8 @@
 <!--components/entry/entry.wxml-->
 <view class="outer">
+
     <view class="content">
-        {{content}}
+        {{title}}
     </view>
     <view class="date">
         {{date}}

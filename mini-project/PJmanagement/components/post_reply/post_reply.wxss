@@ -3,14 +3,14 @@
     height: 100rpx;
     width: 100rpx;
     border-radius: 50rpx;
-    margin: 0rpx 20rpx 30rpx 20rpx;
+    margin: 0rpx 20rpx 30rpx 10rpx;
 }
 
 .user_portrait{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     
 }
 
@@ -25,10 +25,10 @@
     line-height: 50rpx;
     width: 100rpx;
     height: 50rpx;
-    margin-left: 560rpx;
     background-color: rgba(255,160,122,40%);
     border-radius: 20rpx;
     box-shadow: 3rpx 3rpx 6rpx #CCCCCC;
+    display: inline-block;
 }
 
 .outer{
@@ -38,6 +38,29 @@
 }
 
 .date{
-    margin-left: 300rpx;
     color: #CCCCCC;
+    width: 640rpx;
+    padding-left: 10rpx;
+}
+
+.bottom{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.reply_name{
+    color: #006699;
+}
+
+.user_reply{
+    background-color: rgba(220,220,220,50%);
+    padding: 10rpx;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    margin-left: 100rpx;
+}
+
+.user_reply .date{
+    color: #A9A9A9;
 }

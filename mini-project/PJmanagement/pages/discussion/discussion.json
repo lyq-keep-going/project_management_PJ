@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "Tab_1":"../../components/Tab_1/Tab_1",
+    "tab_1":"../../components/tab_1/tab_1",
     "tag" : "../../components/tag/tag",
     "plain_tag":"../../components/plain_tag/plain_tag",
     "entry":"../../components/entry/entry",

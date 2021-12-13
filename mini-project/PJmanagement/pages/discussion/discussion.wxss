@@ -6,6 +6,7 @@
     padding-top:50rpx;
     position: relative;
     z-index: 0;
+    padding-bottom: 50rpx;
 }   
 
 .tab{
@@ -17,7 +18,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    padding: 20rpx;
 }
+
+
 
 .tag{
     margin: 20rpx;
@@ -32,6 +36,8 @@ image{
     margin-top: 20rpx;
     margin-left: 20rpx;
     align-self: flex-start;
+    height: 60rpx;
+    width: 60rpx;
 }
 
 button{
@@ -44,9 +50,27 @@ button{
 .collect{
     display: inline;
     vertical-align: middle;
+    margin-bottom: 50rpx;
 }
 
 .star{
     margin-right: 20rpx;
     vertical-align: middle;
+}
+
+.scroll_pages{
+    display: flex;
+    justify-content: center;
+}
+
+.scroll_pages image{
+    margin-top: 20rpx;
+}
+
+.scroll_pages :first-child{
+    margin-right: 200rpx;
+}
+
+.scroll_pages :last-child{
+    margin-left: 200rpx;
 }
