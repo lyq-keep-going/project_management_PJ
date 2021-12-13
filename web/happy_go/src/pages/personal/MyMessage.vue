@@ -19,7 +19,7 @@
                 <el-col :span="4">
                     <el-button
                         type="primary"
-                        @click="dialogVisible = true, getDialogue(item.sender.username, item.sender.id, MpageNum, MpageSize)"
+                        @click="dialogVisible = true, getDialogue(item.sender.username, item.sender.id, messagePageNum, messagePageSize)"
                     >展开</el-button>
                 </el-col>
             </el-row>
@@ -28,9 +28,9 @@
 
     <el-dialog v-model="dialogVisible" title="对话框" width="80%" top="5vh" :before-close="clearM">
         <div class="dialogue">
-            <ul v-infinite-scroll="handleMPageClick" class="infinite-list" style="overflow: auto">
-                <li v-for="item in Mlist" :key="item" class="infinite-list-item">
-                    <p>{{ item.senderId == receiverId ? MuserName : myName }}</p>
+            <ul v-infinite-scroll="handleMessageClick" class="infinite-list" style="overflow: auto">
+                <li v-for="item in messageList" :key="item" class="infinite-list-item">
+                    <p>{{ item.senderId == receiverId ? messageUsername : myName }}</p>
                     <p>{{ item.content }}</p>
                     <el-divider></el-divider>
                 </li>
@@ -69,12 +69,12 @@ export default {
             // 具体消息
             dialogVisible: false,
             receiverId: 0,
-            MuserName: "",
-            Mtotal: 0,
-            MtotalPage: 1,
-            MpageNum: 1,
-            MpageSize: 20,
-            Mlist: [],
+            messageUsername: "",
+            messageTotal: 0,
+            messageTotalPage: 1,
+            messagePageNum: 1,
+            messagePageSize: 20,
+            messageList: [],
             content: ""
         }
     },
@@ -97,7 +97,7 @@ export default {
             this.axios
                 .get(url)
                 .then((response) => {
-                    console.log(response.data.data);
+                    // console.log(response.data.data);
                     let res = response.data.data
 
                     this.list = res.list
@@ -107,11 +107,11 @@ export default {
                 })
                 .catch((error) => console.log(error));
         },
-        getDialogue(MuserName, userId, MpageNum, MpageSize) {
+        getDialogue(messageUsername, userId, messagePageNum, messagePageSize) {
             this.receiverId = userId
-            this.MuserName = MuserName
+            this.messageUsername = messageUsername
 
-            let url = `/api/mms/msgList?pageNum=${MpageNum}&pageSize=${MpageSize}&userId=${userId}`; // https://bbs.fitymistudio.cn/api/mms/msgList
+            let url = `/api/mms/msgList?pageNum=${messagePageNum}&pageSize=${messagePageSize}&userId=${userId}`; // https://bbs.fitymistudio.cn/api/mms/msgList
 
             this.axios
                 .get(url)
@@ -119,31 +119,30 @@ export default {
                     let res = response.data.data
                     console.log(res);
 
-                    this.Mlist = this.Mlist.concat(res.list)
-                    this.Mtotal = res.total
-                    this.MtotalPage = parseInt(res.totalPage)
-                    this.MpageNum++
+                    this.messageList = this.messageList.concat(res.list)
+                    this.messageTotal = res.total
+                    this.messageTotalPage = parseInt(res.totalPage)
+                    this.messagePageNum++
                 })
                 .catch((error) => console.log(error));
         },
         handlePageClick(nextPage) {
             this.getMyMessageList(nextPage, this.pageSize)
-
         },
         clearM(done) {
-            this.Mlist = []
+            this.messageList = []
             this.receiverId = 0
-            this.MuserName = ""
-            this.Mtotal = 0
-            this.MtotalPage = 1
-            this.MpageNum = 1
-            this.Mlist = []
+            this.messageUsername = ""
+            this.messageTotal = 0
+            this.messageTotalPage = 1
+            this.messagePageNum = 1
+            this.messageList = []
             this.content = ""
             done()
         },
-        handleMPageClick() {
-            console.log(this.MuserName, this.receiverId, this.MpageNum, this.MpageSize);
-            this.getDialogue(this.MuserName, this.receiverId, this.MpageNum, this.MpageSize)
+        handleMessageClick() {
+            console.log(this.messageUsername, this.receiverId, this.messagePageNum, this.messagePageSize);
+            this.getDialogue(this.messageUsername, this.receiverId, this.messagePageNum, this.messagePageSize)
         },
         sendMyMessage() {
             let url = `/api/mms/msg`; // https://bbs.fitymistudio.cn/api/mms/msg
