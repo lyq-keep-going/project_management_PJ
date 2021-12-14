@@ -19,14 +19,21 @@
             </picker> -->
         </view>
         <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+            
                     <view class="cu-item shadow">
+                        <navigator url="/pages/discussion/discussion?id={{item.id}}">
                         <view class="image">
                             <image src="{{item.pictures[0]}}"mode="widthFix"></image>
                         </view>
                         <view class="cu-list menu-avatar" class="text">
                             <view class="description">{{item.lessonName}}  {{item.lessonNumber}}</view>
+                            <view class="description">授课教师：{{item.teacherName}}</view>
+                            <view class="description">授课学期：{{item.semester}}</view>
+                            <view class="description">学分：{{item.credit}}</view>
                         </view>
+                    </navigator>
                     </view>
+                
         </view>
 
 

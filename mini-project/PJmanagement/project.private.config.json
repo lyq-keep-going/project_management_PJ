@@ -61,12 +61,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/register/register",
-                    "pathName": "pages/register/register",
-                    "query": "",
-                    "scene": null
-                },
-                {
                     "name": "pages/my_post/my_post",
                     "pathName": "pages/my_post/my_post",
                     "query": "",

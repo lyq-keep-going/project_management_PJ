@@ -37,7 +37,8 @@ page {
 
 .font_img {
     margin: 10px;
-    height: 150px;
+    height: 400rpx;
+    min-width: 100%;
 }
 
 .course {

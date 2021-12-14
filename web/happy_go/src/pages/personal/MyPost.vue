@@ -1,38 +1,86 @@
 <template>
-    <el-table :data="tableData" stripe style="width: 100%">
-        <el-table-column prop="course" label="课程" width="180" />
-        <el-table-column prop="data" label="时间" width="180" />
-        <el-table-column prop="command" label="评价" />
-    </el-table>
+    <div v-for="item in list">
+        <el-card class="box-card" shadow="hover">
+            <template #header>
+                <div class="card-header">
+                    <el-row>
+                        <el-col :span="4">
+                            <el-row>
+                                <el-col :span="24">
+                                    <el-avatar shape="square" :size="40" :src="item.user.avatar"></el-avatar>
+                                </el-col>
+                                <el-col :span="24">
+                                    <span>{{ item.user.username }}</span>
+                                </el-col>
+                            </el-row>
+                        </el-col>
+                        <el-col :span="20">
+                            <h3>{{ item.title }}</h3>
+                        </el-col>
+                    </el-row>
+                </div>
+            </template>
+            <p style="text-align:left">
+                {{ item.content }}
+                <el-tag type="info">{{ item.issueTime }}</el-tag>
+            </p>
+        </el-card>
+    </div>
+
+    <div class="pagination">
+        <el-pagination
+            :page-size="pageSize"
+            layout="prev, pager, next"
+            :currentPage="pageNum"
+            :total="total"
+            @current-change="handlePageClick"
+            background
+        ></el-pagination>
+    </div>
 </template>
 
 <script lang="ts">
 export default {
     data() {
         return {
-            tableData: [
-                {
-                    course: '2016-05-03',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-02',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-04',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-                {
-                    course: '2016-05-01',
-                    data: 'Tom',
-                    command: 'No. 189, Grove St, Los Angeles',
-                },
-            ],
+            pageNum: 1,
+            pageSize: 8,
+            total: 0,
+            list: []
         }
+    },
+    methods: {
+        getMyPostList(pageNum, pageSize) {
+            let url = `/api/ums/myTopicList?pageNum=${pageNum}&pageSize=${pageSize}&isMine=true`; // https://bbs.fitymistudio.cn/api/mms/msgList
+
+            this.axios
+                .get(url)
+                .then((response) => {
+                    console.log(response.data.data);
+                    let res = response.data.data
+
+                    this.list = res.list
+                    this.total = res.total
+                    this.totalPage = parseInt(res.totalPage)
+                    this.pageNum = parseInt(res.pageNum)
+                })
+                .catch((error) => console.log(error));
+        },
+        handlePageClick(nextPage) {
+            this.getMyPostList(nextPage, this.pageSize)
+        },
+    },
+    mounted() {
+        this.getMyPostList(this.pageNum, this.pageSize)
     },
 }
 </script>
+
+<style scoped>
+.box-card {
+    margin: 20px;
+}
+.pagination {
+    margin: 20px;
+}
+</style>

@@ -1,10 +1,8 @@
 <template>
-    <Information />
-
     <el-tabs @tab-click="handleClick" tab-position="left">
-        <!-- <el-tab-pane label="个人信息" id="Information">
+        <el-tab-pane label="个人信息" id="Information">
             <Information />
-        </el-tab-pane>-->
+        </el-tab-pane>
         <el-tab-pane label="我的帖子" id="MyPost">
             <MyPost />
         </el-tab-pane>
@@ -55,8 +53,21 @@ export default {
     },
     methods: {
         handleClick(tab, event) {
-            // console.log(tab, event)
+            window.scroll(0, 0)
         },
     },
 }
 </script>
+
+<style>
+.el-tabs__header {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+}
+.el-tabs__content {
+    margin-left: 100px;
+}
+</style>

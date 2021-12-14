@@ -111,7 +111,7 @@ Page({
                                                 method: 'PUT',
                                                 data: {
                                                     userId: wx.getStorageSync('userId'),
-                                                    nickname: wx.getStorageSync('userInfo').nickname,
+                                                    username: wx.getStorageSync('userInfo').nickname,
                                                     avatar: wx.getStorageSync('userInfo').avatarUrl
                                                 },
                                                 header: {
@@ -127,6 +127,11 @@ Page({
                                     })
                                     wx.switchTab({
                                         url: '/pages/home/home',
+                                        success(){
+                                            let page = getCurrentPages().pop();
+                                            if (!page) return;
+                                            page.onLoad();
+                                        }
                                     })
                                 }
                             })
