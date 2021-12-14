@@ -27,7 +27,7 @@
 
     <el-container>
       <el-container>
-        <el-aside width="300px" class="left"
+        <el-aside width="600px" class="left"
           ><h2>讨论区</h2>
           <div class="discuss">
             <el-collapse v-model="activeName" accordion>
@@ -172,7 +172,7 @@ export default {
 .left {
   font: "PingFang SC";
 
-  width: 30%;
+  width: 60%;
   padding: 20px;
   margin: 10px;
   background-color: #f7f2e0;
