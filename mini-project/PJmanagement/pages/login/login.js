@@ -92,6 +92,8 @@ Page({
                                     wx.setStorageSync('userInfo', file.userInfo)
                                     var token = res.data.data.tokenHead + res.data.data.token;
                                     wx.setStorageSync('token', token)
+                                    app.globalData.userInfo.tokenHead = res.data.data.tokenHead
+                                    app.globalData.userInfo.token = res.data.data.token
                                     wx.request({
                                       url: 'https://' + app.globalData.host + '/api/ums/info',
                                       method: 'GET',

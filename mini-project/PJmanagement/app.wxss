@@ -3,7 +3,7 @@
 @import "colorui/icon.wxss";
 
 page{
-  /* background-color: white; */
+  background-color: white;
 }
 
 .container {
@@ -14,7 +14,7 @@ page{
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-  /* background-color: white; */
+  background-color: white;
 } 
 
 .description{

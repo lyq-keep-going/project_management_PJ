@@ -1,6 +1,6 @@
-
+<scroll-view scroll-into-view="{{toView}}" scroll-y="true" style="height: 100vh;">
 <view class="cu-chat">
-	<scroll-view scroll-into-view="{{toView}}" scroll-y="true">
+	
 	<view class="container">
 		<view class="cu-info round"><text id="starter">开始聊天吧!</text></view>
 		<!-- <view class="cu-item self">
@@ -30,7 +30,7 @@
 			<view class="date ">{{item.issueTime}}</view>
 		</view>
 	</view>
-</scroll-view>
+
 
     <view class="cu-bar foot input" >
 			<input class="solid-bottom" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10" value="{{inputValue}}" bindconfirm="deliver" confirm-type="send" bindinput="inputText"
@@ -38,3 +38,4 @@
 			<button class="cu-btn bg-green shadow" id="chat" bindtap="deliver">发送</button>
 	</view>
 </view>
+</scroll-view>

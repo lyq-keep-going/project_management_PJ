@@ -84,6 +84,8 @@ Page({
         wx.setStorageSync('userInfo', '')
         wx.setStorageSync('openId', '')
         wx.setStorageSync('token', '')
+        app.globalData.userInfo.tokenHead = ''
+        app.globalData.userInfo.token = ''
         wx.navigateTo({
           url: '/pages/login/login',
         })

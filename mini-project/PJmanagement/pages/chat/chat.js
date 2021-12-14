@@ -19,33 +19,34 @@ Page({
         this.setData({
             userId: options.id
         })
+        console.log(options.id)
         var that = this
-        wx.request({
-            url: 'https://' + app.globalData.host + '/api/mms/msgList',
-            method: 'GET',
-            data: {
-                userId: options.id
-            },
-            header: {
-                'content-type': 'application/json', // 默认值
-                'Authorization': wx.getStorageSync('token')
-            },
-            success: function(res) {
-                console.log(res.data.data.list)
-                that.setData({
-                    items: res.data.data.list,
-                    toView: 'msg-' + (res.data.data.list.length -1)
-                })
-            }
-        })
-
+        setInterval(function (){
+            wx.request({
+                url: "https://" + app.globalData.host  + "/api/mms/msgList",
+                method: 'GET',
+                data: {
+                    userId: options.id
+                },
+                header: {
+                    'content-type': 'application/json', // 默认值
+                    'Authorization': wx.getStorageSync('token')
+                },
+                success: function(res) {
+                    // console.log(res.data.data.list)
+                    that.setData({
+                        items: res.data.data.list,
+                        toView: 'msg-' + (res.data.data.list.length -1)
+                    })
+                }
+            })
+        },1000)
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
