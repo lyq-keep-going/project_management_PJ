@@ -1,4 +1,5 @@
 // pages/collected_course/collected_course.js
+const app = getApp();
 Page({
 
     /**
@@ -25,7 +26,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/ums/myFavor/lesson",
+            url: "https://" + app.globalData.host  + "/api/ums/myFavor/lesson",
             method: 'GET',
             data: {
             },

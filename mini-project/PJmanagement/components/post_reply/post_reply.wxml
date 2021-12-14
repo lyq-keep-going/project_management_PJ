@@ -15,5 +15,8 @@
     <view class="date">{{reply_info.issueTime}}</view>
     <view class="reply">回复</view>
 </view>
+<!-- <view class="reply_input">
+    <input></input>
+</view> -->
 
 </view>

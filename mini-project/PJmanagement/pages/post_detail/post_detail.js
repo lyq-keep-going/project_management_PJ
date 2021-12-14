@@ -20,7 +20,7 @@ Page({
             topicId: options.topicId
         });
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/ums/topicList?topicId=' + this.data.topicId,
+            url: 'https://' + app.globalData.host +'/api/ums/topicList?topicId=' + this.data.topicId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },

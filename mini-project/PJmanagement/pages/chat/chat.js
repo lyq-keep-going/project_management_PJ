@@ -1,4 +1,5 @@
 // pages/chat/chat.js
+const app = getApp();
 Page({
 
     /**
@@ -17,7 +18,7 @@ Page({
         })
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/mms/msgList",
+            url: 'https://' + app.globalData.host + '/api/mms/msgList',
             method: 'GET',
             data: {
                 userId: options.id

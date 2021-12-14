@@ -53,7 +53,7 @@ Page({
 
     getLessonInfo(){
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/lms/info?id=' + this.data.lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/info?id=' + this.data.lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },

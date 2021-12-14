@@ -33,7 +33,7 @@ Page({
         }
         wx.request({ 
             method:'POST',
-            url: 'https://bbs.fitymistudio.cn/api/ums/topic',
+            url: 'https://' + app.globalData.host +'/api/ums/topic',
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },

@@ -1,4 +1,5 @@
 // pages/register/register.js
+const app = getApp();
 Page({
 
     /**
@@ -82,7 +83,7 @@ Page({
                         if (res.code) {
                             //发起网络请求
                             wx.request({
-                                url: "https://bbs.fitymistudio.cn/api/ums/login",
+                                url: "https://" + app.globalData.host + "/api/ums/login",
                                 method: 'POST',
                                 data: {
                                     miniCode: res.code, //将code发给后台拿token
