@@ -28,7 +28,7 @@ Component({
         handle_tap(e){
             wx.request({
                 method:'POST',
-                url: 'https://bbs.fitymistudio.cn/api/lms/tag',
+                url: 'https://' + app.globalData.host +'/api/lms/tag',
                 header:{
                     "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                 },

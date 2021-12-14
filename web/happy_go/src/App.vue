@@ -12,27 +12,29 @@
         </el-icon>主页
       </el-menu-item>
 
-      <el-menu-item index="/login" v-if="!isLogin">
+      <el-menu-item index="/login" v-if="!isLogin" style="right: 96px; position: fixed;">
         <el-icon>
           <user-filled />
         </el-icon>登录
       </el-menu-item>
 
-      <el-menu-item index="/register" v-if="!isLogin">
+      <el-menu-item index="/register" v-if="!isLogin" style="right: 0; position: fixed;">
         <el-icon>
           <user />
         </el-icon>注册
       </el-menu-item>
 
-      <el-sub-menu index="2" v-if="isLogin">
-        <template #title>
-          <el-icon>
-            <avatar />
-          </el-icon>我的
-        </template>
-        <el-menu-item index="/personalCenter">个人中心</el-menu-item>
-        <el-menu-item index @click="logOut()">退出</el-menu-item>
-      </el-sub-menu>
+      <el-menu-item index="/personalCenter" v-if="isLogin" style="right: 96px; position: fixed;">
+        <el-icon>
+          <avatar />
+        </el-icon>个人中心
+      </el-menu-item>
+
+      <el-menu-item index v-if="isLogin" @click="logOut()" style="right: 0; position: fixed;">
+        <el-icon>
+          <guide />
+        </el-icon>退出
+      </el-menu-item>
     </el-menu>
   </el-affix>
 
@@ -62,6 +64,9 @@ export default {
           console.log(response);
         })
         .catch((error) => console.log(error));
+
+      this.$message.info("退出成功！")
+      location.reload();
     }
   },
   computed: {

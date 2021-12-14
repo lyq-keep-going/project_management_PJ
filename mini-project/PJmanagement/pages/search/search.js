@@ -1,4 +1,5 @@
 // pages/search/search.js
+const app = getApp();
 Page({
 
     /**
@@ -34,7 +35,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/lms/lessonList",
+            url: "https://" + app.globalData.host +"/api/lms/lessonList",
             method: 'GET',
             data: {
                 filter: that.data.filter,

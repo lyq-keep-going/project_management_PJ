@@ -1,4 +1,5 @@
 // pages/my_post/my_post.js
+const app = getApp();
 Page({
 
     /**
@@ -25,7 +26,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/ums/myTopicList",
+            url: "https://" + app.globalData.host + "/api/ums/myTopicList",
             method: 'GET',
             data: {
             },

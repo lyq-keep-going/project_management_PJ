@@ -1,4 +1,5 @@
 // pages/front_page/front_page.js
+const app = getApp();
 Page({
 
     /**
@@ -32,7 +33,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=hot",
+            url: "https://" + app.globalData.host +"/api/lms/lessonList?filter=hot",
             method: 'GET',
             data: {
             },

@@ -1,21 +1,28 @@
 <template>
     <div class="content">
         <el-row>
-            <el-col :span="6">
+            <el-col :span="24">
                 <el-avatar shape="square" :size="70" :src="avatar"></el-avatar>
-                <br />
             </el-col>
-            <el-col :span="8">
-                <div class="info">
-                    <p>用户名：{{ username }}</p>
-                    <p>学号：{{ studentId }}</p>
-                </div>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                <p>{{ username }}</p>
             </el-col>
-            <el-col :span="10">
-                <div class="info">
-                    <p>联系方式：{{ phone }}</p>
-                    <p>个人描述：{{ description }}</p>
-                </div>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                <p>学号：{{ studentId }}</p>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                <p>联系方式：{{ phone }}</p>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                <p>个人描述：{{ description }}</p>
             </el-col>
         </el-row>
     </div>

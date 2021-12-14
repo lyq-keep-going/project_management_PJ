@@ -1,4 +1,5 @@
 // pages/login/login.js
+const app = getApp();
 Page({
 
     /**
@@ -75,7 +76,7 @@ Page({
                         if (res.code) {
                             //发起网络请求
                             wx.request({
-                                url: "https://bbs.fitymistudio.cn/api/ums/login",
+                                url: "https://" + app.globalData.host + "/api/ums/login",
                                 method: 'POST',
                                 data: {
                                     miniCode: res.code, //将code发给后台拿token
@@ -92,7 +93,7 @@ Page({
                                     var token = res.data.data.tokenHead + res.data.data.token;
                                     wx.setStorageSync('token', token)
                                     wx.request({
-                                      url: 'https://bbs.fitymistudio.cn/api/ums/info',
+                                      url: 'https://' + app.globalData.host + '/api/ums/info',
                                       method: 'GET',
                                       data: {
                                       },
@@ -106,7 +107,7 @@ Page({
                                           wx.setStorageSync('openId',res.data.data.openId )
                                           if(res.data.data.username==null){
                                             wx.request({
-                                                url: 'https://bbs.fitymistudio.cn/api/ums/info',
+                                                url: 'https://' + app.globalData.host +'/api/ums/info',
                                                 method: 'PUT',
                                                 data: {
                                                     userId: wx.getStorageSync('userId'),

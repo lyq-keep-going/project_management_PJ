@@ -97,6 +97,7 @@ export default {
 .content {
     width: 90%;
     margin: auto;
+    margin-top: 20px;
 }
 .pagination {
     margin: 20px;

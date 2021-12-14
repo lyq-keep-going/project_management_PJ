@@ -17,6 +17,7 @@ App({
     userInfo: {
       token : "frqgehgerg",
       tokenHead : "Bearer"
-    }
+    },
+    host:'mock.fitymistudio.cn'
   }
 })

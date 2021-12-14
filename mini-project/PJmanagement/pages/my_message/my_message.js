@@ -1,4 +1,5 @@
 // pages/my_message/my_message.js
+const app = getApp();
 Page({
 
     /**
@@ -28,7 +29,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/mms/msgList",
+            url: "https://" + app.globalData.host +"/api/mms/msgList",
             method: 'GET',
             data: {
             },

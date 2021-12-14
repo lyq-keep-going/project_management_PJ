@@ -36,7 +36,7 @@ Page({
 
     getLessonInfo(){
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/lms/info?id=' + this.data.lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/info?id=' + this.data.lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -57,7 +57,7 @@ Page({
 
     sendPostRequest(pageNum, size, lessonId){
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/ums/topicList?lessonId='+ lessonId + '&pageNum=' + pageNum + '&pageSize=' + size,
+            url: 'https://' + app.globalData.host +'/api/ums/topicList?lessonId='+ lessonId + '&pageNum=' + pageNum + '&pageSize=' + size,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -73,7 +73,7 @@ Page({
 
     getHotestTags(pageNum, pageSize, lessonId){
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/lms/tagList?pageNum='+ pageNum + '&pageSize=' + pageSize + '&lessonId=' + lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/tagList?pageNum='+ pageNum + '&pageSize=' + pageSize + '&lessonId=' + lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -87,7 +87,7 @@ Page({
 
     getMoreTags(pageNum, pageSize, lessonId){
         wx.request({ 
-            url: 'https://bbs.fitymistudio.cn/api/lms/tagList?pageNum='+ pageNum + '&pageSize=' + pageSize + '&lessonId=' + lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/tagList?pageNum='+ pageNum + '&pageSize=' + pageSize + '&lessonId=' + lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },

@@ -1,4 +1,5 @@
 // pages/my_sell/my_sell.js
+const app = getApp();
 Page({
 
     /**
@@ -28,7 +29,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://bbs.fitymistudio.cn/api/cms/commodities",
+            url: "https://" + app.globalData.host +"/api/cms/commodities",
             method: 'GET',
             data: {
                 isMine: true,
