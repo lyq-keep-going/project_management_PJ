@@ -1,9 +1,7 @@
 <template>
   <el-main>
-
-
     <router-view></router-view>
-
+    <!--
     <el-header class="sub-title">正在团购</el-header>
     <el-row>
       <el-col
@@ -16,51 +14,64 @@
           <div style="padding: 14px">
             <span>Yummy hamburger</span>
             <div class="bottom">
-              <!-- <time class="time">{{ currentDate }}</time> -->
+            
               <el-button type="text" class="button">Operating</el-button>
             </div>
           </div>
         </el-card>
       </el-col>
     </el-row>
+-->
 
-    <el-header class="sub-title">热门课程</el-header>
-    <el-row>
-      <el-col
-        v-for="(obj, index) in list"
-        :key="obj"
-        :span="4"
-        :offset="index > 0 ? 2 : 1"
-      >
-        <el-card
-          :body-style="{ padding: '0px' }"
-          class="card"
-          shadow="hover"
-          @click.native="seeDetail(obj.id)"
-        >
-          <img src="../assets/logo.png" class="image" />
+    <el-container>
+      <el-main class="right" id="main_top"
+        ><h2>商城</h2>
+        <el-carousel :interval="4000" type="card" height="200px">
+          <el-carousel-item v-for="obj in list_left" :key="obj">
+            <h3 class="medium">{{ obj.title }}</h3>
+          </el-carousel-item>
+        </el-carousel>
+      </el-main>
+    </el-container>
 
-          <div style="padding: 14px" class="info">
-            <p>
-              <span></span><span>{{ obj.name }}</span>
-            </p>
-            <p>
-              {{ obj.lessonNumber }} <span>{{ obj.semester }}</span>
-            </p>
+    <div class="result">
+      <el-header class="sub-title">热门课程</el-header>
+      <el-row>
+        <el-col v-for="obj in list" :key="obj" :span="4" :offset="2">
+          <el-card
+            :body-style="{ padding: '0px' }"
+            class="card"
+            shadow="hover"
+            @click.native="seeDetail(obj.id)"
+          >
+            <img src="../assets/book.png" class="image" />
 
-            <p>
-              <span style="color: rgb(117, 117, 117)">授课教师：</span
-              ><span>{{ obj.teacherName }}</span>
-            </p>
-            <div class="bottom">
-              <el-button type="text" class="button" @click="seeDetail(obj.id)"
-                >查看详情</el-button
-              >
+            <div style="padding: 14px" class="info">
+              <p>
+                <span></span><span>{{ obj.name }}</span>
+              </p>
+              <p>
+                {{ obj.lessonName }}
+              </p>
+              <p>
+                <span style="color: rgb(117, 117, 117)">开课学期：</span>
+                <span>{{ obj.semester }}</span>
+              </p>
+
+              <p>
+                <span style="color: rgb(117, 117, 117)">授课教师：</span
+                ><span>{{ obj.teacherName }}</span>
+              </p>
+              <div class="bottom">
+                <el-button type="text" class="button" @click="seeDetail(obj.id)"
+                  >查看详情</el-button
+                >
+              </div>
             </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </el-main>
 </template>
 
@@ -72,9 +83,10 @@ export default {
     return {
       form: {
         input: "",
-        currentDate: null
+        currentDate: null,
       },
       list: "",
+      list_left: [{ title: "二手书" }, { title: "PPT" }, { title: "笔记" }],
     };
   },
   methods: {
@@ -86,7 +98,7 @@ export default {
         url: url,
         params: {
           pageNum: _pageNum,
-          pageSize: 4,
+          pageSize: 8,
           filter: "hot",
         },
         headers: {
@@ -94,7 +106,9 @@ export default {
         },
       })
         .then((response) => {
-          this.list = response.data.data.list.slice(0, 4);
+          //this.list = response.data.data.list.slice(0, 4);
+          this.list = response.data.data.list;
+          console.log(this.list);
         })
         .catch((error) => console.log(error));
     },
@@ -116,7 +130,20 @@ export default {
 </script>
 
 <style>
-.card {
+.el-card{
+padding: 10px;
+margin-bottom: 20px;
+}
+.el-card img{
+  width: 80%;
+}
+.result{
+
+}
+#main_top {
+  line-height: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .demo-input-label {
