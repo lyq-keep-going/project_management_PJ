@@ -4,12 +4,7 @@
     <!--
     <el-header class="sub-title">正在团购</el-header>
     <el-row>
-      <el-col
-        v-for="(o, index) in 4"
-        :key="o"
-        :span="4"
-        :offset="index > 0 ? 2 : 1"
-      >
+      <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">
         <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <div style="padding: 14px">
             <span>Yummy hamburger</span>

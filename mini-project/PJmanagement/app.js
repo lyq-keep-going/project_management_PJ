@@ -14,6 +14,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: {
+      token : "frqgehgerg",
+      tokenHead : "Bearer"
+    },
+    host:'mock.fitymistudio.cn'
   }
 })

@@ -5,6 +5,16 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
+        <div class="pagination">
+            <el-pagination
+                :page-size="pageSize"
+                layout="prev, pager, next"
+                :currentPage="pageNum"
+                :total="total"
+                @current-change="handlePageClick"
+                background
+            ></el-pagination>
+        </div>
     </div>
 </template>
 <script>
@@ -13,6 +23,10 @@ import Goods from "../../components/Goods.vue";
 export default {
     data() {
         return {
+            pageNum: 1,
+            pageSize: 8,
+            totalPage: 5,
+            total: 35,
             list: [
                 {
                     id: 540691,
@@ -61,14 +75,39 @@ export default {
         Goods
     },
     methods: {
+        getMyFavoriteGoods(pageNum, pageSize) {
+            let url = `/api/ums/myFavor/lesson?pageNum=${pageNum}&pageSize=${pageSize}`;
 
+            this.axios
+                .get(url)
+                .then((response) => {
+                    let res = response.data.data
+                    console.log(res);
+
+                    this.list = res.list
+                    this.total = res.total
+                    this.totalPage = parseInt(res.totalPage)
+                    this.pageNum = parseInt(res.pageNum)
+                })
+                .catch((error) => console.log(error));
+        },
+        handlePageClick(nextPage) {
+            this.getMyFavoriteGoods(nextPage, this.pageSize)
+        },
+    },
+    mounted() {
+        this.getMyFavoriteGoods(this.pageNum, this.pageSize)
     },
 }
 </script>
 
-<style>
+<style scoped>
 .content {
     width: 90%;
     margin: auto;
+}
+
+.pagination {
+    margin: 20px;
 }
 </style>

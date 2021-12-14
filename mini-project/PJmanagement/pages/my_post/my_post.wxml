@@ -4,12 +4,14 @@
 				</view>
 			</view>
 			<view class="cu-list menu-avatar">
-				<view class="cu-item" wx:for-items="{{posts}}" wx:for-item="post">
+				<view class="cu-item" wx:for-items="{{items}}" wx:for-item="item">
+					<navigator url="/pages/post_detail/post_detail?id={{item.id}}">
 					<view class="content">
-						<view class="text-grey">{{post.title}}</view>
+						<view class="text-grey">{{item.title}}</view>
 					</view>
                     <view class="action">
-						<view class="text-grey text-xs">{{post.date}}</view>
+						<view class="text-grey text-xs">{{item.issueTime}}</view>
 					</view>
+				</navigator>
 				</view>
 			</view>

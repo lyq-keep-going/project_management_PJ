@@ -1,6 +1,6 @@
 <view class="container">
     <view class="search">
-        <view class="searchItem">
+        <view class="searchItem" bindtap="toSearch">
             <image class="icon" src="{{search_img}}" display="inline"></image>
             <input display="inline" type="text" placeholder="搜索更多课程相关信息" confirm-type="search" value="{{inputValue}}" bindinput="inputBind" bindconfirm="query"></input>
         </view>
@@ -13,14 +13,23 @@
             </view>
         </view>
         <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+            
+            
                     <view class="cu-item shadow">
+                        <navigator url="/pages/discussion/discussion?id={{item.id}}">
                         <view class="image">
-                            <image src="{{item.img}}"mode="widthFix"></image>
+                            <image src="{{item.pictures[0]}}"mode="widthFix"></image>
                         </view>
                         <view class="cu-list menu-avatar" class="text">
-                            <view class="description">{{item.title}}</view>
+                            <view class="description">{{item.lessonName}}  {{item.lessonNumber}}</view>
+                            <view class="description">授课教师：{{item.teacherName}}</view>
+                            <view class="description">授课学期：{{item.semester}}</view>
+                            <view class="description">学分：{{item.credit}}</view>
                         </view>
+                    </navigator>
                     </view>
+   
+
         </view>
 
 

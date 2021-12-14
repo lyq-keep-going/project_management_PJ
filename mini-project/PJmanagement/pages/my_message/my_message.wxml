@@ -4,17 +4,17 @@
 				</view>
 			</view>
 			<view class="cu-list menu-avatar">
-				<view class="cu-item" wx:for-items="{{messages}}" wx:for-item="message">
-					<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+				<view class="cu-item" wx:for-items="{{messages}}" wx:for-item="message" bindtap="toChat" data-id="{{message.sender.id}}">
+					<view class="cu-avatar round lg" style="background-image:url({{message.sender.avatar}});"><view class="cu-tag badge" wx:if="{{!message.last_message.read}}">new</view></view>
 					<view class="content">
-						<view class="text-grey">{{message.person}}</view>
+						<view class="text-grey">{{message.sender.username}}</view>
 						<view class="text-gray text-sm flex">
 							<view class="text-cut">
-								{{message.content}}
+								{{message.last_message.content}}
 							</view> </view>
 					</view>
 					<view class="action">
-						<view class="text-grey text-xs">{{message.date}}</view>
+						<view class="text-grey text-xs">{{message.last_message.issueTime}}</view>
 					</view>
 				</view>
 				

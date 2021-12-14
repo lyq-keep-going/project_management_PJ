@@ -1,4 +1,5 @@
 // pages/front_page/front_page.js
+const app = getApp();
 Page({
 
     /**
@@ -30,7 +31,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this
+        wx.request({
+            url: "https://" + app.globalData.host +"/api/lms/lessonList?filter=hot",
+            method: 'GET',
+            data: {
+            },
+            header: {
+                'content-type': 'application/json', // 默认值
+                'Authorization': wx.getStorageSync('token')
+            },
+            success: function(res) {
+                that.setData({
+                    items: res.data.data.list
+                })
+            }
+        })
     },
 
     /**
@@ -80,5 +96,11 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    toSearch: function () {
+        wx.navigateTo({
+          url: '/pages/search/search',
+        })
     }
 })

@@ -1,7 +1,7 @@
 <!--pages/trade/trade.wxml-->
 <view class="outer">
-    <detailed_info lessonName="项目管理" lessonId="SOFTxxxx" teacherName="高晓彤" semester="秋季" credit="{{5}}"></detailed_info>
-    <Tab_1 class="tab"></Tab_1>
+    <detailed_info lessonName="{{lessonInfo.lessonName}}" lessonId="{{lessonInfo.lessonNumber}}" teacherName="{{lessonInfo.teacherName}}" semester="{{lessonInfo.semester}}" credit="{{lessonInfo.credit}}"></detailed_info>
+    <tab_1 class="tab"  active_item="{{1}}" lessonId="{{lessonId}}"></tab_1>
     <three_types></three_types>
     <view class="display">
         <commodity wx:for="{{commodity_list}}" single_commodity="{{item}}"></commodity>

@@ -21,7 +21,7 @@
                             <el-form-item label="课程名称">{{ info.lesson.lessonName }}</el-form-item>
                         </el-col>
                         <el-col :span="12">
-                            <el-form-item label="书籍名称">{{ info.bookName }}</el-form-item>
+                            <el-form-item label="书籍名称">{{ info.name }}</el-form-item>
                         </el-col>
                     </el-row>
 

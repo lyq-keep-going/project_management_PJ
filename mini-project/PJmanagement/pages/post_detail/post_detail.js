@@ -1,23 +1,37 @@
 // pages/post_detail/post_detail.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        reply:{
-            pic:"https://z3.ax1x.com/2021/11/28/ouvXZT.jpg",
-            username:"luoyuqi",
-            content:"抱大佬大腿",
-            date:"2021-10-1"
-        }
+        hasComments: false,
+        topicId: 0,
+        main_topic:{},
+        reply:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            topicId: options.topicId
+        });
+        wx.request({ 
+            url: 'https://' + app.globalData.host +'/api/ums/topicList?topicId=' + this.data.topicId,
+            header:{
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+            },
+            success:(result)=>{
+                console.log(result);
+                this.setData({
+                    main_topic:result.data.data.list[0],
+                    reply: result.data.data.list.slice(1)
+                })
+            }
+        });
     },
 
     /**

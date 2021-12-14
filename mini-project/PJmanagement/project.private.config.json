@@ -61,12 +61,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/register/register",
-                    "pathName": "pages/register/register",
-                    "query": "",
-                    "scene": null
-                },
-                {
                     "name": "pages/my_post/my_post",
                     "pathName": "pages/my_post/my_post",
                     "query": "",
@@ -87,6 +81,12 @@
                 {
                     "name": "pages/collected_goods/collected_goods",
                     "pathName": "pages/collected_goods/collected_goods",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/commodity_detail/commodity_detail",
                     "query": "",
                     "scene": null
                 }

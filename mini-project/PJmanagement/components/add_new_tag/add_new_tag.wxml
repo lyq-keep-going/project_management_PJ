@@ -3,11 +3,8 @@
 <view class="outer">
 <image src="https://z3.ax1x.com/2021/11/27/om2yC9.png" class="delete" bindtap="handleHide"></image>
 <view class="tags">
-    <plain_tag class="tag"></plain_tag>
-    <plain_tag class="tag"></plain_tag>
-    <plain_tag class="tag"></plain_tag>
-    <plain_tag class="tag"></plain_tag>
+    <plain_tag class="tag" wx:for="{{tags}}" tagname="{{item.tagName}}" wx:key="id"></plain_tag>
 </view>
-<input placeholder="自定义标签"></input>
-<button>添加</button>
+<input placeholder="自定义标签" bindinput="handleDefault"></input>
+<button bindtap="addTag">添加</button>
 </view>

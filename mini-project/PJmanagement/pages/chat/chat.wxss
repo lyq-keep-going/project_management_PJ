@@ -1,5 +1,9 @@
 /* pages/chat/chat.wxss */
 
+page{
+    height: 100%;
+}
+
 .solid-bottom {
     padding-left: 30rpx;
 }
@@ -7,3 +11,9 @@
 #chat {
     width: 30%;
 }
+
+.container{
+    padding-top: 20rpx;
+    padding-bottom: 120rpx;
+}
+
