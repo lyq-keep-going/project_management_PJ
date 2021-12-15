@@ -8,7 +8,7 @@
     <el-menu default-active="/" mode="horizontal" :router="true">
       <el-menu-item index="/">
         <el-icon>
-          <shopping-cart-full />
+          <shop />
         </el-icon>主页
       </el-menu-item>
 
@@ -31,8 +31,8 @@
       </el-menu-item>
 
       <el-menu-item index v-if="isLogin" @click="logOut()" style="right: 0; position: fixed;">
-        <el-icon>
-          <guide />
+        <el-icon style="transform: rotate(90deg);">
+          <upload />
         </el-icon>退出
       </el-menu-item>
     </el-menu>
