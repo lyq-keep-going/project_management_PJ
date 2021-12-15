@@ -16,7 +16,7 @@ import SearchBar from '../components/SearchBar.vue'
 // 路由
 const routes = [
     {
-        path: '/', component: Home,meta: { isLogin: false },
+        path: '/', component: Home, meta: { isLogin: false },
         children: [
             { path: '', component: SearchBar },
         ]
@@ -24,14 +24,12 @@ const routes = [
     { path: '/login', component: Login, meta: { isLogin: false } },
     { path: '/register', component: Register, meta: { isLogin: false } },
     { path: '/personalCenter', component: PersonalCenter, meta: { isLogin: true } },
-   // { path: '/Course', component: Course }
-
-
-    , { name: 'CourseDetail', path: '/CourseDetail', component: CourseDetail }
-    , {
+    // { path: '/Course', component: Course },
+    { name: 'CourseDetail', path: '/CourseDetail/:id', component: CourseDetail },
+    {
         name: 'SearchResult', path: '/SearchResult', component: SearchResult,
         children: [
-            { name: 'SearchBar',path: '', component: SearchBar },
+            { name: 'SearchBar', path: '', component: SearchBar },
         ]
     }
 ]

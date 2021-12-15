@@ -23,7 +23,7 @@
         </el-form>
 
         <el-row :gutter="20">
-            <el-col :span="6" v-for="item in list">
+            <el-col :span="12" v-for="item in list">
                 <Goods :info="item" />
             </el-col>
         </el-row>
