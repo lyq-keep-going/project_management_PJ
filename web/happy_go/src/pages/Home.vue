@@ -22,7 +22,7 @@
     <el-container>
       <el-main class="right" id="main_top"
         ><h2>正在热购</h2>
-        <el-carousel :interval="44400" type="card" height="330px">
+        <el-carousel :interval="4400" type="card" height="330px">
           <el-carousel-item class="item">
             <h3 class="medium">二手书</h3>
             <div class="top_card">
@@ -259,7 +259,7 @@ export default {
       this.$router.push({
         name: "SearchResult",
         params: {
-          url:""
+          url: "",
         },
       });
     },
@@ -306,8 +306,11 @@ export default {
 .top_card :el-col {
 }
 .el-card {
+  margin-bottom: 10px;
   margin-right: 8px;
   margin-left: 8px;
+  padding: 5px;
+  padding-top: 8px;
 }
 .el-card img {
   width: 40%;
