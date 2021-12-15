@@ -17,11 +17,11 @@
         </el-card>
       </el-col>
     </el-row>
--->
+    -->
 
     <el-container>
-      <el-main class="right" id="main_top"
-        ><h2>正在热购</h2>
+      <el-main class="right" id="main_top">
+        <h2>正在热购</h2>
         <el-carousel :interval="44400" type="card" height="330px">
           <el-carousel-item class="item">
             <h3 class="medium">二手书</h3>
@@ -35,17 +35,15 @@
                       <span>{{ obj.bookName }}</span>
                       <span>{{ obj.author }}</span>
                       <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span
-                        ><span>{{ obj.price }}</span>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
                       </p>
                     </div>
                   </el-card>
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpBook()"
-                  >查看更多</el-button
-                >
+                <el-button type="text" class="button" @click="jumpBook()">查看更多</el-button>
               </div>
             </div>
           </el-carousel-item>
@@ -61,17 +59,15 @@
                     <div>
                       <span>{{ obj.lesson.lessonName }}</span>
                       <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span
-                        ><span>{{ obj.price }}</span>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
                       </p>
                     </div>
                   </el-card>
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpPPT()"
-                  >查看更多</el-button
-                >
+                <el-button type="text" class="button" @click="jumpPPT()">查看更多</el-button>
               </div>
             </div>
           </el-carousel-item>
@@ -87,17 +83,15 @@
                     <div>
                       <span>{{ obj.lesson.lessonName }}</span>
                       <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span
-                        ><span>{{ obj.price }}</span>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
                       </p>
                     </div>
                   </el-card>
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpNote()"
-                  >查看更多</el-button
-                >
+                <el-button type="text" class="button" @click="jumpNote()">查看更多</el-button>
               </div>
             </div>
           </el-carousel-item>
@@ -119,24 +113,21 @@
 
             <div style="padding: 14px" class="info">
               <p>
-                <span></span><span>{{ obj.name }}</span>
+                <span></span>
+                <span>{{ obj.name }}</span>
               </p>
-              <p>
-                {{ obj.lessonName }}
-              </p>
+              <p>{{ obj.lessonName }}</p>
               <p>
                 <span style="color: rgb(117, 117, 117)">开课学期：</span>
                 <span>{{ obj.semester }}</span>
               </p>
 
               <p>
-                <span style="color: rgb(117, 117, 117)">授课教师：</span
-                ><span>{{ obj.teacherName }}</span>
+                <span style="color: rgb(117, 117, 117)">授课教师：</span>
+                <span>{{ obj.teacherName }}</span>
               </p>
               <div class="bottom">
-                <el-button type="text" class="button" @click="seeDetail(obj.id)"
-                  >查看详情</el-button
-                >
+                <el-button type="text" class="button" @click="seeDetail(obj.id)">查看详情</el-button>
               </div>
             </div>
           </el-card>
@@ -259,12 +250,12 @@ export default {
       this.$router.push({
         name: "SearchResult",
         params: {
-          url:""
+          url: ""
         },
       });
     },
-    jumpPPT() {},
-    jumpNote() {},
+    jumpPPT() { },
+    jumpNote() { },
   },
 
   mounted() {
@@ -274,7 +265,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .top_bottom {
   text-align: right;
   padding-right: 10px;
@@ -284,8 +275,17 @@ export default {
   background-color: #fcfcfc;
   padding-bottom: 20px;
 }
-.top_card {
+
+.top_bottom {
+  text-align: right;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
+.sel-carousel__item {
+  background-color: #fcfcfc;
+  padding-bottom: 20px;
+}
+
 .top_card .el-card img {
   width: 40%;
 }
@@ -303,8 +303,7 @@ export default {
 .top_card .el-row {
   flex-wrap: inherit;
 }
-.top_card :el-col {
-}
+
 .el-card {
   margin-right: 8px;
   margin-left: 8px;
@@ -312,8 +311,7 @@ export default {
 .el-card img {
   width: 40%;
 }
-.result {
-}
+
 #main_top {
   line-height: 50px;
   padding-left: 50px;
@@ -358,4 +356,3 @@ export default {
   color: rgb(117, 117, 117);
 }
 </style>
-
