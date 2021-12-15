@@ -11,16 +11,16 @@
             shadow="hover"
             @click.native="seeDetail(obj.id)"
           >
-            <img src="../assets/logo.png" class="image" />
+            <img src="../assets/book.png" class="image" />
 
             <div style="padding: 14px" class="info">
               <p>
                 <span></span><span>{{ obj.name }}</span>
               </p>
               <p>
-                {{ obj.lessonNumber }} <span>{{ obj.semester }}</span>
+                {{ obj.lessonNumber }}
               </p>
-
+              <span>{{ obj.semester }}</span>
               <p>
                 <span style="color: rgb(117, 117, 117)">授课教师：</span
                 ><span>{{ obj.teacherName }}</span>
@@ -35,23 +35,14 @@
         </el-col>
       </el-row>
     </div>
-    <!--    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="200"
-      @current-change="handleCurrentChange"
-      @click="teat(current - page)"
-    >
-    </el-pagination>
--->
 
     <div class="demo-pagination-block">
       <el-pagination
-        v-model:currentPage="currentPage3"
-        :page-size="100"
+        v-model:currentPage="currentPage"
+        :page-size="page_size"
         layout="prev, pager, next, jumper"
-        :total="1000"
-        @size-change="handleSizeChange"
+        :total="page_total"
+        @click="search(this.key,currentPage)"
         @current-change="handleCurrentChange"
       >
       </el-pagination>
@@ -66,18 +57,22 @@ export default {
   currPage: "",
   data() {
     return {
-      key: "",
+      key: " ",
       list: "",
+      page_size: 8,
+      page_total: 200,
     };
   },
   setup() {
     const handleCurrentChange = (val) => {
-      console.log(`current page: ${val}`);
-
-      //  this.search(this.key,val);
+     // console.log(val);
+      //  this.cur=val;
+      //this.search(this.key, val);
     };
 
     return {
+      currentPage: ref(1),
+
       handleCurrentChange,
     };
   },
@@ -87,7 +82,6 @@ export default {
       alert(_num);
     },
     search(_key, _pageNum) {
-      //var url = "https://bbs.fitymistudio.cn/api/lms/lessonList?filter=query";
       var url = "/api/lms/lessonList?filter=query";
 
       axios({
@@ -95,16 +89,17 @@ export default {
         url: url,
         params: {
           pageNum: _pageNum,
-          pageSize: 3,
+          pageSize: 8,
           keys: _key,
         },
         headers: {
           Authorization: "BearerJhbG",
         },
       })
-        .then((response) => {
+        .then((response) => {this.list ="";
           this.list = response.data.data.list;
-          console.log(response.data.data.list);
+          this.page_total = response.data.data.total;
+          console.log(this.page_total);
         })
         .catch((error) => console.log(error));
     },
@@ -133,5 +128,9 @@ export default {
 }
 .demo-pagination-block + .demo-pagination-block {
   margin-top: 10px;
+}
+.el-card img {
+  margin-top: 10px;
+  width: 40%;
 }
 </style>
