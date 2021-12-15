@@ -39,6 +39,8 @@
   </el-affix>
 
   <router-view></router-view>
+
+  <el-backtop />
 </template>
 
 <script>
