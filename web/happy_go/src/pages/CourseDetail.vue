@@ -42,7 +42,7 @@
                 :key="i"
                 :v-model="test"
               >
-                <div>
+                <div>      <span>楼主：</span>
                   <span> {{ this.list_discuss[i - 1].user.username }} </span
                   >&nbsp;&nbsp;&nbsp;&nbsp;<span
                     style="color: rgb(222, 222, 255)"
@@ -50,6 +50,29 @@
                   >
                 </div>
                 <div>{{ this.list_discuss[i - 1].content }}</div>
+
+                <div
+                  v-for="j in this.list_discuss[i - 1].children.length"
+                  :key="j"
+                >
+                  <el-divider>
+                    <el-icon><star-filled /></el-icon>
+                  </el-divider>
+                  <p>{{ this.list_discuss[i - 1].children[j - 1].title }}</p>
+                  <p>
+                    <span>
+                      {{
+                        this.list_discuss[i - 1].children[j - 1].user.username
+                      }} </span
+                    >&nbsp;&nbsp;&nbsp;&nbsp;<span
+                      style="color: rgb(222, 222, 255)"
+                      >{{
+                        this.list_discuss[i - 1].children[j - 1].issueTime
+                      }}</span
+                    >
+                  </p>
+                  <p>{{ this.list_discuss[i - 1].children[j - 1].content }}</p>
+                </div>
               </el-collapse-item>
             </el-collapse>
           </div>
@@ -103,6 +126,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      //children_num:[0,0,0,0],
       test: [0, 1, 2, 3],
       id: "",
       courseDetail: "",
@@ -114,10 +138,54 @@ export default {
 
       list_left: [{ title: "二手书" }, { title: "PPT" }, { title: "笔记" }],
       list_discuss: [
-        { title: "", user: { username: "" }, content: "", issueTime: "" },
-        { title: "", user: { username: "" }, content: "", issueTime: "" },
-        { title: "", user: { username: "" }, content: "", issueTime: "" },
-        { title: "", user: { username: "" }, content: "", issueTime: "" },
+        {
+          title: "",
+          user: { username: "" },
+          content: "",
+          issueTime: "",
+          children: {
+            title: "",
+            content: "",
+            user: { username: "" },
+            issueTime: "",
+          },
+        },
+        {
+          title: "",
+          user: { username: "" },
+          content: "",
+          issueTime: "",
+          children: {
+            title: "",
+            content: "",
+            user: { username: "" },
+            issueTime: "",
+          },
+        },
+        {
+          title: "",
+          user: { username: "" },
+          content: "",
+          issueTime: "",
+          children: {
+            title: "",
+            content: "",
+            user: { username: "" },
+            issueTime: "",
+          },
+        },
+        {
+          title: "",
+          user: { username: "" },
+          content: "",
+          issueTime: "",
+          children: {
+            title: "",
+            content: "",
+            user: { username: "" },
+            issueTime: "",
+          },
+        },
       ],
     };
   },
@@ -182,7 +250,7 @@ export default {
         .then((response) => {
           this.list_discuss = response.data.data.list;
 
-          //    console.log(this.list_discuss);
+          //
 
           //  console.log(this.list_discuss[0].id);
         })
@@ -205,9 +273,9 @@ export default {
   width: 60%;
   height: 100%;
   padding: 25px;
-
-}.img_right2 p{
-   padding: 5px;
+}
+.img_right2 p {
+  padding: 5px;
 }
 #courseimg {
   width: 30%;
