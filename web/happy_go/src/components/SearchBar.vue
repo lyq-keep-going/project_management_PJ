@@ -14,6 +14,7 @@
               v-model="select"
               placeholder="筛选条件"
               style="width: 110px"
+              :disabled="true"
             >
               <el-option label="Restaurant" value="1"></el-option>
               <el-option label="Order No." value="2"></el-option>

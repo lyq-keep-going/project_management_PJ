@@ -1,5 +1,5 @@
 <template>
-    <el-tabs @tab-click="handleClick" tab-position="left">
+    <el-tabs @tab-click="handleClick" tab-position="left" type="border-card">
         <el-tab-pane label="个人信息" id="Information">
             <Information />
         </el-tab-pane>
@@ -64,8 +64,8 @@ export default {
     display: block;
     position: fixed;
     left: 0;
-    top: 60px;
     bottom: 0;
+    top: 62px;
 }
 .el-tabs__content {
     margin-left: 100px;
