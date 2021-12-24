@@ -28,7 +28,7 @@ Component({
             }
         },{
             content: "况必两整定南已部按号结外传定色以。验果存军写消类和养知大山领九须也。",
-            id: 245,
+            id: 246,
             issueTime: "2015-03-18 14:42:10",
             parentId: "245",
             state: 0,
@@ -45,6 +45,9 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+       handleReply(e){
+           console.log(e)
+           this.triggerEvent('replyButtonClicked', e.currentTarget.dataset.user,{bubbles:true});
+       } 
     }
 })

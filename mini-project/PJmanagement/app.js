@@ -1,6 +1,6 @@
 // app.js
 App({
-  onLaunch() {
+  onLaunch() { 
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -15,9 +15,9 @@ App({
   },
   globalData: {
     userInfo: {
-      token : "frqgehgerg",
+      token : "",
       tokenHead : "Bearer"
     },
-    host:'mock.fitymistudio.cn'
+    host:'bbs.fitymistudio.cn'
   }
 })

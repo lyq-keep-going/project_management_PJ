@@ -1,8 +1,10 @@
 /* pages/trade/trade.wxss */
 button{
-    background-color: rgba(255,160,122, 20%);
+    background-color: rgba(255,160,122);
     color: black;
     margin-top: 30rpx;
+    position: fixed;
+    bottom: 40rpx;
 }
 
 .tab{
@@ -28,3 +30,46 @@ button{
     align-items: center;
     padding: 50rpx 0rpx;
 }
+
+.outer1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.outer1 view{
+    border: #FFA07A 1rpx solid;
+    border-radius: 10rpx;
+    padding: 5rpx 20rpx;
+    margin-top: 50rpx;
+    margin-bottom: 20rpx;
+}
+
+.ppt{
+    color: #FFA07A;
+}
+
+.book{
+    color: #FFA07A;
+    margin-right: 50rpx;
+}
+
+.notes{
+    color: #FFA07A;
+    margin-left: 50rpx;
+}
+
+.isActive{
+    background-color: #FFA07A;
+    color: #ffffff;
+}
+
+.upload{
+    height: 100rpx;
+    width: 90rpx;
+    position: fixed;
+    bottom: 30rpx;
+    right: 30rpx;
+}
+

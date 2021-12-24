@@ -9,4 +9,11 @@
     <view class="date">{{main_topic.issueTime}}</view>
 </view>
 
-<post_reply wx:for="{{reply}}" reply_info="{{item}}" wx:if="{{item.state != -1}}"></post_reply>
+<post_reply wx:for="{{reply}}" reply_info="{{item}}" wx:if="{{item.state != -1}}" bindreplyButtonClicked="onReplyClicked" wx:key="index"></post_reply>
+
+<view class="reply_input" wx:if="{{isReplying}}">
+    <image src="https://z3.ax1x.com/2021/11/27/om2yC9.png" class="delete"  bindtap="closeReplyWindow"></image>
+    <input placeholder="请输入内容..." bindinput="getReply"/>
+    <view class="send" bindtap="send_reply">发送</view>
+</view>
+ 

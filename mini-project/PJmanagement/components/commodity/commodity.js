@@ -7,6 +7,9 @@ Component({
         single_commodity:{
             type:Object,
             value:{}
+        },
+        index:{
+            type:Number
         }
     },
 
@@ -15,12 +18,15 @@ Component({
      */
     data: {
         translation_dict:{
-            seller:"卖家",
-            bookname:"书名",
+            name:"书名",
             author:"作者",
             publisher:"出版社",
-            new_degree:"成色",
-            price:"价格"
+            newDegree:"成色",
+            price:"价格",
+            coverPercentage:"笔记完整程度",
+            singlePrint: "是否单面打印",
+            paperSize: "纸张大小",
+            chapters:"所含章节"
         }
     },  
 
@@ -28,6 +34,11 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        enterCommodity(e){
+            var json_single_commodity = JSON.stringify(this.data.single_commodity);
+            wx.navigateTo({
+              url: '../../pages/commodity_detail/commodity_detail?single_commodity=' + json_single_commodity,
+            });
+        }
     }
 })
