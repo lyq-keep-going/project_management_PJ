@@ -2,13 +2,12 @@
     <el-card class="courseCard" shadow="hover">
         <div>
             <el-carousel>
-                <el-carousel-item v-for="item in 4" :key="item">
-                    <img src="../assets/logo.png" />
+                <el-carousel-item v-for="item in info.pictures" :key="item">
+                    <img :src="item.url" />
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <h3>课程：{{ info.lesson.lessonName }}</h3>
-        <h4>书籍：{{ info.bookName }}</h4>
+        <h4>《{{ info.name }}》</h4>
 
         <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
         <el-dialog v-model="dialogVisible" title="详细信息" width="80%">
@@ -21,7 +20,7 @@
                             <el-form-item label="课程名称">{{ info.lesson.lessonName }}</el-form-item>
                         </el-col>
                         <el-col :span="12">
-                            <el-form-item label="书籍名称">{{ info.name }}</el-form-item>
+                            <el-form-item label="书籍名称">《{{ info.name }}》</el-form-item>
                         </el-col>
                     </el-row>
 

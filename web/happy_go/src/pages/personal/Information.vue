@@ -67,7 +67,7 @@ export default {
 .content {
     width: 90%;
     margin: auto;
-    padding: 20px;
+    min-height: calc(100vh - 93px);
 }
 
 .info {

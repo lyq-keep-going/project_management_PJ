@@ -8,11 +8,12 @@
             </el-carousel>
         </div>
 
-        <h3>课程名称：{{ info.lessonName }}</h3>
+        <h3>{{ info.lessonName }}</h3>
 
         <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
+
         <div style="text-align: left;">
-            <el-dialog v-model="dialogVisible" title="详细信息" width="60%">
+            <el-dialog v-model="dialogVisible" :title="info.lessonName" width="60%">
                 <div>
                     <el-form label-width="80px" :model="info" label-position="left">
                         <el-form-item label="课程名称">{{ info.lessonName }}</el-form-item>
@@ -21,6 +22,7 @@
                         <el-form-item label="开课学期">{{ info.semester }}</el-form-item>
                         <el-form-item label="课程学分">{{ info.credit }}</el-form-item>
                     </el-form>
+                    <el-button type="primary" @click="seeDetail(info.id)">课程讨论页面</el-button>
                 </div>
             </el-dialog>
         </div>
@@ -41,7 +43,14 @@ export default {
         }
     },
     methods: {
-
+        seeDetail(_id) {
+            this.$router.push({
+                name: "CourseDetail",
+                params: {
+                    id: _id,
+                },
+            });
+        },
     },
 }
 </script>

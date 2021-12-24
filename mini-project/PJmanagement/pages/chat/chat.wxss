@@ -1,5 +1,9 @@
 /* pages/chat/chat.wxss */
 
+page{
+    height: 100%;
+}
+
 .solid-bottom {
     padding-left: 30rpx;
 }

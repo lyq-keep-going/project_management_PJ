@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <el-row :gutter="20">
-            <el-col :span="6" v-for="item in list">
+            <el-col :span="12" v-for="item in list">
                 <Course :info="item" />
             </el-col>
         </el-row>
@@ -47,7 +47,8 @@ export default {
     },
     methods: {
         getMyFavoriteCourse(pageNum, pageSize) {
-            let url = `/api/ums/myFavor/lesson?pageNum=${pageNum}&pageSize=${pageSize}`;
+            // https://bbs.fitymistudio.cn/api/ums/favorite?pageNum=2&pageSize=8
+            let url = `api/lms/favorite?pageNum=${pageNum}&pageSize=${pageSize}`;
 
             this.axios
                 .get(url)
