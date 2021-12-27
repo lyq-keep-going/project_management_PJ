@@ -1,0 +1,30 @@
+<!--pages/uploadCommodity/uploadCommodity.wxml-->
+<view class="outer">
+    <view class="outer1" wx:if="{{curr_active == 2}}">
+        <image src="https://s4.ax1x.com/2021/12/14/oxDm5D.png" bindtap="uploadPicture"></image>
+        <view class="item"><text>书名：</text><input bindinput="bookBindName"/></view>
+        <view class="item"><text>作者：</text><input bindinput="bookBindAuthor"/></view>
+        <view class="item"><text>出版社：</text><input bindinput="bookBindPublisher"/></view>
+        <view class="item"><text>成色：</text><input bindinput="bookBindNewDegree"/></view>
+        <view class="item"><text>详情：</text><input bindinput="bookBindContent"/></view>
+        <view class="item"><text>价格：</text><input bindinput="bookBindPrice"/></view>
+        <button class="submit" bindtap="upBookInfo">提交</button>
+    </view>
+    <view class="outer1" wx:if="{{curr_active == 3}}">
+        <image src="https://s4.ax1x.com/2021/12/14/oxDm5D.png" bindtap="uploadPicture"></image>
+        <view class="item"><text>笔记完整程度：</text><input bindinput="notesCoverPercentage"/></view>
+        <view class="item"><text>详情：</text><input bindinput="notesContent"/></view>
+        <view class="item"><text>价格：</text><input bindinput="notesPrice"/></view>
+        <button class="submit" bindtap="upNotesInfo">提交</button>
+    </view>
+    <view class="outer1" wx:if="{{curr_active == 1}}">
+        <image src="https://s4.ax1x.com/2021/12/14/oxDm5D.png" bindtap="uploadPicture"></image>
+        <view class="item"><text>所含章节：</text><input bindinput="pptChapters"/></view>
+        <view class="item"><text>纸张大小：</text><input bindinput="pptPaperSize"/></view>
+        <view class="item"><text>是否单面打印：</text><input bindinput="pptSinglePrint"/></view>
+        <view class="item"><text>成色：</text><input bindinput="pptNewDegree"/></view>
+        <view class="item"><text>详情：</text><input bindinput="pptContent"/></view>
+        <view class="item"><text>价格：</text><input bindinput="pptPrice"/></view>
+        <button class="submit" bindtap="upPptInfo">提交</button>
+    </view>
+</view>

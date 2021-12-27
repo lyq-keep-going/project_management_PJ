@@ -40,3 +40,41 @@
     flex-flow: row;
     align-items: center;
 }
+
+.reply_input{
+    position: fixed;
+    bottom: 0rpx;
+    background-color: white;
+    min-height: 100rpx;
+    width: 100%;
+    padding: 0rpx 20rpx 20rpx 20rpx;
+}
+
+.reply_input input{
+    background-color: rgba(220,220,220, 40%);
+    min-height: 70rpx;
+    border-radius: 20rpx;
+    padding: 10rpx;
+}
+
+.send{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50rpx;
+    width: 100rpx;
+    height: 50rpx;
+    background-color: rgba(255,160,122,40%);
+    border-radius: 20rpx;
+    box-shadow: 3rpx 3rpx 6rpx #CCCCCC;
+    display: inline-block;
+    margin-left: 85%;
+    margin-top: 20rpx;
+}
+
+.delete{
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 97%;
+    margin-bottom: 10rpx;
+    margin-top: 10rpx;
+}

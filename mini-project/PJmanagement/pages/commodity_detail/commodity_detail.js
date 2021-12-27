@@ -10,31 +10,35 @@ Page({
             'https://z3.ax1x.com/2021/11/26/oVKuwR.jpg',
             'https://z3.ax1x.com/2021/11/26/oVKKT1.jpg'
         ],
-        info:{
-            seller:"ahaah",
-            bookname:"《西游记》",
-            author:"施耐庵",
-            publisher:"商务印书馆",
-            new_degree:"全新",
-            price:58,
-            content:"多买了一本"
-        },
+        info:{},
         translate_dic:{
-            seller:"卖家",
-            bookname:"书名",
+            name:"书名",
             author:"作者",
             publisher:"出版社",
-            new_degree:"成色",
+            newDegree:"成色",
             price:"价格",
-            content:"描述"
+            coverPercentage:"笔记完整程度",
+            singlePrint: "是否单面打印",
+            paperSize: "纸张大小",
+            content:"描述",
+            chapters:"章节"
         }
+    },
+    
+    goToChat(e){
+        wx.navigateTo({
+          url: '../chat/chat',
+        })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            info: JSON.parse(options.single_commodity) 
+        })
+        console.log(this.data.info)
     },
 
     /**

@@ -1,16 +1,7 @@
 <!--components/commodity/commodity.wxml-->
-<view class="outer {{single_commodity.id % 4 == 0 || single_commodity.id % 4  == 3? 'color' : ''}}">
-<image src="{{single_commodity.picture}}"></image>
+<view class="outer {{index% 4 == 0 || index % 4  == 3? 'color' : ''}}" bindtap="enterCommodity">
+<image src="{{single_commodity.pictures[0]}}"></image>
 <view wx:for="{{single_commodity}}" wx:if="{{translation_dict[index]}}" class="text">{{translation_dict[index] + " : " + item}}</view>
 </view>
 
-<!-- {
-        id:0,
-        seller:"ahaah",
-        picture:obj
-        bookname:"",
-        author:"",
-        publisher:"",
-        new_degree:"全新",
-        price:58
-    } -->
+ 

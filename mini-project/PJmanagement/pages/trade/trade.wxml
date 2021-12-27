@@ -2,10 +2,15 @@
 <view class="outer">
     <detailed_info lessonName="{{lessonInfo.lessonName}}" lessonId="{{lessonInfo.lessonNumber}}" teacherName="{{lessonInfo.teacherName}}" semester="{{lessonInfo.semester}}" credit="{{lessonInfo.credit}}"></detailed_info>
     <tab_1 class="tab"  active_item="{{1}}" lessonId="{{lessonId}}"></tab_1>
-    <three_types></three_types>
-    <view class="display">
-        <commodity wx:for="{{commodity_list}}" single_commodity="{{item}}"></commodity>
+    <view class="outer1">
+        <view class="book {{curr_active == 2 ? 'isActive' : ''}}" bindtap="goToBook">二手书</view>
+        <view class="ppt {{curr_active == 1 ? 'isActive' : ''}}" bindtap="goToPPT">ppt</view>
+        <view class="notes {{curr_active == 3 ? 'isActive' : ''}}" bindtap="goToNote">笔记</view>
     </view>
-    <button><image src="{{collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{collected ? '取消收藏' : '收藏'}}</text></button>
+    <view class="display">
+        <commodity wx:for="{{commodity_list}}" single_commodity="{{item}}" index="{{index}}" wx:key="index"></commodity>
+    </view>
+    <button class="collect_lesson"><image src="{{collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{collected ? '取消收藏' : '收藏'}}</text></button>
 </view>
+<image src="https://s4.ax1x.com/2021/12/14/oxJepV.png" class="upload" bindtap="uploadCommodity"></image>
 

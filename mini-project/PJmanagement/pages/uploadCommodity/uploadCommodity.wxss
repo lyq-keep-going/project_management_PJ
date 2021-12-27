@@ -1,0 +1,41 @@
+/* pages/uploadCommodity/uploadCommodity.wxss */
+.outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30rpx;
+}
+
+.outer1{
+    border-radius: 50rpx;
+    box-shadow: 0rpx 0rpx 10rpx #cccccc;
+    width: 90%;
+    margin: 30rpx;
+    padding: 20rpx 40rpx;
+}
+
+.item input{
+    border-bottom: 1rpx solid rgba(220, 220, 220, 80%);
+    display: inline-block;
+    min-width: 70%;
+    margin-left: 10rpx;
+}
+
+.item{
+    margin: 40rpx 0rpx;
+    display: flex;
+    align-items: center;
+}
+
+.outer1 image{
+    width: 150rpx;
+    height: 150rpx;
+    padding: 20rpx;
+    background-color: rgba(220, 220, 220, 80%);
+    margin-top: 30rpx;
+}
+
+.submit{
+    background-color: rgba(255,160,122,40%);
+    margin-bottom: 30rpx;
+}

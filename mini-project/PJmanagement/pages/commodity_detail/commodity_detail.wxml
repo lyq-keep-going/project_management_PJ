@@ -1,14 +1,14 @@
 <!--pages/commodity_detail/commodity_detail.wxml-->
 <swiper autoplay circular indicator-dots interval="{{2000}}">
-<swiper-item wx:for="{{commodity_pic}}"><image src="{{item}}"></image></swiper-item>
+<swiper-item wx:for="{{info.pictures}}" wx:key="index"><image src="{{item.url}}"></image></swiper-item>
 </swiper>
 
 <view class="outer">
 <view class="info">
-    <view wx:for="{{info}}">{{translate_dic[index] + " : " + item}}</view>
+    <view wx:for="{{info}}" wx:if="{{translate_dic[index]}}" wx:key="index">{{translate_dic[index] + " : " + item}}</view>
 </view>
 
-<button>我想要</button>
+<button bindtap="goToChat">我想要</button>
 </view>
 
 

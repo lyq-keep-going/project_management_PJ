@@ -6,49 +6,32 @@ Page({
      * 页面的初始数据
      */
     data: {
-        commodity_list:[
-            {
-                id:0,
-                seller:"ahaah",
-                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
-                bookname:"《西游记》",
-                author:"施耐庵",
-                publisher:"商务印刷馆",
-                new_degree:"全新",
-                price:58
-            } ,
-            {
-                id:1,
-                seller:"ahaah",
-                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
-                bookname:"《西游记》",
-                author:"施耐庵",
-                publisher:"商务印刷馆",
-                new_degree:"全新",
-                price:58
-            } ,
-            {
-                id:2,
-                seller:"ahaah",
-                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
-                bookname:"《西游记》",
-                author:"施耐庵",
-                publisher:"商务印刷馆",
-                new_degree:"全新",
-                price:58
-            } ,
-            {
-                id:3,
-                seller:"ahaah",
-                picture:"https://z3.ax1x.com/2021/11/26/oVEkK1.jpg",
-                bookname:"《西游记》",
-                author:"施耐庵",
-                publisher:"商务印刷馆",
-                new_degree:"全新",
-                price:58
-            } 
-        ],
-        collected:true
+        commodity_list:[],
+        collected:true,
+        curr_active: 2,
+        lessonId: 0,
+        lessonInfo:{}
+    },
+
+    uploadCommodity(e){
+        wx.navigateTo({
+          url: '../uploadCommodity/uploadCommodity?curr_active=' + this.data.curr_active + '&lessonId=' + this.data.lessonId 
+        })
+    },
+
+    getCommodityInfo(type, lessonId){
+        wx.request({ 
+            url: 'https://' + app.globalData.host + '/api/cms/commodities?type=' + type + '&isMine=false&isSold=false&lessonId=' + lessonId,
+            header:{
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+            },
+            success:(result)=>{
+                console.log(result);
+                this.setData({
+                    commodity_list:result.data.data.list
+                })
+            }
+        });
     },
 
     getLessonInfo(){
@@ -62,8 +45,30 @@ Page({
                 this.setData({
                     lessonInfo: result.data.data
                 })
+                
             }
         });
+    },
+
+    goToBook(e){
+        this.setData({
+            curr_active: 2
+        });
+        this.getCommodityInfo(2, this.data.lessonId);
+    }, 
+
+    goToPPT(e){
+        this.setData({
+            curr_active: 1
+        });
+        this.getCommodityInfo(1, this.data.lessonId);
+    },
+
+    goToNote(e){
+        this.setData({
+            curr_active: 3
+        });
+        this.getCommodityInfo(3, this.data.lessonId);
     },
 
     /**
@@ -74,6 +79,7 @@ Page({
             lessonId: options.lessonId
         })
         this.getLessonInfo();
+        this.getCommodityInfo(2, this.data.lessonId)
     },
 
     /**

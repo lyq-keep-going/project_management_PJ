@@ -9,9 +9,52 @@ Page({
         hasComments: false,
         topicId: 0,
         main_topic:{},
-        reply:[]
+        reply:[],
+        isReplying:false,
+        curr_replying_user:{},
+        reply_data:''
     },
 
+    send_reply(e){
+        wx.request({ 
+            url: 'https://' + app.globalData.host +'/api/ums/topic',
+            header:{
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+            },
+            method:'POST',
+            data:{
+                topicId:''
+            },
+            success:(result)=>{
+                console.log(result);
+                this.setData({
+                    main_topic:result.data.data.list[0],
+                    reply: result.data.data.list.slice(1)
+                })
+            }
+        });
+    },
+
+    getReply(e){
+        console.log(e)
+        this.setData({
+            reply_data: e.detail.value
+        })
+    },
+
+    closeReplyWindow(e){
+        this.setData({
+            isReplying: false
+        });
+    },
+
+
+    onReplyClicked(e){
+        this.setData({
+            isReplying: true,
+            curr_replying_user: e.detail
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
