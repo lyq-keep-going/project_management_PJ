@@ -116,9 +116,15 @@ Page({
             },
             success: function(res) {
                 console.log(res.data)
-                that.setData({
-                    items: res.data.data.list
-                })
+                if(res.data.data.list.length==0){
+                    that.setData({
+                        items: null
+                    })
+                } else {
+                    that.setData({
+                        items: res.data.data.list
+                    })
+                }
             }
         })
     }

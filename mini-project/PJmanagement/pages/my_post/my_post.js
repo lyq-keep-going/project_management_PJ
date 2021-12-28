@@ -6,18 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        posts : [
-            {
-                title: "喵喵",
-                date: "22:20"
-            }, {
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵么么么么么么么么么么么",
-                date: "22:20"
-            }, {
-                title: "喵喵",
-                date: "22:20"
-            }
-        ]
+        posts : null,
+        items: null
     },
 
     /**
