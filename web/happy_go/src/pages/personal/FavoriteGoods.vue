@@ -5,7 +5,7 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
-        <div class="pagination" v-if="list == []">
+        <div class="pagination" v-if="list != []">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -15,6 +15,8 @@
                 background
             ></el-pagination>
         </div>
+
+        <el-empty description="还没有内容" v-if="list == []"></el-empty>
     </div>
 </template>
 <script>
@@ -43,7 +45,7 @@ export default {
                     let res = response.data.data
                     console.log(res);
 
-                    this.list = res.list
+                    this.list = res
                     this.total = res.total
                     this.totalPage = parseInt(res.totalPage)
                     this.pageNum = parseInt(res.pageNum)
