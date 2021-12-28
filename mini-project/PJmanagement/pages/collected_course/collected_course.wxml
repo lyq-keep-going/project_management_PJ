@@ -3,6 +3,7 @@
         <text class="cuIcon-titles text-orange"></text>收藏课程
     </view>
 </view>
+<view class="null-content" wx:if="{{!items}}">还没有内容哦，快去探索吧~</view>
 <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
 	
 			<view class="cu-item shadow">

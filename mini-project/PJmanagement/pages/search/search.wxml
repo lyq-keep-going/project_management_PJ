@@ -18,6 +18,7 @@
                 </view>
             </picker> -->
         </view>
+        <view class="null-content" wx:if="{{!items}}">没有相关的内容呢，换个搜索词吧~</view>
         <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
             
                     <view class="cu-item shadow">

@@ -6,21 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        messages : [
-            {
-                person: "喵喵",
-                content: "喵喵喵喵喵喵喵喵喵喵喵喵么么么么么",
-                date: "22:20"
-            }, {
-                person: "喵喵",
-                content: "喵喵喵喵喵喵喵喵喵喵喵喵么么么么么",
-                date: "22:20"
-            }, {
-                person: "喵喵",
-                content: "喵喵喵喵喵喵喵喵喵喵喵喵么么么么么",
-                date: "22:20"
-            }
-        ]
+        messages : null
     },
 
     /**
