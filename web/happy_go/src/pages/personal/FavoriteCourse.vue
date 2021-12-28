@@ -5,7 +5,7 @@
                 <Course :info="item" />
             </el-col>
         </el-row>
-        <div class="pagination">
+        <div class="pagination" v-if="list == []">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -56,12 +56,15 @@ export default {
                     let res = response.data.data
                     console.log(res);
 
-                    this.list = res.list
+                    this.list = res
                     this.total = res.total
                     this.totalPage = parseInt(res.totalPage)
                     this.pageNum = parseInt(res.pageNum)
+
+                    console.log(this.list);
                 })
                 .catch((error) => console.log(error));
+
         },
         handlePageClick(nextPage) {
             this.getMyFavoriteCourse(nextPage, this.pageSize)

@@ -27,7 +27,7 @@
         </el-card>
     </div>
 
-    <div class="pagination">
+    <div class="pagination" v-if="list == []">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"

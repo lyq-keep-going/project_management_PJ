@@ -5,26 +5,26 @@
                 <el-col :span="4">
                     <el-row>
                         <el-col :span="24">
-                            <el-avatar shape="square" :size="70" :src="item.sender.avatar"></el-avatar>
+                            <el-avatar shape="square" :size="70" :src="item.interlocutor.avatar"></el-avatar>
                         </el-col>
                         <el-col :span="24">
                             <el-badge
-                                :is-dot="!item.last_message.read"
+                                :is-dot="!item.lastMessage.read"
                                 class="item"
-                            >{{ item.sender.username }}</el-badge>
+                            >{{ item.interlocutor.username }}</el-badge>
                         </el-col>
                     </el-row>
                 </el-col>
                 <el-col :span="16">
                     <p style="text-align: left;">
-                        {{ item.last_message.content }}
-                        <el-tag type="info">{{ item.last_message.issueTime }}</el-tag>
+                        {{ item.lastMessage.content }}
+                        <el-tag type="info">{{ item.lastMessage.issueTime }}</el-tag>
                     </p>
                 </el-col>
                 <el-col :span="4">
                     <el-button
                         type="primary"
-                        @click="dialogVisible = true, getDialogue(item.sender.username, item.sender.id, messagePageNum, messagePageSize)"
+                        @click="dialogVisible = true, getDialogue(item.interlocutor.username, item.interlocutor.id, messagePageNum, messagePageSize)"
                     >展开</el-button>
                 </el-col>
             </el-row>
@@ -49,7 +49,7 @@
         </el-input>
     </el-dialog>
 
-    <div class="pagination">
+    <div class="pagination" v-if="list != []">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"
