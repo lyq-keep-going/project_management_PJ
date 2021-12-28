@@ -9,21 +9,9 @@ Page({
         inputValue: "",
         search_img: "https://z3.ax1x.com/2021/11/29/oMUzm4.png",
         font_img: "https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-        filter: "",
+        filter: " ",
         items: [
-            {
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
-                price:"58"
-            },{
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
-                price:"58"
-            },{
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵",
-                price:"58"
-            },
+
         ],
         array: ['水课', '干货满满', '老师nice', '有小组作业'],
         index: -1,
@@ -35,17 +23,16 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://" + app.globalData.host +"/api/lms/lessonList",
+            url: "https://" + app.globalData.host +"/api/lms/lessonList?filter=hot",
             method: 'GET',
             data: {
-                filter: that.data.filter,
-                keys: that.data.inputValue
             },
             header: {
                 'content-type': 'application/json', // 默认值
                 'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
+                console.log(res.data)
                 that.setData({
                     items: res.data.data.list
                 })
@@ -115,7 +102,25 @@ Page({
             inputValue: e.detail.value,
             filter: "query"
         })
-        this.onLoad()
+        var that = this
+        wx.request({
+            url: "https://" + app.globalData.host +"/api/lms/lessonList",
+            method: 'GET',
+            data: {
+                filter: that.data.filter,
+                keys: that.data.inputValue
+            },
+            header: {
+                'content-type': 'application/json', // 默认值
+                'Authorization': wx.getStorageSync('token')
+            },
+            success: function(res) {
+                console.log(res.data)
+                that.setData({
+                    items: res.data.data.list
+                })
+            }
+        })
     }
 
 })
