@@ -3,7 +3,7 @@
 <detailed_info lessonName="{{lessonInfo.lessonName}}" lessonId="{{lessonInfo.lessonNumber}}" teacherName="{{lessonInfo.teacherName}}" semester="{{lessonInfo.semester}}" credit="{{lessonInfo.credit}}"></detailed_info>
 <tab_1 class="tab" active_item="{{0}}" lessonId="{{lessonId}}"></tab_1>
 <view class="tags">
-    <tag wx:for="{{tags}}" class="tag" tagname="{{item.tagName}}" thumb_up_num="{{item.positive}}" thumb_down_num="{{item.negative}}" wx:key="id"></tag>
+    <tag wx:for="{{tags}}" class="tag" tagname="{{item.tagName}}" thumb_up_num="{{item.positive}}" thumb_down_num="{{item.negative}}" thumb_up_fill="{{item.positiveSelected}}" thumb_down_fill="{{item.negativeSelected}}" lessonId="{{lessonInfo.id}}" wx:key="id"></tag>
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
