@@ -11,6 +11,7 @@ page {
     flex-direction: column;
     flex-grow: 1;
     margin-top: 100rpx;
+    background-color: transparent;
 }
 
 .cuIcon-profile {

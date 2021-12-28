@@ -21,7 +21,7 @@ Page({
         })
         console.log(options.id)
         var that = this
-        setInterval(function (){
+        // setInterval(function (){
             wx.request({
                 url: "https://" + app.globalData.host  + "/api/mms/msgList",
                 method: 'GET',
@@ -40,7 +40,7 @@ Page({
                     })
                 }
             })
-        },1000)
+        // },3000)
     },
 
     /**
