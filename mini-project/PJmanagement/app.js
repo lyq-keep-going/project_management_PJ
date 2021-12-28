@@ -18,6 +18,6 @@ App({
       token : "",
       tokenHead : "Bearer"
     },
-    host:'bbs.fitymistudio.cn'
+    host:'mock.fitymistudio.cn'
   }
 })

@@ -13,17 +13,46 @@ Page({
         curr_page: 1,
         last_page:1000,
         lessonId:6,//假的，要改的
-        lessonInfo:{
-            id:6,
-            collected: true,
-            pictures: [
-                "https://url.cy/X3pCA3"
-            ],
-            lessonName: "项目管理",
-            lessonNumber: "SOFTXXXX",
-            teacherName: "高晓桐",
-            semester: "秋季",
-            credit: 5
+        lessonInfo:{}
+    },
+
+    handleCollect(e){
+        if(this.data.lessonInfo.collected){
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'DELETE',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: false
+                    })
+                    wx.showToast({
+                      title: '取消收藏成功',
+                    })
+                }
+            });
+        }else{
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'POST',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: true
+                    });
+                    wx.showToast({
+                      title: '收藏成功',
+                    })
+                }
+            });
         }
     },
 
@@ -32,7 +61,7 @@ Page({
           url: '../post_detail/post_detail?topicId=' + e.target.dataset.topicid,
         })
         console.log(e.target.dataset);
-    },
+    }, 
 
     getLessonInfo(){
         wx.request({ 
@@ -69,7 +98,7 @@ Page({
                 })
             }
           });
-    },
+    }, 
 
     getHotestTags(pageNum, pageSize, lessonId){
         wx.request({ 
@@ -78,6 +107,7 @@ Page({
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(result)=>{
+                console.log(result);
                 this.setData({
                     tags: result.data.data.list
                 })

@@ -14,7 +14,7 @@
         <image src="https://s4.ax1x.com/2021/12/13/oLyJ6P.png" bindtap="onNextPage"></image>
     </view>
 </view>
-<button><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
+<button bindtap="handleCollect"><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
 
 </view>
 

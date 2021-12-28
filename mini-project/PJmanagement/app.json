@@ -1,8 +1,8 @@
 {
     "pages": [
-        "pages/login/login",
         "pages/discussion/discussion", 
         "pages/trade/trade",
+        "pages/login/login",
         "pages/uploadCommodity/uploadCommodity",
         "pages/post_detail/post_detail",
         "pages/home/home",
