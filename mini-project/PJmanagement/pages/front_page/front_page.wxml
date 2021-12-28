@@ -16,7 +16,7 @@
             
             
                     <view class="cu-item shadow">
-                        <navigator url="/pages/discussion/discussion?id={{item.id}}">
+                        <navigator url="/pages/discussion/discussion?lessonId={{item.lessonId}}">
                         <view class="image">
                             <image src="{{item.pictures[0].src}}"mode="widthFix"></image>
                         </view>

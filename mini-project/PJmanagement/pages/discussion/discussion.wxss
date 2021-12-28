@@ -74,3 +74,7 @@ button{
 .scroll_pages :last-child{
     margin-left: 200rpx;
 }
+
+.entry_list_box{
+    min-height: 400rpx;
+}

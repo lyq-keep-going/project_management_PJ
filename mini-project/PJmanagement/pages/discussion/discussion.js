@@ -65,7 +65,7 @@ Page({
 
     getLessonInfo(){
         wx.request({ 
-            url: 'https://' + app.globalData.host + '/api/lms/info?id=' + this.data.lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/info?lessonId=' + this.data.lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -140,7 +140,7 @@ Page({
         this.setData({
             curr_page: that.data.curr_page - 1
         })
-        this.sendPostRequest(this.data.curr_page, 5);
+        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
     },
 
     onNextPage(e){
@@ -155,7 +155,7 @@ Page({
         this.setData({
             curr_page: that.data.curr_page + 1
         })
-        this.sendPostRequest(this.data.curr_page, 5);
+        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
     },
 
     hideScreenHandler(e){
@@ -174,8 +174,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            lessonId: options.lessonId
+        });
         this.getLessonInfo();
-        this.sendPostRequest(1, 5);
+        this.sendPostRequest(1, 5, this.data.lessonId);
         this.getHotestTags(1, 10, this.data.lessonId);
     },
  

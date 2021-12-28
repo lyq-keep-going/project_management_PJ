@@ -7,7 +7,9 @@
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
-    <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id" data-topicId="{{item.id}}" bindtap="enterPost"></entry>
+    <view class="entry_list_box">
+        <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id" data-topicId="{{item.id}}" bindtap="enterPost"></entry>
+    </view>
     <view class="scroll_pages">
         <image src="https://s4.ax1x.com/2021/12/13/oLyGlt.png" bindtap="onPreviousPage"></image>
         <image src="https://z3.ax1x.com/2021/11/27/om5E4S.png" class="bottom_add" bindtap="addPost"></image>

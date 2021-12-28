@@ -79,41 +79,71 @@ Page({
     },
 
     upPptInfo(e){
-        wx.uploadFile({ 
-            filePath: this.data.tempFilePath,
-            name: 'picture',
-            url: 'https://' + app.globalData.host + '/api/cms/ppts',
+        wx.request({
+            url: 'https://' + app.globalData.host + '/api/oss/policy',
             header:{
-                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
-                "Content-Type": "multipart/form-data"
-            },
-            formData:{
-                'lessonId': this.data.lessonId,
-                'chapters':this.data.ppt_info.chapters,
-                'paperSize':this.data.ppt_info.paperSize,
-                'singlePrint': this.data.ppt_info.singlePrint,
-                'newDegree': this.data.ppt_info.newDegree,
-                'price': this.data.ppt_info.price,
-                'content': this.data.ppt_info.content
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(res)=>{
-                console.log(res)
-                if(res.data.code == 200){
-                    wx.showToast({
-                    title: '上传成功',
-                    })
-                }else{
-                    wx.showToast({
-                        title: '上传失败',
-                        icon:'error'
-                    })
-                }
-                
-            },
-            fail:(res)=>{
-                console.log(res)
+                console.log(res);
+                var signature = res.data;
+                var filename = this.data.tempFilePath.substring(this.data.tempFilePath.lastIndexOf('/') + 1);
+                console.log(filename);
+                wx.uploadFile({ 
+                    filePath: this.data.tempFilePath,
+                    name: 'file',
+                    url: 'https://doughit.oss-cn-shanghai.aliyuncs.com',
+                    header:{
+                        "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                        "Content-Type": "multipart/form-data"
+                    },
+                    formData:{
+                        ossaccessKeyId:signature.accessKeyId,
+                        policy:signature.policy,
+                        signature: signature.signature,
+                        dir:signature.dir,
+                        host:signature.host,
+                        callback:signature.callback,
+                        key:signature.dir +'/'+ filename
+                    },
+                    success:(res)=>{
+                        console.log(res)
+                        wx.request({
+                            url: 'https://' + app.globalData.host + '/api/cms/ppts',
+                            method:'POST',
+                            data:{
+                                'filename':res.data.filename,
+                                'lessonId': this.data.lessonId,
+                                'chapters':this.data.ppt_info.chapters,
+                                'paperSize':this.data.ppt_info.paperSize,
+                                'singlePrint': this.data.ppt_info.singlePrint,
+                                'newDegree': this.data.ppt_info.newDegree,
+                                'price': this.data.ppt_info.price,
+                                'content': this.data.ppt_info.content
+                            },
+                            success:(res)=>{
+                                if(res.data.code == 200){
+                                    wx.showToast({
+                                    title: '上传成功',
+                                    })
+                                }else{
+                                    wx.showToast({
+                                        title: '上传失败',
+                                        icon:'error'
+                                    })
+                                }
+                            }
+                        });
+                        
+                    },
+                    fail:(res)=>{
+                        console.log(res)
+                    }
+                });
             }
         })
+
+
     },
 
     notesCoverPercentage(e){
