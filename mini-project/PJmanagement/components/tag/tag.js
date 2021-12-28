@@ -49,14 +49,15 @@ Component({
         handle_thumb_up_tap(e){
             wx.request({ 
                 url: 'https://' + app.globalData.host + '/api/lms/tag',
-                method:'POST',
+                method:'PUT',
                 header:{
-                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type":"application/json"
                 },
                 data:{
                     lessonId: this.properties.lessonId,
                     tagName: this.properties.tagname,
-                    isPositive: true
+                    evaluate: 1
                 },
                 success:(result)=>{
                     console.log(result);
@@ -77,14 +78,14 @@ Component({
         handle_thumb_down_tap(e){
             wx.request({ 
                 url: 'https://' + app.globalData.host + '/api/lms/tag',
-                method:'POST',
+                method:'PUT',
                 header:{
                     "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                 },
                 data:{
                     lessonId: this.properties.lessonId,
                     tagName: this.properties.tagname,
-                    isPositive: false
+                    evaluate: 0
                 },
                 success:(result)=>{
                     console.log(result);

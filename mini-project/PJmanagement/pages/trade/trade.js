@@ -19,7 +19,11 @@ Page({
                 url: 'https://' + app.globalData.host + '/api/lms/favorite',
                 method:'DELETE',
                 header:{
-                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
                 },
                 success:(result)=>{
                     console.log(result);
@@ -35,9 +39,13 @@ Page({
         }else{
             wx.request({ 
                 url: 'https://' + app.globalData.host + '/api/lms/favorite',
-                method:'POST',
+                method:'GET',
                 header:{
-                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
                 },
                 success:(result)=>{
                     console.log(result);

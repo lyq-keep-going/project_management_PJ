@@ -22,7 +22,11 @@ Page({
                 url: 'https://' + app.globalData.host + '/api/lms/favorite',
                 method:'DELETE',
                 header:{
-                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
                 },
                 success:(result)=>{
                     console.log(result);
@@ -40,7 +44,11 @@ Page({
                 url: 'https://' + app.globalData.host + '/api/lms/favorite',
                 method:'POST',
                 header:{
-                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id:this.data.lessonId
                 },
                 success:(result)=>{
                     console.log(result);
@@ -135,6 +143,7 @@ Page({
                 title: '已经是第一页了',
                 icon: 'none'
             })
+            return;
         }
         var that = this;
         this.setData({
@@ -150,6 +159,7 @@ Page({
                 icon: 'none',  //弹框模式
                 duration: 2000    //弹框显示时间
             })
+            return;
         }
         var that = this;
         this.setData({

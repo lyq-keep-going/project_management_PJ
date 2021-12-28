@@ -5,8 +5,8 @@
 <view class="usename">{{reply_info.user.username}}</view>
 </view>
 <view class="content">{{reply_info.content}}</view>
-<view class="user_reply" wx:if="{{children}}">
-    <view wx:for="{{children}}" wx:key="index">
+<view class="user_reply" wx:if="{{reply_info.children && reply_info.children.length != 0}}">
+    <view wx:for="{{reply_info.children}}" wx:key="index">
         <view bindtap="handleReply" data-user="{{item.user}}"><text class="reply_name">{{item.user.username}} </text><text> {{item.content}}</text></view>
         <view class="date">{{item.issueTime}}</view>
     </view> 

@@ -8,6 +8,9 @@ Component({
         tags:{
             type:Array,
             value:[]
+        },
+        lessonNumber:{
+            type:String
         }
     },
 
@@ -40,7 +43,7 @@ Component({
                     "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                 },
                 data:{
-                    lessonId: this.data.lessonId,
+                    lessonNumber: this.properties.lessonNumber,
                     tagName: this.data.default_tag,
                     isPositive: true
                 },
