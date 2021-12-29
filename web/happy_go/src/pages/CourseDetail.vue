@@ -108,11 +108,85 @@
 
         <el-main class="right"
           ><h2>交易区</h2>
-          <el-carousel :interval="4000" type="card" height="200px">
-            <el-carousel-item v-for="obj in list_left" :key="obj">
-              <h3 class="medium">{{ obj.title }}</h3>
-            </el-carousel-item>
-          </el-carousel>
+         <el-container>
+      <el-main class="right" id="main_top"
+        ><h2>正在热购</h2>
+        <el-carousel :interval="4400" type="card" height="330px">
+          <el-carousel-item class="item">
+            <h3 class="medium">二手书</h3>
+            <div class="top_card">
+              <el-row>
+                <el-col v-for="obj in list_book" :key="obj" :span="8">
+                  <el-card>
+                    <!-- <img src="../assets/book.png" class="top_image" />-->
+
+                    <div>
+                      <span>{{ obj.bookName }}</span>
+                      <span>{{ obj.author }}</span>
+                      <p>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
+                      </p>
+                    </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+              <div class="top_bottom">
+                <el-button type="text" class="button" @click="jumpBook()">查看更多</el-button>
+              </div>
+            </div>
+          </el-carousel-item>
+
+          <el-carousel-item class="item">
+            <h3 class="medium">PPT</h3>
+            <div class="top_card">
+              <el-row>
+                <el-col v-for="obj in list_ppt" :key="obj" :span="8">
+                  <el-card>
+                    <!-- <img src="../assets/book.png" class="top_image" />-->
+
+                    <div>
+                      <span>{{ obj.lesson.lessonName }}</span>
+                      <p>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
+                      </p>
+                    </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+              <div class="top_bottom">
+                <el-button type="text" class="button" @click="jumpPPT()">查看更多</el-button>
+              </div>
+            </div>
+          </el-carousel-item>
+
+          <el-carousel-item class="item">
+            <h3 class="medium">笔记</h3>
+            <div class="top_card">
+              <el-row>
+                <el-col v-for="obj in list_note" :key="obj" :span="8">
+                  <el-card>
+                    <!-- <img src="../assets/book.png" class="top_image" />-->
+
+                    <div>
+                      <span>{{ obj.lesson.lessonName }}</span>
+                      <p>
+                        <span style="color: rgb(13, 22, 255)">售价：</span>
+                        <span>{{ obj.price }}</span>
+                      </p>
+                    </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+              <div class="top_bottom">
+                <el-button type="text" class="button" @click="jumpNote()">查看更多</el-button>
+              </div>
+            </div>
+          </el-carousel-item>
+        </el-carousel>
+      </el-main>
+    </el-container>
         </el-main>
       </el-container>
     </el-container>
@@ -136,7 +210,13 @@ export default {
 
       list_right: "",
 
-      list_left: [{ title: "二手书" }, { title: "PPT" }, { title: "笔记" }],
+ 
+      list_title: [{ title: "二手书" }, { title: "PPT" }, { title: "笔记" }],
+      list_left: "",
+      list_book: "",
+      list_ppt: "",
+      list_note: "",
+
       list_discuss: [
         {
           title: "",
@@ -200,7 +280,7 @@ export default {
         method: "get",
         url: url,
         params: {
-          id: _id,
+          lessonId: _id,
         },
         headers: {
           Authorization: "BearerJhbG",
@@ -256,14 +336,77 @@ export default {
         })
         .catch((error) => console.log(error));
     },
+
+        getTop() {
+      this.getBook();
+      this.getPPT();
+      this.getNote();
+    },
+
+    getBook() {
+      var url = "/api/cms/books";
+
+      axios({
+        method: "get",
+        url: url,
+        params: { pageNum: 1, pageSize: 8 },
+        headers: {
+          Authorization: "BearerJhbG",
+        },
+      })
+        .then((response) => {
+          this.list_book = response.data.data.list.slice(0, 3);
+          console.log(this.list_book);
+        })
+        .catch((error) => console.log(error));
+    },
+
+    getPPT() {
+      var url = "/api/cms/ppts";
+
+      axios({
+        method: "get",
+        url: url,
+        params: { pageNum: 1, pageSize: 8 },
+        headers: {
+          Authorization: "BearerJhbG",
+        },
+      })
+        .then((response) => {
+          this.list_ppt = response.data.data.list.slice(0, 3);
+        })
+        .catch((error) => console.log(error));
+    },
+
+    getNote() {
+      var url = "/api/cms/noteses";
+
+      axios({
+        method: "get",
+        url: url,
+        params: { pageNum: 1, pageSize: 8 },
+        headers: {
+          Authorization: "BearerJhbG",
+        },
+      })
+        .then((response) => {
+          this.list_note = response.data.data.list.slice(0, 3);
+        })
+        .catch((error) => console.log(error));
+    },
   },
 
   mounted() {
     this.loadDiscuss();
     //console.log("mounted!");
-    this.id = 29;
-    // if (this.$route.params.id != null) this.id = this.$route.params.id;
-    this.loadDetail(this.id);
+  // this.lessonId = 29;
+  
+  this.lessonId = this.$route.params.id;
+    console.log(this.$route.params.id);
+
+    this.loadDetail(this.lessonId);
+
+    this.getTop();
   },
 };
 </script>
@@ -299,7 +442,7 @@ export default {
 .left {
   font: "PingFang SC";
 
-  width: 60%;
+  width: 35%;
   padding: 20px;
   margin: 10px;
   background-color: #f7f2e0;
@@ -330,5 +473,23 @@ export default {
 
 .el-collapse-item__header {
   padding-left: 10px;
+}
+
+.top_card .el-card img {
+  width: 40%;
+}
+.top_card .el-card__body {
+  padding: 5px;
+}
+.top_card .el-card {
+  text-align: center;
+  --el-card-bg-color: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 120px;
+  height: 180px;
+}
+.top_card .el-row {
+  flex-wrap: inherit;
 }
 </style>

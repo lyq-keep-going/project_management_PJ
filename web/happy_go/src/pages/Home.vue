@@ -107,7 +107,7 @@
             :body-style="{ padding: '0px' }"
             class="card"
             shadow="hover"
-            @click.native="seeDetail(obj.id)"
+            @click.native="seeDetail(obj.lessonId)"
           >
             <img src="../assets/book.png" class="image" />
 
@@ -127,7 +127,7 @@
                 <span>{{ obj.teacherName }}</span>
               </p>
               <div class="bottom">
-                <el-button type="text" class="button" @click="seeDetail(obj.id)">查看详情</el-button>
+                <el-button type="text" class="button" @click="seeDetail(obj.lessonId)">查看详情</el-button>
               </div>
             </div>
           </el-card>
@@ -198,7 +198,7 @@ export default {
     },
 
     getNote() {
-      var url = "/api/cms/notes";
+      var url = "/api/cms/noteses";
 
       axios({
         method: "get",
@@ -210,6 +210,7 @@ export default {
       })
         .then((response) => {
           this.list_note = response.data.data.list.slice(0, 3);
+          console.log(this.list_note);
         })
         .catch((error) => console.log(error));
     },
@@ -232,7 +233,7 @@ export default {
         .then((response) => {
           //this.list = response.data.data.list.slice(0, 4);
           this.list = response.data.data.list;
-          //console.log(response.data.data);
+         // console.log(response.data.data);
         })
         .catch((error) => console.log(error));
     },
