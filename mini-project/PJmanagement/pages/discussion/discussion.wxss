@@ -3,10 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top:50rpx;
-    position: relative;
-    z-index: 0;
-    padding-bottom: 50rpx;
+    padding:50rpx 0rpx;
 }   
 
 .tab{
@@ -45,6 +42,8 @@ button{
     color: black;
     position: fixed;
     bottom: 40rpx;
+    text-align: center;
+    height: 70rpx;
 }
 
 
@@ -77,6 +76,12 @@ button{
     margin-left: 200rpx;
 }
 
-.entry_list_box{
-    min-height: 400rpx;
+
+
+.front_page{
+    position: fixed;
+    bottom: 40rpx;
+    left: 50rpx;
+    width: 100rpx;
+    height: 100rpx;
 }

@@ -28,6 +28,31 @@ Page({
             },
             success:(result)=>{
                 console.log(result);
+                wx.showToast({
+                  title: '回复成功',
+                  success:()=>{
+                      this.setData({
+                          isReplying:false
+                      });
+                      if(this.data.curr_replying_id == this.data.topicId){
+                          //回复的是主贴
+                          this.setData({
+                              reply: this.data.reply.concat(result.data.data)
+                          })
+                      }else{
+                          var tmp = this.data.reply;
+                          for(var i = 0; i < this.data.reply.length; i++){
+                                if(this.data.reply[i].id == this.data.curr_replying_id){
+                                    tmp[i].children.push(result.data.data)
+                                    console.log(tmp)
+                                    this.setData({
+                                        reply: tmp
+                                    })
+                                }
+                          }
+                      }
+                  }
+                })
             }
         });
     },

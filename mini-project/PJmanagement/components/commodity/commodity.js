@@ -24,7 +24,7 @@ Component({
             newDegree:"成色",
             price:"价格",
             coverPercentage:"笔记完整程度",
-            singlePrint: "是否单面打印",
+            singlePrintChinese: "是否单面打印",
             paperSize: "纸张大小",
             chapters:"所含章节"
         }

@@ -110,7 +110,7 @@
           ><h2>交易区</h2>
          <el-container>
       <el-main class="right" id="main_top"
-        ><h2>正在热购</h2>
+        > 
         <el-carousel :interval="4400" type="card" height="330px">
           <el-carousel-item class="item">
             <h3 class="medium">二手书</h3>

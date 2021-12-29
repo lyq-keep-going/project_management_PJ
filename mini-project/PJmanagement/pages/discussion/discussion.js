@@ -15,6 +15,12 @@ Page({
         lessonId:6,//假的，要改的
         lessonInfo:{}
     },
+    
+    goToFrontPage(e){
+        wx.switchTab({
+          url: '../front_page/front_page'
+        })
+    },
 
     handleCollect(e){
         if(this.data.lessonInfo.collected){

@@ -9,6 +9,7 @@
         </div>
 
         <h3>{{ info.lessonName }}</h3>
+        <h3>{{ info.lessonNumber }}</h3>
 
         <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
 
@@ -52,9 +53,9 @@ export default {
             });
         },
     },
-    mounted() {
-        console.log(this.info)
-    }
+    // mounted() {
+    //     console.log(this.info)
+    // }
 }
 </script>
 

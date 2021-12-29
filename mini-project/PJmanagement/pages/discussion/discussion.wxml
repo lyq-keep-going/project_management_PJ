@@ -7,7 +7,7 @@
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
-    <view class="entry_list_box">
+    <view>
         <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id" data-topicId="{{item.id}}" bindtap="enterPost"></entry>
     </view>
     <view class="scroll_pages">
@@ -16,9 +16,11 @@
         <image src="https://s4.ax1x.com/2021/12/13/oLyJ6P.png" bindtap="onNextPage"></image>
     </view>
 </view>
-<button bindtap="handleCollect"><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
 
+<image src="https://s4.ax1x.com/2021/12/29/TcToJH.png" class="front_page" bindtap="goToFrontPage"></image>
+<button bindtap="handleCollect"><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
 </view>
+
 
 <add_new_tag bind:hideScreen="hideScreenHandler" wx:if="{{!hide_add_tag}}" tags="{{candidate_tags}}" lessonNumber="{{lessonInfo.lessonNumber}}"></add_new_tag>
 

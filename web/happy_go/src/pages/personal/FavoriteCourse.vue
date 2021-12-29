@@ -56,14 +56,14 @@ export default {
                 .get(url)
                 .then((response) => {
                     let res = response.data.data
-                    console.log(res);
+                    // console.log(res);
 
-                    this.list = res
+                    this.list = res.list
                     this.total = res.total
                     this.totalPage = parseInt(res.totalPage)
                     this.pageNum = parseInt(res.pageNum)
 
-                    console.log(this.list);
+                    // console.log(this.list);
                 })
                 .catch((error) => console.log(error));
 
