@@ -27,7 +27,7 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
-        <div class="pagination" v-if="list == []">
+        <div class="pagination" v-if="list.length != 0">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -38,7 +38,7 @@
             ></el-pagination>
         </div>
 
-        <el-empty description="description" v-if="list == []"></el-empty>
+        <el-empty description="还没有内容" v-if="list.length == 0"></el-empty>
     </div>
 </template>
 <script>
@@ -80,10 +80,9 @@ export default {
                     this.total = res.total
                     this.totalPage = parseInt(res.totalPage)
                     this.pageNum = parseInt(res.pageNum)
-
-                    // console.log(this.list);
                 })
                 .catch((error) => console.log(error));
+
         },
         handlePageClick(nextPage) {
             this.getMySale(nextPage, this.pageSize)

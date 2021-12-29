@@ -15,7 +15,7 @@
                             </el-row>
                         </el-col>
                         <el-col :span="20">
-                            <h3>{{item.title == null?"[回帖]":"[主贴]"}}{{ item.title }}</h3>
+                            <h3>{{ item.title == null ? "[回帖]" : "[主贴]" }}{{ item.title }}</h3>
                         </el-col>
                     </el-row>
                 </div>
@@ -27,7 +27,7 @@
         </el-card>
     </div>
 
-    <div class="pagination" v-if="list == []">
+    <div class="pagination" v-if="list.length != 0">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"
@@ -37,6 +37,8 @@
             background
         ></el-pagination>
     </div>
+
+    <el-empty description="还没有内容" v-if="list.length == 0"></el-empty>
 </template>
 
 <script lang="ts">

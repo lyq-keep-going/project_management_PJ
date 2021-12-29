@@ -5,7 +5,7 @@
                 <Course :info="item" />
             </el-col>
         </el-row>
-        <div class="pagination" v-if="list != []">
+        <div class="pagination" v-if="list.length != 0">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -16,7 +16,7 @@
             ></el-pagination>
         </div>
 
-        <el-empty description="还没有内容" v-if="list == []"></el-empty>
+        <el-empty description="还没有内容" v-if="list.length == 0"></el-empty>
     </div>
 </template>
 <script>
