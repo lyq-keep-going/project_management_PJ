@@ -45,7 +45,7 @@ export default {
                     let res = response.data.data
                     console.log(res);
 
-                    this.list = res
+                    this.list = res.list
                     this.total = res.total
                     this.totalPage = parseInt(res.totalPage)
                     this.pageNum = parseInt(res.pageNum)

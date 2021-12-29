@@ -56,7 +56,7 @@ export default {
             this.axios
                 .get(url)
                 .then((response) => {
-                    console.log(response.data.data);
+                    // console.log(response.data.data);
                     let res = response.data.data
 
                     this.list = res.list
