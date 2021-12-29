@@ -52,7 +52,7 @@
         </el-input>
     </el-dialog>
 
-    <div class="pagination" v-if="list != []">
+    <div class="pagination" v-if="list.length != 0">
         <el-pagination
             :page-size="pageSize"
             layout="prev, pager, next"
@@ -62,6 +62,8 @@
             background
         ></el-pagination>
     </div>
+
+    <el-empty description="还没有内容" v-if="list.length == 0"></el-empty>
 </template>
 
 <script lang="ts">
