@@ -3,6 +3,7 @@
 <view class="main_outer">
     <image src="{{main_topic.user.avatar}}"></image>
     <text>{{main_topic.user.username}}</text>
+    <view class="reply_main" bindtap="onMainReplyClicked">回复</view>
 </view>
     <view class="title">{{main_topic.title}}</view>
     <view class="description">{{main_topic.content}}</view>

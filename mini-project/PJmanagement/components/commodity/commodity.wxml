@@ -1,7 +1,7 @@
 <!--components/commodity/commodity.wxml-->
 <view class="outer {{index% 4 == 0 || index % 4  == 3? 'color' : ''}}" bindtap="enterCommodity">
-<image src="{{single_commodity.pictures[0]}}"></image>
-<view wx:for="{{single_commodity}}" wx:if="{{translation_dict[index]}}" class="text">{{translation_dict[index] + " : " + item}}</view>
+<image src="{{single_commodity.filename}}"></image>
+<view wx:for="{{single_commodity}}" wx:if="{{item && translation_dict[index]}}" class="text">{{translation_dict[index] + " : " + item}}</view>
 </view>
 
  

@@ -78,3 +78,15 @@
     margin-bottom: 10rpx;
     margin-top: 10rpx;
 }
+
+.reply_main{
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: rgba(255,160,122,40%);
+    margin-left: 450rpx;
+    box-shadow: 0rpx 0rpx 5rpx #cccccc;
+    border-radius: 30rpx;
+    text-align: center;
+    vertical-align: middle;
+}

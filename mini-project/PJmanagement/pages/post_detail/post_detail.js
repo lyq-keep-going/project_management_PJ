@@ -45,6 +45,13 @@ Page({
         });
     },
 
+    onMainReplyClicked(e){
+        this.setData({
+            isReplying: true,
+            curr_replying_id:this.data.topicId
+        });
+    },
+
 
     onReplyClicked(e){
         this.setData({

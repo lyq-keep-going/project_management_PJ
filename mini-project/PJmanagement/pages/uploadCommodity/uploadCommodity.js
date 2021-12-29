@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        default_picture:'https://s4.ax1x.com/2021/12/14/oxDm5D.png',
         curr_active: 1,
         lessonId: 0,
         book_info:{
@@ -216,7 +217,7 @@ Page({
                     success:(res)=>{
                         console.log(res)
                         wx.request({ 
-                            url: 'https://' + app.globalData.host + '/api/cms/note',
+                            url: 'https://' + app.globalData.host + '/api/cms/notes',
                             method:'POST',
                             header:{
                                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
@@ -225,8 +226,8 @@ Page({
                                 'filename':JSON.parse(res.data).data.filename,
                                 'lessonId': this.data.lessonId,
                                 'coverPercentage': this.data.notes_info.coverPercentage,
-                                'price': this.data.book_info.price,
-                                'content': this.data.book_info.content
+                                'price': this.data.notes_info.price,
+                                'content': this.data.notes_info.content
                             },
                             success:(res)=>{
                                 console.log(res);
@@ -384,7 +385,8 @@ Page({
               // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
               console.log(res)
               this.setData({
-                  tempFilePath: res.tempFilePaths[0]
+                  tempFilePath: res.tempFilePaths[0],
+                  default_picture: res.tempFilePaths[0]
               })
             }
         });

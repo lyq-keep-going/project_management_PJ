@@ -10,7 +10,10 @@ Page({
         collected:true,
         curr_active: 2,
         lessonId: 0,
-        lessonInfo:{}
+        lessonInfo:{},
+        bookPageNum: 1,
+        pptPageNum:1,
+        notePageNum:1
     },
 
     handleCollect(e){
@@ -67,9 +70,26 @@ Page({
         })
     },
 
-    getCommodityInfo(type, lessonId){
+    getCommodityInfo(type, lessonId, pageNum, pageSize){
         wx.request({ 
-            url: 'https://' + app.globalData.host + '/api/cms/commodities?type=' + type + '&isMine=false&isSold=false&lessonId=' + lessonId,
+            url: 'https://' + app.globalData.host + '/api/cms/commodities?type=' + type + '&isMine=false&isSold=false&lessonId=' + lessonId + '&pageNum=' + pageNum + '&pageSize=' + pageSize,
+            header:{
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+            },
+            success:(result)=>{
+                console.log(result);
+                this.setData({
+                    commodity_list:this.data.commodity_list.concat(result.data.data.list)
+                })
+                console.log(result.data.data.list)
+                console.log(this.data.commodity_list)
+            }
+        });
+    },
+
+    changeCommodityInfo(type, lessonId, pageNum, pageSize){
+        wx.request({ 
+            url: 'https://' + app.globalData.host + '/api/cms/commodities?type=' + type + '&isMine=false&isSold=false&lessonId=' + lessonId + '&pageNum=' + pageNum + '&pageSize=' + pageSize,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -102,21 +122,21 @@ Page({
         this.setData({
             curr_active: 2
         });
-        this.getCommodityInfo(2, this.data.lessonId);
+        this.changeCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 8);
     }, 
 
     goToPPT(e){
         this.setData({
             curr_active: 1
         });
-        this.getCommodityInfo(1, this.data.lessonId);
+        this.changeCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 8);
     },
 
     goToNote(e){
         this.setData({
             curr_active: 3
         });
-        this.getCommodityInfo(3, this.data.lessonId);
+        this.changeCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 8);
     },
 
     /**
@@ -127,7 +147,7 @@ Page({
             lessonId: options.lessonId
         })
         this.getLessonInfo();
-        this.getCommodityInfo(2, this.data.lessonId)
+        this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum,8);
     },
 
     /**
@@ -162,7 +182,17 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        if(curr_active == 2){
+            this.data.bookPageNum++;
+            this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 8);
+        }else if(curr_active == 1){
+            this.data.pptPageNum++;
+            this.getCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 8);
+        }else if(curr_active == 3){
+            this.data.notePageNum++;
+            this.getCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 8);
+        }
+        
     },
 
     /**
