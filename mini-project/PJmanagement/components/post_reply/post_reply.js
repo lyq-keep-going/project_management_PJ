@@ -24,7 +24,7 @@ Component({
     methods: {
        handleReply(e){
            console.log(e)
-           this.triggerEvent('replyButtonClicked', e.currentTarget.dataset.user,{bubbles:true});
+           this.triggerEvent('replyButtonClicked', e.currentTarget.dataset.id,{bubbles:true});
        } 
     }
 })

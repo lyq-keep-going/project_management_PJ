@@ -11,7 +11,7 @@ Page({
         main_topic:{},
         reply:[],
         isReplying:false,
-        curr_replying_user:{},
+        curr_replying_id:0,
         reply_data:''
     },
 
@@ -23,14 +23,11 @@ Page({
             },
             method:'POST',
             data:{
-                topicId:''
+                topicId:this.data.curr_replying_id,
+                content:this.data.reply_data
             },
             success:(result)=>{
                 console.log(result);
-                this.setData({
-                    main_topic:result.data.data.list[0],
-                    reply: result.data.data.list.slice(1)
-                })
             }
         });
     },
@@ -52,7 +49,7 @@ Page({
     onReplyClicked(e){
         this.setData({
             isReplying: true,
-            curr_replying_user: e.detail
+            curr_replying_id: e.detail
         });
     },
     /**

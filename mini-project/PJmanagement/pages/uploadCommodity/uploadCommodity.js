@@ -129,7 +129,7 @@ Page({
                                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                             },
                             data:{
-                                'filename':res.data.finename,
+                                'filename':JSON.parse(res.data).finename,
                                 'lessonId': this.data.lessonId,
                                 'chapters':this.data.ppt_info.chapters,
                                 'paperSize':this.data.ppt_info.paperSize,
