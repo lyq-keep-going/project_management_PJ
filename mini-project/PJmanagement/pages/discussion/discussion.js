@@ -149,7 +149,7 @@ Page({
         this.setData({
             curr_page: that.data.curr_page - 1
         })
-        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
+        this.sendPostRequest(this.data.curr_page, 3, this.data.lessonId);
     },
 
     onNextPage(e){
@@ -165,7 +165,7 @@ Page({
         this.setData({
             curr_page: that.data.curr_page + 1
         })
-        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
+        this.sendPostRequest(this.data.curr_page, 3, this.data.lessonId);
     },
 
     hideScreenHandler(e){
@@ -188,7 +188,7 @@ Page({
             lessonId: options.lessonId
         });
         this.getLessonInfo();
-        this.sendPostRequest(1, 5, this.data.lessonId);
+        this.sendPostRequest(1, 3, this.data.lessonId);
         this.getHotestTags(1, 10, this.data.lessonId);
     },
  
