@@ -69,5 +69,6 @@ export default {
 }
 .el-tabs__content {
     margin-left: 100px;
+    min-height: calc(100vh - 94px);
 }
 </style>

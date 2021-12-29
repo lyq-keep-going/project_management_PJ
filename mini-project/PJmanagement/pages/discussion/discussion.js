@@ -13,17 +13,54 @@ Page({
         curr_page: 1,
         last_page:1000,
         lessonId:6,//假的，要改的
-        lessonInfo:{
-            id:6,
-            collected: true,
-            pictures: [
-                "https://url.cy/X3pCA3"
-            ],
-            lessonName: "项目管理",
-            lessonNumber: "SOFTXXXX",
-            teacherName: "高晓桐",
-            semester: "秋季",
-            credit: 5
+        lessonInfo:{}
+    },
+
+    handleCollect(e){
+        if(this.data.lessonInfo.collected){
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'DELETE',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: false
+                    })
+                    wx.showToast({
+                      title: '取消收藏成功',
+                    })
+                }
+            });
+        }else{
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'POST',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id:this.data.lessonId
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: true
+                    });
+                    wx.showToast({
+                      title: '收藏成功',
+                    })
+                }
+            });
         }
     },
 
@@ -32,11 +69,11 @@ Page({
           url: '../post_detail/post_detail?topicId=' + e.target.dataset.topicid,
         })
         console.log(e.target.dataset);
-    },
+    }, 
 
     getLessonInfo(){
         wx.request({ 
-            url: 'https://' + app.globalData.host + '/api/lms/info?id=' + this.data.lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/info?lessonId=' + this.data.lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
@@ -69,7 +106,7 @@ Page({
                 })
             }
           });
-    },
+    }, 
 
     getHotestTags(pageNum, pageSize, lessonId){
         wx.request({ 
@@ -78,6 +115,7 @@ Page({
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(result)=>{
+                console.log(result);
                 this.setData({
                     tags: result.data.data.list
                 })
@@ -105,12 +143,13 @@ Page({
                 title: '已经是第一页了',
                 icon: 'none'
             })
+            return;
         }
         var that = this;
         this.setData({
             curr_page: that.data.curr_page - 1
         })
-        this.sendPostRequest(this.data.curr_page, 5);
+        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
     },
 
     onNextPage(e){
@@ -120,12 +159,13 @@ Page({
                 icon: 'none',  //弹框模式
                 duration: 2000    //弹框显示时间
             })
+            return;
         }
         var that = this;
         this.setData({
             curr_page: that.data.curr_page + 1
         })
-        this.sendPostRequest(this.data.curr_page, 5);
+        this.sendPostRequest(this.data.curr_page, 5, this.data.lessonId);
     },
 
     hideScreenHandler(e){
@@ -144,8 +184,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            lessonId: options.lessonId
+        });
         this.getLessonInfo();
-        this.sendPostRequest(1, 5);
+        this.sendPostRequest(1, 5, this.data.lessonId);
         this.getHotestTags(1, 10, this.data.lessonId);
     },
  

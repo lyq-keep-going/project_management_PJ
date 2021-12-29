@@ -30,7 +30,7 @@ Page({
                 'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
-                console.log(res.data)
+                console.log(res);
                 that.setData({
                     items: res.data.data.list
                 })

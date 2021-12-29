@@ -32,18 +32,25 @@ export default {
                 .post(url, this.form)
                 .then(response => {
                     let res = response.data
-                    console.log(res);
 
-                    this.$message.success(res.message);
-                    localStorage.setItem("tokenHead", res.data.tokenHead);
-                    localStorage.setItem("token", res.data.token);
-                    localStorage.setItem("flag", "isLogin");
+                    if (res.code == 200) {
+                        console.log(res);
 
-                    this.$store.commit('userLogin')
-                    this.$router.push("/");
+                        this.$message.success(res.message);
+                        localStorage.setItem("tokenHead", res.data.tokenHead);
+                        localStorage.setItem("token", res.data.token);
+                        localStorage.setItem("flag", "isLogin");
+
+                        this.$store.commit('userLogin')
+                        this.$router.push("/");
+                    }
+                    else {
+                        this.$message.error(res.message);
+                    }
                 })
                 .catch((error) => {
                     console.log(error)
+                    this.$message.error("登陆失败，请重试！");
                 });
         }
     },

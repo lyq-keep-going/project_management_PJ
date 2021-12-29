@@ -13,6 +13,54 @@ Page({
         lessonInfo:{}
     },
 
+    handleCollect(e){
+        if(this.data.lessonInfo.collected){
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'DELETE',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: false
+                    })
+                    wx.showToast({
+                      title: '取消收藏成功',
+                    })
+                }
+            });
+        }else{
+            wx.request({ 
+                url: 'https://' + app.globalData.host + '/api/lms/favorite',
+                method:'GET',
+                header:{
+                    "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data:{
+                    id: this.data.lessonId
+                },
+                success:(result)=>{
+                    console.log(result);
+                    var collected = 'lessonInfo.collected';
+                    this.setData({
+                        [collected]: true
+                    });
+                    wx.showToast({
+                      title: '收藏成功',
+                    })
+                }
+            });
+        }
+    },
+
     uploadCommodity(e){
         wx.navigateTo({
           url: '../uploadCommodity/uploadCommodity?curr_active=' + this.data.curr_active + '&lessonId=' + this.data.lessonId 
@@ -36,7 +84,7 @@ Page({
 
     getLessonInfo(){
         wx.request({ 
-            url: 'https://' + app.globalData.host + '/api/lms/info?id=' + this.data.lessonId,
+            url: 'https://' + app.globalData.host + '/api/lms/info?lessonId=' + this.data.lessonId,
             header:{
                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },

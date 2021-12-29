@@ -1,10 +1,10 @@
 {
     "pages": [
         "pages/login/login",
+        "pages/post_detail/post_detail",
         "pages/discussion/discussion", 
         "pages/trade/trade",
         "pages/uploadCommodity/uploadCommodity",
-        "pages/post_detail/post_detail",
         "pages/home/home",
         "pages/commodity_detail/commodity_detail",
         "pages/add_post/add_post",

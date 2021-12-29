@@ -3,21 +3,23 @@
 <detailed_info lessonName="{{lessonInfo.lessonName}}" lessonId="{{lessonInfo.lessonNumber}}" teacherName="{{lessonInfo.teacherName}}" semester="{{lessonInfo.semester}}" credit="{{lessonInfo.credit}}"></detailed_info>
 <tab_1 class="tab" active_item="{{0}}" lessonId="{{lessonId}}"></tab_1>
 <view class="tags">
-    <tag wx:for="{{tags}}" class="tag" tagname="{{item.tagName}}" thumb_up_num="{{item.positive}}" thumb_down_num="{{item.negative}}" wx:key="id"></tag>
+    <tag wx:for="{{tags}}" class="tag" tagname="{{item.tagName}}" thumb_up_num="{{item.positive}}" thumb_down_num="{{item.negative}}" thumb_up_fill="{{item.positiveSelected}}" thumb_down_fill="{{item.negativeSelected}}" lessonId="{{lessonId}}" wx:key="id"></tag>
     <image src="https://z3.ax1x.com/2021/11/27/om5mcj.png" bindtap="openAddTagHandler"></image>
 </view>
 <view>
-    <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id" data-topicId="{{item.id}}" bindtap="enterPost"></entry>
+    <view class="entry_list_box">
+        <entry wx:for="{{entryList}}" title="{{item.title}}" date="{{item.issueTime}}" wx:key="id" data-topicId="{{item.id}}" bindtap="enterPost"></entry>
+    </view>
     <view class="scroll_pages">
         <image src="https://s4.ax1x.com/2021/12/13/oLyGlt.png" bindtap="onPreviousPage"></image>
         <image src="https://z3.ax1x.com/2021/11/27/om5E4S.png" class="bottom_add" bindtap="addPost"></image>
         <image src="https://s4.ax1x.com/2021/12/13/oLyJ6P.png" bindtap="onNextPage"></image>
     </view>
 </view>
-<button><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
+<button bindtap="handleCollect"><image src="{{lessonInfo.collected ? 'https://z3.ax1x.com/2021/11/27/om5njs.png':'https://z3.ax1x.com/2021/11/27/om5Kun.png'}}" class="star"></image><text class="collect">{{lessonInfo.collected ? '取消收藏' : '收藏'}}</text></button>
 
 </view>
 
-<add_new_tag bind:hideScreen="hideScreenHandler" wx:if="{{!hide_add_tag}}" tags="{{candidate_tags}}"></add_new_tag>
+<add_new_tag bind:hideScreen="hideScreenHandler" wx:if="{{!hide_add_tag}}" tags="{{candidate_tags}}" lessonNumber="{{lessonInfo.lessonNumber}}"></add_new_tag>
 
 

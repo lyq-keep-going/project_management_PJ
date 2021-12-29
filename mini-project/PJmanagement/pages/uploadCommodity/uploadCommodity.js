@@ -27,7 +27,7 @@ Page({
             id: null,
             chapters:'',
             paperSize:'',
-            singlePrint:'',
+            singlePrint:true,
             newDegree:'',
             content:'',
             price:0
@@ -52,9 +52,23 @@ Page({
 
     pptSinglePrint(e){
         var singlePrint = 'ppt_info.singlePrint';
-        this.setData({
-            [singlePrint]:e.detail.value
-        })
+        if(e.detail.value != '是' && e.detail.value != '否'){
+            wx.showToast({
+              title: '请在是否单面打印一栏输入是/否',
+              icon:'none'
+            })
+            return;
+        }
+        if(e.detail.value == '是'){
+            this.setData({
+                [singlePrint]:true
+            })
+        }else{
+            this.setData({
+                [singlePrint]:false
+            })
+        }
+        
     },
 
     pptNewDegree(e){
@@ -79,41 +93,75 @@ Page({
     },
 
     upPptInfo(e){
-        wx.uploadFile({ 
-            filePath: this.data.tempFilePath,
-            name: 'picture',
-            url: 'https://' + app.globalData.host + '/api/cms/ppts',
+        wx.request({
+            url: 'https://' + app.globalData.host + '/api/oss/policy',
             header:{
-                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
-                "Content-Type": "multipart/form-data"
-            },
-            formData:{
-                'lessonId': this.data.lessonId,
-                'chapters':this.data.ppt_info.chapters,
-                'paperSize':this.data.ppt_info.paperSize,
-                'singlePrint': this.data.ppt_info.singlePrint,
-                'newDegree': this.data.ppt_info.newDegree,
-                'price': this.data.ppt_info.price,
-                'content': this.data.ppt_info.content
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(res)=>{
-                console.log(res)
-                if(res.data.code == 200){
-                    wx.showToast({
-                    title: '上传成功',
-                    })
-                }else{
-                    wx.showToast({
-                        title: '上传失败',
-                        icon:'error'
-                    })
-                }
-                
-            },
-            fail:(res)=>{
-                console.log(res)
+                console.log(res);
+                var signature = res.data.data;
+                var filename = this.data.tempFilePath.substring(this.data.tempFilePath.lastIndexOf('/') + 1);
+                console.log(filename);
+                wx.uploadFile({ 
+                    filePath: this.data.tempFilePath,
+                    name: 'file',
+                    url: 'https://doughit.oss-cn-shanghai.aliyuncs.com',
+                    header:{
+                        "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                        "Content-Type": "multipart/form-data"
+                    },
+                    formData:{
+                        ossaccessKeyId:signature.accessKeyId,
+                        policy:signature.policy,
+                        signature: signature.signature,
+                        dir:signature.dir,
+                        host:signature.host,
+                        callback:signature.callback,
+                        key:signature.dir +'/'+ filename
+                    },
+                    success:(res)=>{
+                        console.log(res)
+                        wx.request({ 
+                            url: 'https://' + app.globalData.host + '/api/cms/ppt',
+                            method:'POST',
+                            header:{
+                                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                            },
+                            data:{
+                                'filename':JSON.parse(res.data).data.filename,
+                                'lessonId': this.data.lessonId,
+                                'chapters':this.data.ppt_info.chapters,
+                                'paperSize':this.data.ppt_info.paperSize,
+                                'singlePrint': this.data.ppt_info.singlePrint,
+                                'newDegree': this.data.ppt_info.newDegree,
+                                'price': this.data.ppt_info.price,
+                                'content': this.data.ppt_info.content
+                            },
+                            success:(res)=>{
+                                console.log(res);
+                                if(res.data.code == 200){
+                                    wx.showToast({
+                                    title: '上传成功',
+                                    })
+                                }else{
+                                    wx.showToast({
+                                        title: '上传失败',
+                                        icon:'error'
+                                    })
+                                }
+                            }
+                        });
+                        
+                    },
+                    fail:(res)=>{
+                        console.log(res)
+                    }
+                });
             }
         })
+
+
     },
 
     notesCoverPercentage(e){
@@ -138,76 +186,142 @@ Page({
     },
 
     upNotesInfo(e){
-        wx.uploadFile({ 
-            filePath: this.data.tempFilePath,
-            name: 'picture',
-            url: 'https://' + app.globalData.host + '/api/cms/notes',
+        wx.request({
+            url: 'https://' + app.globalData.host + '/api/oss/policy',
             header:{
-                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
-                "Content-Type": "multipart/form-data"
-            },
-            formData:{
-                'lessonId': this.data.lessonId,
-                'coverPercentage': this.data.notes_info.coverPercentage,
-                'price': this.data.book_info.price,
-                'content': this.data.book_info.content
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(res)=>{
-                console.log(res)
-                if(res.data.code == 200){
-                    wx.showToast({
-                    title: '上传成功',
-                    })
-                }else{
-                    wx.showToast({
-                        title: '上传失败',
-                        icon:'error'
-                    })
-                }
-                
-            },
-            fail:(res)=>{
-                console.log(res)
+                console.log(res);
+                var signature = res.data.data;
+                var filename = this.data.tempFilePath.substring(this.data.tempFilePath.lastIndexOf('/') + 1);
+                console.log(filename);
+                wx.uploadFile({ 
+                    filePath: this.data.tempFilePath,
+                    name: 'file',
+                    url: 'https://doughit.oss-cn-shanghai.aliyuncs.com',
+                    header:{
+                        "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                        "Content-Type": "multipart/form-data"
+                    },
+                    formData:{
+                        ossaccessKeyId:signature.accessKeyId,
+                        policy:signature.policy,
+                        signature: signature.signature,
+                        dir:signature.dir,
+                        host:signature.host,
+                        callback:signature.callback,
+                        key:signature.dir +'/'+ filename
+                    },
+                    success:(res)=>{
+                        console.log(res)
+                        wx.request({ 
+                            url: 'https://' + app.globalData.host + '/api/cms/note',
+                            method:'POST',
+                            header:{
+                                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                            },
+                            data:{
+                                'filename':JSON.parse(res.data).data.filename,
+                                'lessonId': this.data.lessonId,
+                                'coverPercentage': this.data.notes_info.coverPercentage,
+                                'price': this.data.book_info.price,
+                                'content': this.data.book_info.content
+                            },
+                            success:(res)=>{
+                                console.log(res);
+                                if(res.data.code == 200){
+                                    wx.showToast({
+                                    title: '上传成功',
+                                    })
+                                }else{
+                                    wx.showToast({
+                                        title: '上传失败',
+                                        icon:'error'
+                                    })
+                                }
+                            }
+                        });
+                        
+                    },
+                    fail:(res)=>{
+                        console.log(res)
+                    }
+                });
             }
-        })
+        });
     },
 
 
     upBookInfo(e){
-        wx.uploadFile({ 
-            filePath: this.data.tempFilePath,
-            name: 'picture',
-            url: 'https://' + app.globalData.host + '/api/cms/books',
+        wx.request({
+            url: 'https://' + app.globalData.host + '/api/oss/policy',
             header:{
-                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
-                "Content-Type": "multipart/form-data"
-            },
-            formData:{
-                'lessonId': this.data.lessonId,
-                'name': this.data.book_info.name,
-                'author': this.data.book_info.author,
-                'publisher': this.data.book_info.publisher,
-                'newDegree': this.data.book_info.newDegree,
-                'price': this.data.book_info.price,
-                'content': this.data.book_info.content
+                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
             },
             success:(res)=>{
-                console.log(res)
-                if(res.data.code == 200){
-                    wx.showToast({
-                    title: '上传成功',
-                    })
-                }else{
-                    wx.showToast({
-                        title: '上传失败',
-                        icon:'error'
-                    })
-                }
-            },
-            fail:(res)=>{
-                console.log(res)
+                console.log(res);
+                var signature = res.data.data;
+                var filename = this.data.tempFilePath.substring(this.data.tempFilePath.lastIndexOf('/') + 1);
+                console.log(filename);
+                wx.uploadFile({ 
+                    filePath: this.data.tempFilePath,
+                    name: 'file',
+                    url: 'https://doughit.oss-cn-shanghai.aliyuncs.com',
+                    header:{
+                        "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token,
+                        "Content-Type": "multipart/form-data"
+                    },
+                    formData:{
+                        ossaccessKeyId:signature.accessKeyId,
+                        policy:signature.policy,
+                        signature: signature.signature,
+                        dir:signature.dir,
+                        host:signature.host,
+                        callback:signature.callback,
+                        key:signature.dir +'/'+ filename
+                    },
+                    success:(res)=>{
+                        console.log(res)
+                        console.log(JSON.parse(res.data).data.filename)
+                        wx.request({ 
+                            url: 'https://' + app.globalData.host + '/api/cms/book',
+                            method:'POST',
+                            header:{
+                                "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
+                            },
+                            data:{
+                                'filename':JSON.parse(res.data).data.filename,
+                                'lessonId': this.data.lessonId,
+                                'name': this.data.book_info.name,
+                                'author': this.data.book_info.author,
+                                'publisher': this.data.book_info.publisher,
+                                'newDegree': this.data.book_info.newDegree,
+                                'price': this.data.book_info.price,
+                                'content': this.data.book_info.content
+                            },
+                            success:(res)=>{
+                                console.log(res);
+                                if(res.data.code == 200){
+                                    wx.showToast({
+                                    title: '上传成功',
+                                    })
+                                }else{
+                                    wx.showToast({
+                                        title: '上传失败',
+                                        icon:'error'
+                                    })
+                                }
+                            }
+                        });
+                        
+                    },
+                    fail:(res)=>{
+                        console.log(res)
+                    }
+                });
             }
-        })
+        });
     },
 
     bookBindName(e){
@@ -280,10 +394,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // this.setData({
-        //     curr_active: options.curr_active,
-        //     lessonId: options.lessonId
-        // })
+        this.setData({
+            curr_active: options.curr_active,
+            lessonId: options.lessonId
+        })
     },
 
     /**

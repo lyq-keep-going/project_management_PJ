@@ -8,7 +8,7 @@
                 </div>
             </el-form-item>
             <el-form-item label="物品种类">
-                <el-select v-model="value" placeholder="全部" default="全部">
+                <el-select v-model="type" placeholder="全部" default="0">
                     <el-option
                         v-for="item in options"
                         :key="item.value"
@@ -27,7 +27,7 @@
                 <Goods :info="item" />
             </el-col>
         </el-row>
-        <div class="pagination">
+        <div class="pagination" v-if="list == []">
             <el-pagination
                 :page-size="pageSize"
                 layout="prev, pager, next"
@@ -47,12 +47,13 @@ export default {
         return {
             isSold: false,
             isMine: true,
-            value: 0,
+            type: 0,
             options: [
                 { value: 0, label: '全部', },
                 { value: 1, label: 'ppt', },
                 { value: 2, label: 'book', },
-                { value: 3, label: 'notes', }],
+                { value: 3, label: 'notes', }
+            ],
             pageNum: 1,
             pageSize: 8,
             totalPage: 5,
@@ -71,12 +72,12 @@ export default {
                 .get(url)
                 .then((response) => {
                     let res = response.data.data
-                    // console.log(res);
+                    console.log(res);
 
                     this.list = res.list
-                    this.total = res.total
-                    this.totalPage = parseInt(res.totalPage)
-                    this.pageNum = parseInt(res.pageNum)
+                    // this.total = res.total
+                    // this.totalPage = parseInt(res.totalPage)
+                    // this.pageNum = parseInt(res.pageNum)
                 })
                 .catch((error) => console.log(error));
         },
