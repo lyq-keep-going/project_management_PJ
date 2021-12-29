@@ -3,3 +3,7 @@
 .cuIcon-title text-orange {
     font-weight: bold;
 }
+
+#date {
+    margin-right: 20rpx;
+}

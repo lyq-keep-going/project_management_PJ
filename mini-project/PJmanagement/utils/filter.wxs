@@ -1,0 +1,7 @@
+function newFormatTime(timestamp) {
+    return (timestamp.substring(0, 10))
+  }
+  
+  module.exports = {
+      newFormatTime:newFormatTime
+  }

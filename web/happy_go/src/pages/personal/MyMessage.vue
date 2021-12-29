@@ -33,13 +33,16 @@
 
     <el-dialog v-model="dialogVisible" title="对话框" width="80%" top="5vh" :before-close="clearM">
         <div class="dialogue">
-            <ul v-infinite-scroll="handleMessageClick" class="infinite-list" style="overflow: auto">
-                <li v-for="item in messageList" :key="item" class="infinite-list-item">
-                    <p>{{ item.senderId == receiverId ? messageUsername : myName }}</p>
-                    <p>{{ item.content }}</p>
-                    <el-divider></el-divider>
-                </li>
-            </ul>
+            <div>
+                <el-row :gutter="0" v-for="item in messageList" :key="item">
+                    <el-col :span="12" :offset="item.senderId == receiverId ? 0 : 12">
+                        <div>
+                            <p>{{ item.senderId == receiverId ? messageUsername : myName }}：{{ item.content }}</p>
+                            <el-tag type="info">{{ item.issueTime }}</el-tag>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
         </div>
 
         <el-input v-model="content" @keyup.enter.native="sendMyMessage">
@@ -80,20 +83,14 @@ export default {
             messagePageNum: 1,
             messagePageSize: 20,
             messageList: [],
-            content: ""
+            content: "",
+            myName: ""
         }
     },
     mounted() {
         this.getMyMessageList(this.pageNum, this.pageSize)
-    },
-    computed: {
-        myName: {
-            get() {
-                return this.$store.state.username
-            },
-            set: function () {
-            }
-        }
+        this.myName = localStorage.getItem("username");
+        // console.log(this.myName);
     },
     methods: {
         getMyMessageList(pageNum, pageSize) {
@@ -122,7 +119,7 @@ export default {
                 .get(url)
                 .then((response) => {
                     let res = response.data.data
-                    console.log(res);
+                    // console.log(res);
 
                     this.messageList = this.messageList.concat(res.list)
                     this.messageTotal = res.total
@@ -146,7 +143,7 @@ export default {
             done()
         },
         handleMessageClick() {
-            console.log(this.messageUsername, this.receiverId, this.messagePageNum, this.messagePageSize);
+            // console.log(this.messageUsername, this.receiverId, this.messagePageNum, this.messagePageSize);
             this.getDialogue(this.messageUsername, this.receiverId, this.messagePageNum, this.messagePageSize)
         },
         sendMyMessage() {
@@ -160,6 +157,8 @@ export default {
                 .post(url, msg)
                 .then((response) => {
                     this.$message(response.data.message)
+                    this.getMyMessageList(this.pageNum, this.pageSize)
+                    this.content = ""
                 })
                 .catch((error) => console.log(error));
         }

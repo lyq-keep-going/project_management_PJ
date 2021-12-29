@@ -4,17 +4,17 @@
     </view>
 </view>
 <view class="null-content" wx:if="{{!items}}">还没有内容哦，快去探索吧~</view>
-<view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
+<view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item" bindtap="enterCommodity" data-url="{{item}}">
 			<view class="cu-item shadow">
-				<navigator url="/pages/commodity_detail/commodity_detail?id={{item.commodityId}}">
+				<!-- <navigator url="/pages/commodity_detail/commodity_detail?single_commodity={{item.id}}"> -->
 				<view class="image">
-					<image src="{{item.pictures[0].path}}"mode="widthFix"></image>
+					<image src="{{item.filename}}"mode="widthFix"></image>
 				</view>
 				<view class="cu-list menu-avatar" class="text">
 					<view class="description">商品名称：{{item.name}}</view>
 					<view class="description">作者：{{item.author}}</view>
                     <view class="description">价格：{{item.price}}</view>
 				</view>
-			</navigator>
+			<!-- </navigator> -->
 			</view>
 </view>

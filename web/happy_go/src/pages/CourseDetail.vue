@@ -42,15 +42,18 @@
                 :key="i"
                 :v-model="test"
               >
-                <div>      <span>楼主：</span>
-                  <span> {{ this.list_discuss[i - 1].user.username }} </span
+                <div>
+                  <span>楼主：</span>
+                  <span v-if="this.list_discuss[i - 1].user"> {{ this.list_discuss[i - 1].user.username }} </span
                   >&nbsp;&nbsp;&nbsp;&nbsp;<span
                     style="color: rgb(222, 222, 255)"
                     >{{ this.list_discuss[i - 1].issueTime }}</span
                   >
                 </div>
                 <div>{{ this.list_discuss[i - 1].content }}</div>
+                <div><el-button @click="answer">回复</el-button></div>
 
+                <!--子-->
                 <div
                   v-for="j in this.list_discuss[i - 1].children.length"
                   :key="j"
@@ -60,10 +63,10 @@
                   </el-divider>
                   <p>{{ this.list_discuss[i - 1].children[j - 1].title }}</p>
                   <p>
-                    <span>
+                    <span v-if="this.list_discuss[i - 1].children[j - 1].user">
                       {{
                         this.list_discuss[i - 1].children[j - 1].user.username
-                      }} </span
+                      }}  </span
                     >&nbsp;&nbsp;&nbsp;&nbsp;<span
                       style="color: rgb(222, 222, 255)"
                       >{{
@@ -71,7 +74,35 @@
                       }}</span
                     >
                   </p>
+                  <!--   <span>回复{{this.list_discuss[i-1].children[j-1].parentUser.user}}</span>-->
                   <p>{{ this.list_discuss[i - 1].children[j - 1].content }}</p>
+
+                  <!--    <el-button
+                    class="answer"
+                    @click="showTxtWindow"
+                    v-if="!showTxt"
+                    >回复</el-button
+                  >
+                  <el-form
+                    ref="form"
+                    :model="form"
+                    label-width="120px"
+                    v-if="showTxt"
+                  >
+                    <el-form-item label="title">
+                      <el-input v-model="form.title"></el-input>
+                    </el-form-item>
+                    <el-form-item label="content">
+                      <el-input
+                        v-model="form.content"
+                        type="textarea"
+                      ></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                      <el-button type="primary" @click="answer">提交</el-button>
+                    </el-form-item>
+                  </el-form>
+                  -->
                 </div>
               </el-collapse-item>
             </el-collapse>
@@ -104,89 +135,122 @@
               >+ New Tag</el-button
             >
           </div>
+
+          <div>
+            <el-button class="answer" @click="showTxtWindow" v-if="!showTxt"
+              >发布帖子</el-button
+            >
+            <el-form
+              ref="form"
+              :model="form"
+              label-width="120px"
+              v-if="showTxt"
+            >
+              <el-form-item label="title">
+                <el-input v-model="form.title"></el-input>
+              </el-form-item>
+              <el-form-item label="content">
+                <el-input v-model="form.content" type="textarea"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="answer">提交</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
         </el-aside>
 
         <el-main class="right"
           ><h2>交易区</h2>
-         <el-container>
-      <el-main class="right" id="main_top"
-        > 
-        <el-carousel :interval="4400" type="card" height="330px">
-          <el-carousel-item class="item">
-            <h3 class="medium">二手书</h3>
-            <div class="top_card">
-              <el-row>
-                <el-col v-for="obj in list_book" :key="obj" :span="8">
-                  <el-card>
-                    <!-- <img src="../assets/book.png" class="top_image" />-->
+          <el-container>
+            <el-main class="right" id="main_top">
+              <el-carousel :interval="4400" type="card" height="330px">
+                <el-carousel-item class="item">
+                  <h3 class="medium">二手书</h3>
+                  <div class="top_card">
+                    <el-row>
+                      <el-col v-for="obj in list_book" :key="obj" :span="8">
+                        <el-card>
+                          <!-- <img src="../assets/book.png" class="top_image" />-->
 
-                    <div>
-                      <span>{{ obj.bookName }}</span>
-                      <span>{{ obj.author }}</span>
-                      <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span>
-                        <span>{{ obj.price }}</span>
-                      </p>
+                          <div>
+                            <span>{{ obj.bookName }}</span>
+                            <span>{{ obj.author }}</span>
+                            <p>
+                              <span style="color: rgb(13, 22, 255)"
+                                >售价：</span
+                              >
+                              <span>{{ obj.price }}</span>
+                            </p>
+                          </div>
+                        </el-card>
+                      </el-col>
+                    </el-row>
+                    <div class="top_bottom">
+                      <el-button type="text" class="button" @click="jumpBook()"
+                        >查看更多</el-button
+                      >
                     </div>
-                  </el-card>
-                </el-col>
-              </el-row>
-              <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpBook()">查看更多</el-button>
-              </div>
-            </div>
-          </el-carousel-item>
+                  </div>
+                </el-carousel-item>
 
-          <el-carousel-item class="item">
-            <h3 class="medium">PPT</h3>
-            <div class="top_card">
-              <el-row>
-                <el-col v-for="obj in list_ppt" :key="obj" :span="8">
-                  <el-card>
-                    <!-- <img src="../assets/book.png" class="top_image" />-->
+                <el-carousel-item class="item">
+                  <h3 class="medium">PPT</h3>
+                  <div class="top_card">
+                    <el-row>
+                      <el-col v-for="obj in list_ppt" :key="obj" :span="8">
+                        <el-card>
+                          <!-- <img src="../assets/book.png" class="top_image" />-->
 
-                    <div>
-                      <span>{{ obj.lesson.lessonName }}</span>
-                      <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span>
-                        <span>{{ obj.price }}</span>
-                      </p>
+                          <div>
+                            <span>{{ obj.lesson.lessonName }}</span>
+                            <p>
+                              <span style="color: rgb(13, 22, 255)"
+                                >售价：</span
+                              >
+                              <span>{{ obj.price }}</span>
+                            </p>
+                          </div>
+                        </el-card>
+                      </el-col>
+                    </el-row>
+                    <div class="top_bottom">
+                      <el-button type="text" class="button" @click="jumpPPT()"
+                        >查看更多</el-button
+                      >
                     </div>
-                  </el-card>
-                </el-col>
-              </el-row>
-              <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpPPT()">查看更多</el-button>
-              </div>
-            </div>
-          </el-carousel-item>
+                  </div>
+                </el-carousel-item>
 
-          <el-carousel-item class="item">
-            <h3 class="medium">笔记</h3>
-            <div class="top_card">
-              <el-row>
-                <el-col v-for="obj in list_note" :key="obj" :span="8">
-                  <el-card>
-                    <!-- <img src="../assets/book.png" class="top_image" />-->
+                <el-carousel-item class="item">
+                  <h3 class="medium">笔记</h3>
+                  <div class="top_card">
+                    <el-row>
+                      <el-col v-for="obj in list_note" :key="obj" :span="8">
+                        <el-card>
+                          <!-- <img src="../assets/book.png" class="top_image" />-->
 
-                    <div>
-                      <span>{{ obj.lesson.lessonName }}</span>
-                      <p>
-                        <span style="color: rgb(13, 22, 255)">售价：</span>
-                        <span>{{ obj.price }}</span>
-                      </p>
+                          <div>
+                            <span>{{ obj.lesson.lessonName }}</span>
+                            <p>
+                              <span style="color: rgb(13, 22, 255)"
+                                >售价：</span
+                              >
+                              <span>{{ obj.price }}</span>
+                            </p>
+                          </div>
+                        </el-card>
+                      </el-col>
+                    </el-row>
+                    <div class="top_bottom">
+                      <el-button type="text" class="button" @click="jumpNote()"
+                        >查看更多</el-button
+                      >
                     </div>
-                  </el-card>
-                </el-col>
-              </el-row>
-              <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpNote()">查看更多</el-button>
-              </div>
-            </div>
-          </el-carousel-item>
-        </el-carousel>
-      </el-main>
-    </el-container>
+                  </div>
+                </el-carousel-item>
+              </el-carousel>
+            </el-main>
+          </el-container>
         </el-main>
       </el-container>
     </el-container>
@@ -200,17 +264,20 @@ import axios from "axios";
 export default {
   data() {
     return {
-      //children_num:[0,0,0,0],
       test: [0, 1, 2, 3],
-      id: "",
+      lessonId: "",
       courseDetail: "",
       dynamicTags: ["课程", "商品", "资料", "兴趣"],
       inputVisible: false,
       inputValue: "",
+      showTxt: false,
+      form: {
+        content: "",
+        title: "",
+      },
 
       list_right: "",
 
- 
       list_title: [{ title: "二手书" }, { title: "PPT" }, { title: "笔记" }],
       list_left: "",
       list_book: "",
@@ -270,9 +337,34 @@ export default {
     };
   },
   methods: {
-    teste(_v) {
-      alert(_v);
+    showTxtWindow() {
+  
+      this.showTxt = !this.showTxt;
     },
+    answer() {
+      var url = "/api/ums/topic";
+      axios({
+        method: "post",
+        url: url,
+        params: {
+          title: this.form.title,
+          content: this.form.content,
+          lessonId: this.lessonId,
+        },
+        headers: {
+          Authorization: "BearerJhbG",
+        },
+      })
+        .then((response) => {
+          // this.list_discuss = response.data.data.list;
+
+         this.$message.success("发布成功！");
+
+          showTxtWindow();
+        })
+        .catch((error) => console.log(error));
+    },
+
     loadDetail(_id) {
       var url = "/api/lms/info";
 
@@ -322,6 +414,7 @@ export default {
         params: {
           pageNum: 1,
           pageSize: 4,
+          lessonId: this.lessonId,
         },
         headers: {
           Authorization: "BearerJhbG",
@@ -330,14 +423,15 @@ export default {
         .then((response) => {
           this.list_discuss = response.data.data.list;
 
-          //
+          //          console.log(this.lessonId);
 
-           console.log(this.list_discuss);
+          console.log(response.data.data.list);
+          console.log(response.data.data.list[0].title);
         })
         .catch((error) => console.log(error));
     },
 
-        getTop() {
+    getTop() {
       this.getBook();
       this.getPPT();
       this.getNote();
@@ -356,7 +450,7 @@ export default {
       })
         .then((response) => {
           this.list_book = response.data.data.list.slice(0, 3);
-          console.log(this.list_book);
+          //console.log(this.list_book);
         })
         .catch((error) => console.log(error));
     },
@@ -397,16 +491,13 @@ export default {
   },
 
   mounted() {
-    this.loadDiscuss();
-    //console.log("mounted!");
-  // this.lessonId = 29;
-  
-  this.lessonId = this.$route.params.id;
-    console.log(this.$route.params.id);
+    this.lessonId = this.$route.params.id;
 
     this.loadDetail(this.lessonId);
 
     this.getTop();
+
+    this.loadDiscuss();
   },
 };
 </script>
