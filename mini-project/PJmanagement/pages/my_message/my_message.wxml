@@ -3,6 +3,7 @@
 					<text class="cuIcon-title text-orange "></text> 消息列表
 				</view>
 			</view>
+			<view class="null-content" wx:if="{{!items}}">还没有内容哦，快去探索吧~</view>
 			<view class="cu-list menu-avatar">
 				<view class="cu-item" wx:for-items="{{messages}}" wx:for-item="message" bindtap="toChat" data-id="{{message.sender.id}}">
 					<view class="cu-avatar round lg" style="background-image:url({{message.sender.avatar}});"><view class="cu-tag badge" wx:if="{{!message.last_message.read}}">new</view></view>

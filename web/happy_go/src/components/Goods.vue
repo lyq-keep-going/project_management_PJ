@@ -7,7 +7,7 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <h4>《{{ info.name }}》</h4>
+        <h4>《{{ info.bookName }}》</h4>
 
         <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
         <el-dialog v-model="dialogVisible" title="详细信息" width="80%">
@@ -68,6 +68,9 @@ export default {
     methods: {
 
     },
+    mounted() {
+        console.log(this.info)
+    }
 }
 </script>
 

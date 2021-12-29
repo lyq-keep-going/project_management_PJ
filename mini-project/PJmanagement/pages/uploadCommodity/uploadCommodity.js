@@ -129,7 +129,7 @@ Page({
                                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                             },
                             data:{
-                                'filename':JSON.parse(res.data).finename,
+                                'filename':JSON.parse(res.data).data.filename,
                                 'lessonId': this.data.lessonId,
                                 'chapters':this.data.ppt_info.chapters,
                                 'paperSize':this.data.ppt_info.paperSize,
@@ -222,7 +222,7 @@ Page({
                                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                             },
                             data:{
-                                'filename':res.data.finename,
+                                'filename':JSON.parse(res.data).data.filename,
                                 'lessonId': this.data.lessonId,
                                 'coverPercentage': this.data.notes_info.coverPercentage,
                                 'price': this.data.book_info.price,
@@ -283,6 +283,7 @@ Page({
                     },
                     success:(res)=>{
                         console.log(res)
+                        console.log(JSON.parse(res.data).data.filename)
                         wx.request({ 
                             url: 'https://' + app.globalData.host + '/api/cms/book',
                             method:'POST',
@@ -290,7 +291,7 @@ Page({
                                 "Authorization" : app.globalData.userInfo.tokenHead + app.globalData.userInfo.token
                             },
                             data:{
-                                'filename':res.data.finename,
+                                'filename':JSON.parse(res.data).data.filename,
                                 'lessonId': this.data.lessonId,
                                 'name': this.data.book_info.name,
                                 'author': this.data.book_info.author,

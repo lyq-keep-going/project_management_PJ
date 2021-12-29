@@ -22,7 +22,7 @@
                         <el-form-item label="开课学期">{{ info.semester }}</el-form-item>
                         <el-form-item label="课程学分">{{ info.credit }}</el-form-item>
                     </el-form>
-                    <el-button type="primary" @click="seeDetail(info.id)">课程讨论页面</el-button>
+                    <el-button type="primary" @click="seeDetail(info.lessonId)">课程讨论页面</el-button>
                 </div>
             </el-dialog>
         </div>
@@ -52,6 +52,9 @@ export default {
             });
         },
     },
+    mounted() {
+        console.log(this.info)
+    }
 }
 </script>
 

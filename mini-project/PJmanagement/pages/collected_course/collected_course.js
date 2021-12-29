@@ -6,18 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        items: [
-            {
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵"
-            },{
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵"
-            },{
-                img:"https://z3.ax1x.com/2021/11/29/oMDSij.jpg",
-                title: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵"
-            },
-        ]
+        items: null
     },
 
     /**
@@ -26,7 +15,7 @@ Page({
     onLoad: function (options) {
         var that = this
         wx.request({
-            url: "https://" + app.globalData.host  + "/api/ums/myFavor/lesson",
+            url: "https://" + app.globalData.host  + "/api/lms/favorite",
             method: 'GET',
             data: {
             },
@@ -35,12 +24,13 @@ Page({
                 'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
-                console.log(res.data.data.list)
+                console.log(res.data)
                 that.setData({
                     items: res.data.data.list
                 })
             }
         })
+     
     },
 
     /**

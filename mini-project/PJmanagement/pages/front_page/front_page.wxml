@@ -18,7 +18,7 @@
                     <view class="cu-item shadow">
                         <navigator url="/pages/discussion/discussion?lessonId={{item.lessonId}}">
                         <view class="image">
-                            <image src="{{item.pictures[0].src}}"mode="widthFix"></image>
+                            <image src="{{item.pictures[0]}}"mode="widthFix"></image>
                         </view>
                         <view class="cu-list menu-avatar" class="text">
                             <view class="description">{{item.lessonName}}  {{item.lessonNumber}}</view>
