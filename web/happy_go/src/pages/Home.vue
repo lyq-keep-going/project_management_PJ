@@ -2,22 +2,6 @@
   <el-main>
     <h1>商城首页</h1>
     <router-view></router-view>
-    <!--
-    <el-header class="sub-title">正在团购</el-header>
-    <el-row>
-      <el-col v-for="(o, index) in 4" :key="o" :span="4" :offset="index > 0 ? 2 : 1">
-        <el-card :body-style="{ padding: '0px' }" shadow="hover">
-          <div style="padding: 14px">
-            <span>Yummy hamburger</span>
-            <div class="bottom">
-            
-              <el-button type="text" class="button">Operating</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    -->
 
     <el-container>
       <el-main class="right" id="main_top"
@@ -43,7 +27,9 @@
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpBook()">查看更多</el-button>
+                <el-button type="text" class="button" @click="jumpStore(1)"
+                  >查看更多</el-button
+                >
               </div>
             </div>
           </el-carousel-item>
@@ -67,7 +53,9 @@
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpPPT()">查看更多</el-button>
+                <el-button type="text" class="button" @click="jumpStore(2)"
+                  >查看更多</el-button
+                >
               </div>
             </div>
           </el-carousel-item>
@@ -91,7 +79,9 @@
                 </el-col>
               </el-row>
               <div class="top_bottom">
-                <el-button type="text" class="button" @click="jumpNote()">查看更多</el-button>
+                <el-button type="text" class="button" @click="jumpStore(3)"
+                  >查看更多</el-button
+                >
               </div>
             </div>
           </el-carousel-item>
@@ -127,7 +117,12 @@
                 <span>{{ obj.teacherName }}</span>
               </p>
               <div class="bottom">
-                <el-button type="text" class="button" @click="seeDetail(obj.lessonId)">查看详情</el-button>
+                <el-button
+                  type="text"
+                  class="button"
+                  @click="seeDetail(obj.lessonId)"
+                  >查看详情</el-button
+                >
               </div>
             </div>
           </el-card>
@@ -233,7 +228,7 @@ export default {
         .then((response) => {
           //this.list = response.data.data.list.slice(0, 4);
           this.list = response.data.data.list;
-         // console.log(response.data.data);
+          // console.log(response.data.data);
         })
         .catch((error) => console.log(error));
     },
@@ -247,16 +242,18 @@ export default {
       });
     },
 
-    jumpBook() {
+    jumpStore(idx) {
+      var type;
+      if (idx == 1) type = "books";
+      else if (idx == 2) type = "ppts";
+      else  if (idx == 3) type = "noteses";
       this.$router.push({
-        name: "SearchResult",
+        name: "Store",
         params: {
-          url: "",
+          type: type,
         },
       });
     },
-    jumpPPT() { },
-    jumpNote() { },
   },
 
   mounted() {

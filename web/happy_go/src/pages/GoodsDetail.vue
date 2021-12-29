@@ -1,31 +1,74 @@
 <template>
   <div>
-    <h1>课程详情</h1>
+    <h1>商品详情</h1>
 
     <div class="top" :style="{ boxShadow: 'base' }">
       <div class="img_right" style="display: flex">
         <img id="courseimg" />
-        <div class="img_right2">
+        <div class="img_right2" v-if="this.type == 'books'">
           <p>
-            <span>{{ courseDetail.lessonName }}</span>
-          </p>
-          <p>
-            <span>{{ courseDetail.lessonNumber }}</span>
+            <span>二手书详情</span>
           </p>
 
           <p>
-            <span style="color: rgb(117, 117, 117)">授课教师：</span
-            ><span>{{ courseDetail.teacherName }}</span>
+            <span style="color: rgb(117, 117, 117)">书名：</span
+            ><span>&laquo;{{ Detail.name }}&laquo;</span>
           </p>
           <p>
-            <span style="color: rgb(117, 117, 117)">开课学期：</span
-            ><span>{{ courseDetail.semester }}</span>
+            <span style="color: rgb(117, 117, 117)">作者：</span
+            ><span>{{ Detail.author }}</span>
           </p>
           <p>
-            <span style="color: rgb(117, 117, 117)">学分：</span>
-            <span>{{ courseDetail.credit }}</span>
+            <span style="color: rgb(117, 117, 117)">出版社：</span
+            ><span>{{ Detail.publisher }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(117, 117, 117)">新旧程度：</span
+            ><span>{{ Detail.newDegree }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(255, 1, 1)">价格：</span>
+            <span>{{ Detail.price }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(117, 117, 117)">内容导览：</span
+            ><span>{{ Detail.content }}</span>
           </p>
         </div>
+
+        <!--ppt,note-->
+        <div
+          class="img_right2"
+          v-if="this.type == 'ppts' || this.type == 'noteses'"
+        >
+          <p>
+            <span v-if="this.type == 'ppts'">PPT详情</span>
+            <span v-if="this.type == 'noteses'">笔记详情</span>
+          </p>
+
+          <p>
+            <span style="color: rgb(117, 117, 117)">章节：</span
+            ><span>{{ Detail.chapters }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(117, 117, 117)">纸张大小：</span
+            ><span>{{ Detail.paperSize }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(117, 117, 117)">新旧程度：</span
+            ><span>{{ Detail.newDegree }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(255, 1, 1)">价格：</span>
+            <span>{{ Detail.price }}</span>
+          </p>
+          <p>
+            <span style="color: rgb(117, 117, 117)">内容导览：</span
+            ><span>{{ Detail.content }}</span>
+          </p>
+        </div>
+
+        <!--note-->
       </div>
     </div>
 
@@ -48,28 +91,29 @@
                     {{ this.list_discuss[i - 1].user.username }} </span
                   >&nbsp;&nbsp;&nbsp;&nbsp;<span
                     style="color: rgb(222, 222, 255)"
-                    >{{ this.list_discuss[i - 1].issueTime }}     
+                    >{{ this.list_discuss[i - 1].issueTime }}
                     <el-button @click="showTxtWindow">回复</el-button></span
                   >
                 </div>
                 <div>{{ this.list_discuss[i - 1].content }}</div>
-           
-        <el-form
-                    ref="form"
-                    :model="form"
-                    label-width="120px"
-                    v-if="showTxt"
-                  >
-                    <el-form-item >
-                      <el-input
-                        v-model="form.content"
-                        type="textarea"
-                      ></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary" @click="answer(this.list_discuss[i - 1].id)">提交</el-button>
-                    </el-form-item>
-                  </el-form>
+
+                <el-form
+                  ref="form"
+                  :model="form"
+                  label-width="120px"
+                  v-if="showTxt"
+                >
+                  <el-form-item>
+                    <el-input v-model="form.content" type="textarea"></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button
+                      type="primary"
+                      @click="answer(this.list_discuss[i - 1].id)"
+                      >提交</el-button
+                    >
+                  </el-form-item>
+                </el-form>
 
                 <!--子-->
                 <div
@@ -84,18 +128,23 @@
                     <span v-if="this.list_discuss[i - 1].children[j - 1].user">
                       {{
                         this.list_discuss[i - 1].children[j - 1].user.username
-                      }} 
-                      </span> &nbsp; 
+                      }}
+                    </span>
+                    &nbsp;
 
-                      <span v-if="this.list_discuss[i - 1].children[j - 1].parentUser">
-                      <span>&nbsp;<span
-                      style="color: rgb(222, 222, 255)"
-                      >回复：&nbsp;{{
-                        this.list_discuss[i - 1].children[j - 1].parentUser.username
-                      }}</span
-                    ></span>
-                      </span>
-                    
+                    <span
+                      v-if="this.list_discuss[i - 1].children[j - 1].parentUser"
+                    >
+                      <span
+                        >&nbsp;<span style="color: rgb(222, 222, 255)"
+                          >回复：&nbsp;{{
+                            this.list_discuss[i - 1].children[j - 1].parentUser
+                              .username
+                          }}</span
+                        ></span
+                      >
+                    </span>
+
                     &nbsp;&nbsp;&nbsp;&nbsp;<span
                       style="color: rgb(222, 222, 255)"
                       >{{
@@ -294,8 +343,8 @@ export default {
   data() {
     return {
       test: [0, 1, 2, 3],
-      lessonId: "",
-      courseDetail: "",
+      id: "",
+      Detail: "",
       dynamicTags: ["课程", "商品", "资料", "兴趣"],
       inputVisible: false,
       inputValue: "",
@@ -372,7 +421,11 @@ export default {
     answer(pid) {
       console.log(this.form.content);
       var url = "/api/ums/topic";
-      var data = { title: this.form.title, content: this.form.content,topicId:pid };
+      var data = {
+        title: this.form.title,
+        content: this.form.content,
+        topicId: pid,
+      };
       axios({
         method: "post",
         url: url,
@@ -412,23 +465,26 @@ export default {
         .catch((error) => console.log(error));
     },
 
-    loadDetail(_id) {
-      var url = "/api/lms/info";
+    loadDetail(_id, _type) {
+      if (_type == "books") _type = "book";
+      else if (_type == "noteses") _type = "notes";
+      else _type = "ppt";
+      var url = "/api/cms/" + _type;
 
       axios({
         method: "get",
         url: url,
         params: {
-          lessonId: _id,
+          id: _id,
         },
         headers: {
           Authorization: "BearerJhbG",
         },
       })
         .then((response) => {
-          this.courseDetail = response.data.data;
-          document.getElementById("courseimg").src = this.courseDetail.pictures;
-          //console.log(response.data.data);
+          this.Detail = response.data.data;
+          document.getElementById("courseimg").src = this.Detail.filename;
+          console.log(this.Detail);
         })
         .catch((error) => console.log(error));
     },
@@ -461,7 +517,7 @@ export default {
         params: {
           pageNum: 1,
           pageSize: 4,
-          lessonId: this.lessonId,
+          id: this.id,
         },
         headers: {
           Authorization: "BearerJhbG",
@@ -470,7 +526,7 @@ export default {
         .then((response) => {
           this.list_discuss = response.data.data.list;
 
-          //          console.log(this.lessonId);
+          //          console.log(this.id);
 
           console.log(response.data.data.list);
           //console.log(response.data.data.list[0].title);
@@ -538,9 +594,11 @@ export default {
   },
 
   mounted() {
-    this.lessonId = this.$route.params.id;
+    this.id = this.$route.params.id;
+    console.log(this.$route.params.id);
+    this.type = this.$route.params.type;
 
-    this.loadDetail(this.lessonId);
+    this.loadDetail(this.id, this.type);
 
     this.getTop();
 

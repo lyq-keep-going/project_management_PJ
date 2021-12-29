@@ -1,6 +1,6 @@
 <template>
   <el-main>
-    <h1>搜索结果</h1>
+    <h1>商城</h1>
     <router-view></router-view>
     <div class="result">
       <el-row>
@@ -15,18 +15,21 @@
 
             <div style="padding: 14px" class="info">
               <p>
-                <span></span><span>{{ obj.name }}</span>
+                <span></span><span>  &laquo; {{ obj.name }} &raquo;</span>
               </p>
               <p>
                 {{ obj.lessonNumber }}
               </p>
               <span>{{ obj.semester }}</span>
               <p>
-                <span style="color: rgb(117, 117, 117)">授课教师：</span
-                ><span>{{ obj.teacherName }}</span>
+                <span style="color: rgb(117, 117, 117)">价格：</span
+                ><span>{{ obj.price}}</span>
               </p>
               <div class="bottom">
-                <el-button type="text" class="button" @click="seeDetail(obj.lessonId)"
+                <el-button
+                  type="text"
+                  class="button"
+                  @click="seeDetail(obj.id)"
                   >查看详情</el-button
                 >
               </div>
@@ -42,7 +45,7 @@
         :page-size="page_size"
         layout="prev, pager, next, jumper"
         :total="page_total"
-        @click="search(this.key,currentPage)"
+        @click="search(this.key, currentPage)"
         @current-change="handleCurrentChange"
       >
       </el-pagination>
@@ -57,6 +60,7 @@ export default {
   currPage: "",
   data() {
     return {
+      type:"",
       key: " ",
       list: "",
       page_size: 8,
@@ -65,7 +69,7 @@ export default {
   },
   setup() {
     const handleCurrentChange = (val) => {
-     // console.log(val);
+      // console.log(val);
       //  this.cur=val;
       //this.search(this.key, val);
     };
@@ -81,22 +85,22 @@ export default {
     test(_num) {
       alert(_num);
     },
-    search(_key, _pageNum) {
-      var url = "/api/lms/lessonList?filter=query";
-
+    update(_type,_pageNum) {
+      var url="/api/cms/"+_type;
+     
       axios({
         method: "get",
         url: url,
         params: {
           pageNum: _pageNum,
           pageSize: 8,
-          keys: _key,
         },
         headers: {
           Authorization: "BearerJhbG",
         },
       })
-        .then((response) => {this.list ="";
+        .then((response) => {
+          this.list = "";
           this.list = response.data.data.list;
           this.page_total = response.data.data.total;
           console.log(this.page_total);
@@ -106,19 +110,18 @@ export default {
     
     seeDetail(_id) {
       this.$router.push({
-        name: "CourseDetail",
+        name: "GoodsDetail",
         params: {
           id: _id,
+          type:this.type,
         },
       });
     },
   },
 
   mounted() {
-    this.key = this.$route.params.key;
-    console.log(this.key);
-    if (this.key == null) this.key = "";
-    this.search(this.key, 1);
+    this.type=this.$route.params.type;
+    this.update(this.$route.params.type,1);
   },
 };
 </script>
