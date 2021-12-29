@@ -146,10 +146,10 @@
               label-width="120px"
               v-if="showTxt"
             >
-              <el-form-item label="title">
+              <el-form-item label="标题：">
                 <el-input v-model="form.title"></el-input>
               </el-form-item>
-              <el-form-item label="content">
+              <el-form-item label="内容：">
                 <el-input v-model="form.content" type="textarea"></el-input>
               </el-form-item>
               <el-form-item>
@@ -342,15 +342,13 @@ export default {
       this.showTxt = !this.showTxt;
     },
     answer() {
+      console.log( this.form.content);
       var url = "/api/ums/topic";
+      var data={"title":this.form.title,"content":this.form.content};
       axios({
         method: "post",
         url: url,
-        params: {
-          title: this.form.title,
-          content: this.form.content,
-          lessonId: this.lessonId,
-        },
+        data: data,
         headers: {
           Authorization: "BearerJhbG",
         },
@@ -426,7 +424,7 @@ export default {
           //          console.log(this.lessonId);
 
           console.log(response.data.data.list);
-          console.log(response.data.data.list[0].title);
+          //console.log(response.data.data.list[0].title);
         })
         .catch((error) => console.log(error));
     },
