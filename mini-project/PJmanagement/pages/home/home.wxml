@@ -57,7 +57,7 @@
                 </view>
             </view>
         </navigator>
-        <navigator url="/pages/collected_goods/collected_goods" hover-class="navigator-hover">
+        <!-- <navigator url="/pages/collected_goods/collected_goods" hover-class="navigator-hover">
             <view class="li-wrap">
                 <view class="list" bindtap="toAddressList">
                     <view class="list-l">
@@ -69,7 +69,7 @@
                     <view class="arrow"></view>
                 </view>
             </view>
-        </navigator>
+        </navigator> -->
         <navigator url="/pages/my_message/my_message" hover-class="navigator-hover">
             <view class="li-wrap">
                 <view class="list" bindtap="toAddressList">

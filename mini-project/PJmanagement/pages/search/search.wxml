@@ -22,7 +22,7 @@
         <view class="cu-card case" :class="isCard?'no-card':''" id="card" wx:for-items="{{items}}" wx:for-item="item">
             
                     <view class="cu-item shadow">
-                        <navigator url="/pages/discussion/discussion?id={{item.id}}">
+                        <navigator url="/pages/discussion/discussion?lessonId={{item.lessonId}}">
                         <view class="image">
                             <image src="{{item.pictures[0]}}"mode="widthFix"></image>
                         </view>

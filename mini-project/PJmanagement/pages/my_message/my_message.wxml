@@ -1,21 +1,27 @@
+<wxs module="filter"  src='../../utils/filter.wxs'></wxs>
 <view class="cu-bar bg-white solid-bottom margin-top">
 				<view class="action">
 					<text class="cuIcon-title text-orange "></text> 消息列表
 				</view>
 			</view>
-			<view class="null-content" wx:if="{{!items}}">还没有内容哦，快去探索吧~</view>
+			<view class="null-content" wx:if="{{!messages}}">还没有内容哦，快去探索吧~</view>
 			<view class="cu-list menu-avatar">
-				<view class="cu-item" wx:for-items="{{messages}}" wx:for-item="message" bindtap="toChat" data-id="{{message.sender.id}}">
-					<view class="cu-avatar round lg" style="background-image:url({{message.sender.avatar}});"><view class="cu-tag badge" wx:if="{{!message.last_message.read}}">new</view></view>
+				<view class="cu-item" wx:for-items="{{messages}}" wx:for-item="message" bindtap="toChat" data-id="{{message.interlocutor.id}}">
+					<view class="cu-avatar round lg" style="background-image:url({{message.interlocutor.avatar}});">
+					<view wx:if="{{message.lastMessage.receiverId==myId}}">
+						<view class="cu-tag badge" wx:if="{{!message.lastMessage.readStatus}}">new
+						</view>
+					</view>
+					</view>
 					<view class="content">
-						<view class="text-grey">{{message.sender.username}}</view>
+						<view class="text-grey">{{message.interlocutor.username}}</view>
 						<view class="text-gray text-sm flex">
 							<view class="text-cut">
-								{{message.last_message.content}}
+								{{message.lastMessage.content}}
 							</view> </view>
 					</view>
 					<view class="action">
-						<view class="text-grey text-xs">{{message.last_message.issueTime}}</view>
+						<view class="text-grey text-xs" id="date">{{filter.newFormatTime(message.lastMessage.issueTime)}}</view>
 					</view>
 				</view>
 				
