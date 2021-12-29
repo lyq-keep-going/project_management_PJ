@@ -1,6 +1,6 @@
 <!--pages/commodity_detail/commodity_detail.wxml-->
 <swiper autoplay circular indicator-dots interval="{{2000}}">
-<swiper-item wx:for="{{info.pictures}}" wx:key="index"><image src="{{item.url}}"></image></swiper-item>
+<swiper-item  wx:key="index"><image src="{{info.filename}}"></image></swiper-item>
 </swiper>
 
 <view class="outer">

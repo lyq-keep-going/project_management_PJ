@@ -27,7 +27,7 @@ Page({
     
     goToChat(e){
         wx.navigateTo({
-          url: '../chat/chat',
+          url: '../chat/chat?sellerId='+ this.data.info.sellerId,
         })
     },
 
