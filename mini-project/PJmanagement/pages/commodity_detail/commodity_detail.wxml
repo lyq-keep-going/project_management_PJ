@@ -8,7 +8,8 @@
     <view wx:for="{{info}}" wx:if="{{item && translate_dic[index]}}" wx:key="index">{{translate_dic[index] + " : " + item}}</view>
 </view>
 
-<button bindtap="goToChat">我想要</button>
+<button bindtap="goToChat" wx:if="{{!isSoldByMe}}">我想要</button>
+<button bindtap="soledOut" wx:if="{{isSoldByMe}}">已卖出</button>
 </view>
 
 
