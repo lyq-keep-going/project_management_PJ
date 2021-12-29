@@ -332,7 +332,7 @@ export default {
 
           //
 
-          //  console.log(this.list_discuss[0].id);
+           console.log(this.list_discuss);
         })
         .catch((error) => console.log(error));
     },
