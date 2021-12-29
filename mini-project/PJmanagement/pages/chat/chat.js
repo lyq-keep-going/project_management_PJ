@@ -9,7 +9,8 @@ Page({
         userId: '',
         myId: wx.getStorageSync('userId'),
         inputValue: "",
-        toView: ''
+        toView: '',
+        items: null
     },
 
     /**
@@ -17,23 +18,22 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            userId: options.id
+            userId: options.sellerId
         })
-        console.log(options.id)
         var that = this
         // setInterval(function (){
             wx.request({
                 url: "https://" + app.globalData.host  + "/api/mms/msgList",
                 method: 'GET',
                 data: {
-                    userId: options.id
+                    userId: options.sellerId
                 },
                 header: {
                     'content-type': 'application/json', // 默认值
                     'Authorization': wx.getStorageSync('token')
                 },
                 success: function(res) {
-                    // console.log(res.data.data.list)
+                    console.log(res.data.data.list)
                     that.setData({
                         items: res.data.data.list,
                         toView: 'msg-' + (res.data.data.list.length -1)
@@ -109,7 +109,9 @@ Page({
                         inputValue: ""
                     })
                     console.log(res)
-                    that.onLoad
+                    wx.redirectTo({
+                        url: '/pages/chat/chat?sellerId=' + that.data.userId,
+                    })
                 }
             })
         }
@@ -119,8 +121,7 @@ Page({
         this.setData({         
             inputValue: e.detail.value,
         })
-    }
-
+    },
 
     // pageScrollToBottom: function() {
     //     let query = wx.createSelectorQuery().in(this)

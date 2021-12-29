@@ -15,6 +15,11 @@ Page({
         pptPageNum:1,
         notePageNum:1
     },
+    goToFrontPage(e){
+        wx.switchTab({
+          url: '../front_page/front_page'
+        })
+    },
 
     handleCollect(e){
         if(this.data.lessonInfo.collected){
@@ -122,21 +127,21 @@ Page({
         this.setData({
             curr_active: 2
         });
-        this.changeCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 8);
+        this.changeCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 6);
     }, 
 
     goToPPT(e){
         this.setData({
             curr_active: 1
         });
-        this.changeCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 8);
+        this.changeCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 6);
     },
 
     goToNote(e){
         this.setData({
             curr_active: 3
         });
-        this.changeCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 8);
+        this.changeCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 6);
     },
 
     /**
@@ -147,7 +152,7 @@ Page({
             lessonId: options.lessonId
         })
         this.getLessonInfo();
-        this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum,8);
+        this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum,6);
     },
 
     /**
@@ -182,16 +187,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-        if(curr_active == 2){
-            this.data.bookPageNum++;
-            this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 8);
-        }else if(curr_active == 1){
-            this.data.pptPageNum++;
-            this.getCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 8);
-        }else if(curr_active == 3){
-            this.data.notePageNum++;
-            this.getCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 8);
-        }
         
     },
 
@@ -199,7 +194,16 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        if(this.data.curr_active == 2){
+            this.data.bookPageNum++;
+            this.getCommodityInfo(2, this.data.lessonId, this.data.bookPageNum, 6);
+        }else if(this.data.curr_active == 1){
+            this.data.pptPageNum++;
+            this.getCommodityInfo(1, this.data.lessonId, this.data.pptPageNum, 6);
+        }else if(this.data.curr_active == 3){
+            this.data.notePageNum++;
+            this.getCommodityInfo(3, this.data.lessonId, this.data.notePageNum, 6);
+        }
     },
 
     /**

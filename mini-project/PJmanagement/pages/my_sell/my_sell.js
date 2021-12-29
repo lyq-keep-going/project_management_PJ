@@ -21,14 +21,14 @@ Page({
                 type: 0,
                 isMine: true,
                 isSold: true,
-                lessonId: null
+ 
             },
             header: {
                 'content-type': 'application/json', // 默认值
                 'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
-                console.log(res.data.data.list)
+                console.log(res.data)
                 that.setData({
                     items: res.data.data.list
                 })
@@ -83,5 +83,12 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    enterCommodity(e){
+        var json_single_commodity = JSON.stringify(e.currentTarget.dataset.url);
+        wx.navigateTo({
+          url: '../../pages/commodity_detail/commodity_detail?single_commodity=' + json_single_commodity,
+        });
     }
 })

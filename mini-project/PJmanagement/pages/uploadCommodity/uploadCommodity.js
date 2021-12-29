@@ -143,7 +143,12 @@ Page({
                                 console.log(res);
                                 if(res.data.code == 200){
                                     wx.showToast({
-                                    title: '上传成功',
+                                        title: '上传成功',
+                                        success:()=>{
+                                            wx.navigateTo({
+                                              url: '../trade/trade?lessonId=' + this.data.lessonId,
+                                            })
+                                        }
                                     })
                                 }else{
                                     wx.showToast({
@@ -233,7 +238,12 @@ Page({
                                 console.log(res);
                                 if(res.data.code == 200){
                                     wx.showToast({
-                                    title: '上传成功',
+                                        title: '上传成功',
+                                        success:()=>{
+                                            wx.navigateTo({
+                                              url: '../trade/trade?lessonId=' + this.data.lessonId,
+                                            })
+                                        }
                                     })
                                 }else{
                                     wx.showToast({
@@ -306,7 +316,13 @@ Page({
                                 if(res.data.code == 200){
                                     wx.showToast({
                                     title: '上传成功',
+                                    success:()=>{
+                                        wx.navigateTo({
+                                          url: '../trade/trade?lessonId=' + this.data.lessonId,
+                                        })
+                                        }
                                     })
+
                                 }else{
                                     wx.showToast({
                                         title: '上传失败',

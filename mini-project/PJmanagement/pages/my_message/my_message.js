@@ -6,7 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        messages : null
+        messages : null,
+        myId : wx.getStorageSync('userId')
     },
 
     /**
@@ -24,7 +25,7 @@ Page({
                 'Authorization': wx.getStorageSync('token')
             },
             success: function(res) {
-                console.log(res.data.data.list)
+                console.log(res.data.data)
                 that.setData({
                     messages: res.data.data.list
                 })
@@ -83,7 +84,7 @@ Page({
 
     toChat: function (event) {
         wx.navigateTo({
-          url: '/pages/chat/chat?id=' + event.currentTarget.dataset.id,
+          url: '/pages/chat/chat?sellerId=' + event.currentTarget.dataset.id,
         })
     }
 })

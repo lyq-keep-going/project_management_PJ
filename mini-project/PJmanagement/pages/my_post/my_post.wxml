@@ -6,9 +6,9 @@
 			<view class="null-content" wx:if="{{!items}}">还没有内容哦，快去探索吧~</view>
 			<view class="cu-list menu-avatar">
 				<view class="cu-item" wx:for-items="{{items}}" wx:for-item="item">
-					<navigator url="/pages/post_detail/post_detail?id={{item.id}}">
+					<navigator url="/pages/post_detail/post_detail?topicId={{item.id}}">
 					<view class="content">
-						<view class="text-grey">{{item.title}}</view>
+						<view class="text-grey">{{item.content}}</view>
 					</view>
                     <view class="action">
 						<view class="text-grey text-xs">{{item.issueTime}}</view>
