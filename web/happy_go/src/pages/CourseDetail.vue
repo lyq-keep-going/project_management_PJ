@@ -44,7 +44,8 @@
               >
                 <div>
                   <span>楼主：</span>
-                  <span v-if="this.list_discuss[i - 1].user"> {{ this.list_discuss[i - 1].user.username }} </span
+                  <span v-if="this.list_discuss[i - 1].user">
+                    {{ this.list_discuss[i - 1].user.username }} </span
                   >&nbsp;&nbsp;&nbsp;&nbsp;<span
                     style="color: rgb(222, 222, 255)"
                     >{{ this.list_discuss[i - 1].issueTime }}</span
@@ -66,8 +67,19 @@
                     <span v-if="this.list_discuss[i - 1].children[j - 1].user">
                       {{
                         this.list_discuss[i - 1].children[j - 1].user.username
-                      }}  </span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;<span
+                      }} 
+                      </span> &nbsp; 
+
+                      <span v-if="this.list_discuss[i - 1].children[j - 1].parentUser">
+                      <span>&nbsp;<span
+                      style="color: rgb(222, 222, 255)"
+                      >回复：&nbsp;{{
+                        this.list_discuss[i - 1].children[j - 1].parentUser.username
+                      }}</span
+                    ></span>
+                      </span>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span
                       style="color: rgb(222, 222, 255)"
                       >{{
                         this.list_discuss[i - 1].children[j - 1].issueTime
@@ -338,13 +350,12 @@ export default {
   },
   methods: {
     showTxtWindow() {
-  
       this.showTxt = !this.showTxt;
     },
     answer() {
-      console.log( this.form.content);
+      console.log(this.form.content);
       var url = "/api/ums/topic";
-      var data={"title":this.form.title,"content":this.form.content};
+      var data = { title: this.form.title, content: this.form.content };
       axios({
         method: "post",
         url: url,
@@ -356,7 +367,7 @@ export default {
         .then((response) => {
           // this.list_discuss = response.data.data.list;
 
-         this.$message.success("发布成功！");
+          this.$message.success("发布成功！");
 
           showTxtWindow();
         })
