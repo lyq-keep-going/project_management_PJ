@@ -44,7 +44,7 @@
               >
                 <div>
                   <span>楼主：</span>
-                  <span> {{ this.list_discuss[i - 1].user.username }} </span
+                  <span v-if="this.list_discuss[i - 1].user"> {{ this.list_discuss[i - 1].user.username }} </span
                   >&nbsp;&nbsp;&nbsp;&nbsp;<span
                     style="color: rgb(222, 222, 255)"
                     >{{ this.list_discuss[i - 1].issueTime }}</span
@@ -63,10 +63,10 @@
                   </el-divider>
                   <p>{{ this.list_discuss[i - 1].children[j - 1].title }}</p>
                   <p>
-                    <span>
-                      <!-- {{
-                        this.list_discuss[i - 1].children[j - 1].user
-                      }} --> </span
+                    <span v-if="this.list_discuss[i - 1].children[j - 1].user">
+                      {{
+                        this.list_discuss[i - 1].children[j - 1].user.username
+                      }}  </span
                     >&nbsp;&nbsp;&nbsp;&nbsp;<span
                       style="color: rgb(222, 222, 255)"
                       >{{
@@ -77,7 +77,7 @@
                   <!--   <span>回复{{this.list_discuss[i-1].children[j-1].parentUser.user}}</span>-->
                   <p>{{ this.list_discuss[i - 1].children[j - 1].content }}</p>
 
-                  <el-button
+                  <!--    <el-button
                     class="answer"
                     @click="showTxtWindow"
                     v-if="!showTxt"
@@ -102,6 +102,7 @@
                       <el-button type="primary" @click="answer">提交</el-button>
                     </el-form-item>
                   </el-form>
+                  -->
                 </div>
               </el-collapse-item>
             </el-collapse>
@@ -133,6 +134,28 @@
               @click="showInput"
               >+ New Tag</el-button
             >
+          </div>
+
+          <div>
+            <el-button class="answer" @click="showTxtWindow" v-if="!showTxt"
+              >发布帖子</el-button
+            >
+            <el-form
+              ref="form"
+              :model="form"
+              label-width="120px"
+              v-if="showTxt"
+            >
+              <el-form-item label="标题：">
+                <el-input v-model="form.title"></el-input>
+              </el-form-item>
+              <el-form-item label="内容：">
+                <el-input v-model="form.content" type="textarea"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="answer">提交</el-button>
+              </el-form-item>
+            </el-form>
           </div>
         </el-aside>
 
@@ -249,9 +272,9 @@ export default {
       inputValue: "",
       showTxt: false,
       form: {
-        content:'',
-        title:'',
-        },
+        content: "",
+        title: "",
+      },
 
       list_right: "",
 
@@ -315,26 +338,27 @@ export default {
   },
   methods: {
     showTxtWindow() {
+  
       this.showTxt = !this.showTxt;
     },
     answer() {
+      console.log( this.form.content);
       var url = "/api/ums/topic";
+      var data={"title":this.form.title,"content":this.form.content};
       axios({
         method: "post",
         url: url,
-        params: {
-          title: this.form.title,
-          content: this.form.content,
-          lessonId: this.lessonId,
-        },
+        data: data,
         headers: {
           Authorization: "BearerJhbG",
         },
       })
         .then((response) => {
-          this.list_discuss = response.data.data.list;
+          // this.list_discuss = response.data.data.list;
 
-          console.log(response.data.data.list);
+         this.$message.success("发布成功！");
+
+          showTxtWindow();
         })
         .catch((error) => console.log(error));
     },
@@ -400,7 +424,7 @@ export default {
           //          console.log(this.lessonId);
 
           console.log(response.data.data.list);
-          console.log(response.data.data.list[0].title);
+          //console.log(response.data.data.list[0].title);
         })
         .catch((error) => console.log(error));
     },
