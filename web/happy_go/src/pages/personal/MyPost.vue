@@ -15,7 +15,7 @@
                             </el-row>
                         </el-col>
                         <el-col :span="20">
-                            <h3>{{ item.title }}</h3>
+                            <h3>{{item.title == null?"[回帖]":"[主贴]"}}{{ item.title }}</h3>
                         </el-col>
                     </el-row>
                 </div>

@@ -90,7 +90,7 @@ export default {
     mounted() {
         this.getMyMessageList(this.pageNum, this.pageSize)
         this.myName = localStorage.getItem("username");
-        console.log(this.myName);
+        // console.log(this.myName);
     },
     methods: {
         getMyMessageList(pageNum, pageSize) {
