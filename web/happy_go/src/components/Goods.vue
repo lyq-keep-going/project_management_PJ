@@ -68,9 +68,9 @@ export default {
     methods: {
 
     },
-    mounted() {
-        console.log(this.info)
-    }
+    // mounted() {
+    //     console.log(this.info)
+    // }
 }
 </script>
 
