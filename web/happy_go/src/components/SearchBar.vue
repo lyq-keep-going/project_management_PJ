@@ -10,16 +10,8 @@
           @keyup.enter.native="onSubmit"
         >
           <template #prepend>
-            <el-select
-              v-model="select"
-              placeholder="筛选条件"
-              style="width: 110px"
-              :disabled="true"
-            >
-              <el-option label="Restaurant" value="1"></el-option>
-              <el-option label="Order No." value="2"></el-option>
-              <el-option label="Tel" value="3"></el-option>
-            </el-select>
+      
+     
           </template>
           <template #append>
             <el-button @click="onSubmit">
