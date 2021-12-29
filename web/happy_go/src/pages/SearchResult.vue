@@ -9,7 +9,7 @@
             :body-style="{ padding: '0px' }"
             class="card"
             shadow="hover"
-            @click.native="seeDetail(obj.id)"
+            @click.native="seeDetail(obj.lessonId)"
           >
             <img src="../assets/book.png" class="image" />
 
@@ -26,7 +26,7 @@
                 ><span>{{ obj.teacherName }}</span>
               </p>
               <div class="bottom">
-                <el-button type="text" class="button" @click="seeDetail(obj.id)"
+                <el-button type="text" class="button" @click="seeDetail(obj.lessonId)"
                   >查看详情</el-button
                 >
               </div>

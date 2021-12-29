@@ -113,7 +113,7 @@ Page({
                                                 method: 'PUT',
                                                 data: {
                                                     userId: wx.getStorageSync('userId'),
-                                                    username: wx.getStorageSync('userInfo').nickname,
+                                                    username: wx.getStorageSync('userInfo').nickName,
                                                     avatar: wx.getStorageSync('userInfo').avatarUrl
                                                 },
                                                 header: {
