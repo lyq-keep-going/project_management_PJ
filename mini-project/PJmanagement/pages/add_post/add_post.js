@@ -47,6 +47,9 @@ Page({
                   title: '帖子上传成功',
                   icon:'success'
                 })
+                wx.navigateTo({
+                  url: '../discussion/discussion?lessonId='+ this.data.lessonId,
+                })
             }
         });
     },

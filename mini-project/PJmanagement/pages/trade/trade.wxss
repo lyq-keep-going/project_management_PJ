@@ -73,3 +73,19 @@ button{
     right: 30rpx;
 }
 
+.display{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.front_page{
+    position: fixed;
+    bottom: 40rpx;
+    left: 50rpx;
+    width: 100rpx;
+    height: 100rpx;
+}
+

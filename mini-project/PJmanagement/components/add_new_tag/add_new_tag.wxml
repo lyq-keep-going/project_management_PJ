@@ -6,5 +6,6 @@
     <plain_tag class="tag" wx:for="{{tags}}" tagname="{{item.tagName}}" wx:key="id"></plain_tag>
 </view>
 <input placeholder="自定义标签" bindinput="handleDefault"></input>
-<button bindtap="addTag">添加</button>
+<view class="button_outer"><button bindtap="addTag">添加</button></view>
+
 </view>
