@@ -45,11 +45,14 @@ Page({
             success:(result)=>{
                 wx.showToast({
                   title: '帖子上传成功',
-                  icon:'success'
+                  icon:'success',
+                  success:()=>{
+                    wx.navigateTo({
+                        url: '../discussion/discussion?lessonId='+ this.data.lessonId,
+                    })
+                  }
                 })
-                wx.navigateTo({
-                  url: '../discussion/discussion?lessonId='+ this.data.lessonId,
-                })
+                
             }
         });
     },
