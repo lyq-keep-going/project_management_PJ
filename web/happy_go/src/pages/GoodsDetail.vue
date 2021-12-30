@@ -12,7 +12,7 @@
 
           <p>
             <span style="color: rgb(117, 117, 117)">书名：</span
-            ><span>&laquo;{{ Detail.name }}&laquo;</span>
+            ><span>《{{ Detail.name }}》</span>
           </p>
           <p>
             <span style="color: rgb(117, 117, 117)">作者：</span

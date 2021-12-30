@@ -4,20 +4,13 @@
   <el-main>
     <div style="margin-top: 15px">
       <el-form ref="form" :model="form" label-width="120px">
-        <el-input
-          v-model="form.input"
-          placeholder="搜索课程"
-          @keyup.enter.native="onSubmit"
-        >
-          <template #prepend>
-      
-     
-          </template>
+        <el-input v-model="form.input" placeholder="搜索课程" @keyup.enter.native="onSubmit">
           <template #append>
             <el-button @click="onSubmit">
-              <el-icon class="el-input__icon"><search /></el-icon>
-              搜索</el-button
-            >
+              <el-icon class="el-input__icon">
+                <search />
+              </el-icon>搜索
+            </el-button>
           </template>
         </el-input>
       </el-form>

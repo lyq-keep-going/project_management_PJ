@@ -26,7 +26,6 @@ const routes = [
     { path: '/personalCenter', component: PersonalCenter, meta: { isLogin: true } },
     { name: 'CourseDetail', path: '/CourseDetail/:id', component: CourseDetail },
     { name: 'GoodsDetail', path: '/GoodsDetail/:type/:id', component: GoodsDetail },
-
     { name: 'Store', path: '/Store/:type', component: Store },
     {
         name: 'SearchResult', path: '/SearchResult', component: SearchResult,

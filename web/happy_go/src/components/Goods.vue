@@ -7,13 +7,16 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <h4>《{{ info.bookName }}》</h4>
+        <h4>《{{ info.name }}》</h4>
+        <el-tag>{{ types[info.type] }}</el-tag>
+        <br />
+        <br />
 
         <el-button type="primary" @click="dialogVisible = true">查看详细信息</el-button>
         <el-dialog v-model="dialogVisible" title="详细信息" width="80%">
             <div style="text-align: left;">
                 <el-form label-width="120px" :model="info" label-position="left">
-                    <el-form-item label="卖家">{{ info.seller.username }}</el-form-item>
+                    <el-form-item label="卖家">{{ info.seller }}</el-form-item>
 
                     <el-row>
                         <el-col :span="12">
@@ -45,6 +48,8 @@
                     </el-row>
 
                     <el-form-item label="书籍内容">{{ info.content }}</el-form-item>
+
+                    <el-button type="primary" @click="seeDetail(info.type, info.id)">物品详细页面</el-button>
                 </el-form>
             </div>
         </el-dialog>
@@ -56,7 +61,8 @@
 export default {
     data() {
         return {
-            dialogVisible: false
+            dialogVisible: false,
+            types: ['全部', 'ppts', 'books', 'noteses'],
         }
     },
     props: {
@@ -66,7 +72,15 @@ export default {
         }
     },
     methods: {
-
+        seeDetail(type, id) {
+            this.$router.push({
+                name: "GoodsDetail",
+                params: {
+                    id: id,
+                    type: this.types[type],
+                },
+            });
+        }
     },
     // mounted() {
     //     console.log(this.info)
